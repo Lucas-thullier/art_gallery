@@ -1,2 +1,4 @@
-/data/db
-
+/data/db/
+!/data/.gitkeep
+.vscode/
+.devcontainer/

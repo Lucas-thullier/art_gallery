@@ -6,7 +6,7 @@ from django.shortcuts import render
 from .models import Artwork
 
 class IndexView(generic.ListView):
-    template_name = 'gallery_backend/artworks/index.html'
+    template_name = 'api/artworks/index.html'
     context_object_name = 'artworks'
 
     def get_queryset(self):
@@ -14,4 +14,4 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = Artwork
-    template_name = 'gallery_backend/artworks/detail.html'
+    template_name = 'api/artworks/detail.html'

@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
                 ('publication_date', models.DateTimeField(default=django.utils.timezone.now)),
                 ('created_at', models.DateTimeField(default=django.utils.timezone.now)),
                 ('updated_at', models.DateTimeField(default=django.utils.timezone.now)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='gallery_backend.author')),
+                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.author')),
             ],
         ),
     ]

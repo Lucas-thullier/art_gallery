@@ -5,10 +5,8 @@ services:
     container_name: db
     hostname: postgres
     image: postgres:latest
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
+    env_file: &envfile
+      - .env
     networks:
       - main
     ports:
@@ -20,19 +18,17 @@ services:
   app:
     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     container_name: app
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    env_file: *envfile
     depends_on:
       - db
       - rabbitmq
     ports:
       - '8000:8000'
     hostname: app
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
+    image: &app app
+    volumes:
+      - ./app:/app
     networks:
       - main
     restart: on-failure
@@ -40,42 +36,42 @@ services:
   rabbitmq:
     container_name: rabbitmq
     hostname: rabbitmq
-    image: rabbitmq:latest
+    image: rabbitmq:3.8-alpine
+    env_file: *envfile
     networks:
       - main
     ports:
       - '5672:5672'
+      - '15672:15672'
     restart: on-failure
 
-  # celery_worker:
-  #   command: celery -A  worker -l info
-  #   container_name: celery_worker
-  #   depends_on:
-  #     - app
-  #     - db
-  #     - rabbitmq
-  #   hostname: celery_worker
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   networks:
-  #     - main
-  #   restart: on-failure
+  worker:
+    command: sh -c "celery -A worker.worker.app worker --loglevel=INFO"
+    container_name: worker
+    env_file: *envfile
+    depends_on:
+      - app
+      - db
+      - rabbitmq
+    hostname: worker
+    build: .
+    image: *app
+    networks:
+      - main
+    restart: on-failure
 
-  # celery_beat:
-  #   command: celery -A mysite beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
-  #   container_name: celery_beat
-  #   depends_on:
-  #     - app
-  #     - postgres
-  #     - rabbitmq
-  #   hostname: celery_beat
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   networks:
-  #     - main
-  #   restart: on-failure
+  flower:
+    image: zoomeranalytics/flower:0.9.1-4.0.2
+    container_name: flower
+    hostname: flower
+    restart: "no"
+    env_file: *envfile
+    ports:
+      - "5555:5555"
+    depends_on:
+      - rabbitmq
+    networks:
+      - main
 
 networks:
   main:

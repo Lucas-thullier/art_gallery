@@ -10,7 +10,7 @@ def count_paintings_full_data():
 
 def paintings_full_data(limit=20, offset=20):
     query = """
-    SELECT ?painting ?paintingLabel ?pic ?inception ?movement ?movementLabel ?location ?locationLabel ?owned_by ?native_label ?title ?genre ?genreLabel ?creator ?creatorLabel ?country_of_origin ?made_from_material ?made_from_materialLabel ?depicts ?depictsLabel ?location_of_creation ?width ?height ?described_at WHERE {
+    SELECT ?painting ?paintingLabel ?pic ?inception ?movement ?movementLabel ?location ?locationLabel ?owned_by ?native_label ?title ?genre ?genreLabel ?creator ?creatorLabel ?made_from_material ?made_from_materialLabel ?depicts ?depictsLabel ?width ?height ?described_at WHERE {
         {
             SELECT DISTINCT ?painting WHERE {
                 ?painting p:P31 ?statement0.

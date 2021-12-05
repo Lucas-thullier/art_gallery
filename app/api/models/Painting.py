@@ -10,25 +10,37 @@ from .Movement import Movement
 
 
 class Painting(models.Model):
-    name = models.CharField(max_length=500)
-    native_name = models.CharField(max_length=500)
-    wikidata_url = models.CharField(max_length=500, null=False)
+    def __init__(self, *args, **kwargs):
+        if 'width' in kwargs:
+            kwargs['width'] = float(kwargs['width'])
+        else:
+            kwargs['width'] = None
+        
+        if 'height' in kwargs:
+            kwargs['height'] = float(kwargs['height'])
+        else:
+            kwargs['height'] = None
+        super().__init__(*args, **kwargs)
 
-    title = models.CharField(max_length=500)
-    picture_url = models.CharField(max_length=500)
-    owned_by = models.CharField(max_length=500)
-    inception_at = models.DateTimeField()
-    width = models.PositiveIntegerField()
-    height = models.PositiveIntegerField()
-    described_at = models.CharField(max_length=500)
+    name = models.CharField(max_length=500,null=True)
+    native_name = models.CharField(max_length=500,null=True)
+    wikidata_url = models.CharField(max_length=500, unique=True, null=False)
+
+    title = models.CharField(max_length=500,null=True)
+    picture_url = models.CharField(max_length=500,null=True)
+    owned_by = models.CharField(max_length=500,null=True)
+    inception_at = models.DateTimeField(null=True)
+    width = models.PositiveIntegerField(null=True)
+    height = models.PositiveIntegerField(null=True)
+    described_at = models.CharField(max_length=500, null=True)
 
     creators = models.ManyToManyField(Creator)
     movements = models.ManyToManyField(Movement)
     genres = models.ManyToManyField(Genre)
     depicts = models.ManyToManyField(Depiction)
     materials = models.ManyToManyField(Material)
-    locations = models.ManyToManyField(Location, related_name='actual_location')
-    location_of_creations = models.ManyToManyField(Location, related_name='creation_location')
+    locations = models.ManyToManyField(
+        Location, related_name='actual_location')
 
     created_at = models.DateTimeField(default=now)
     updated_at = models.DateTimeField(default=now)

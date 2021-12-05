@@ -1,5 +1,5 @@
 from django.contrib import admin
-from api.models import Artwork, Author
+from api.models import Painting, Creator
 
-admin.site.register(Artwork)
-admin.site.register(Author)
+admin.site.register(Painting)
+admin.site.register(Creator)

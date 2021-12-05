@@ -16,7 +16,7 @@ services:
       - postgresql-data:/var/lib/postgresql/data
 
   app:
-    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000 & watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A worker.worker.app worker --loglevel=INFO"
     container_name: app
     env_file: *envfile
     depends_on:
@@ -34,31 +34,16 @@ services:
     restart: on-failure
 
   rabbitmq:
-    container_name: rabbitmq
-    hostname: rabbitmq
-    image: rabbitmq:3.8-alpine
-    env_file: *envfile
-    networks:
-      - main
-    ports:
-      - '5672:5672'
-      - '15672:15672'
-    restart: on-failure
-
-  worker:
-    command: sh -c "celery -A worker.worker.app worker --loglevel=INFO"
-    container_name: worker
-    env_file: *envfile
-    depends_on:
-      - app
-      - db
-      - rabbitmq
-    hostname: worker
-    build: .
-    image: *app
-    networks:
-      - main
-    restart: on-failure
+      container_name: rabbitmq
+      hostname: rabbitmq
+      image: rabbitmq:3.8-alpine
+      env_file: *envfile
+      networks:
+        - main
+      ports:
+        - '5672:5672'
+        - '15672:15672'
+      restart: on-failure
 
   flower:
     image: zoomeranalytics/flower:0.9.1-4.0.2

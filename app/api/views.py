@@ -4,21 +4,23 @@ from django.views import generic
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Artwork
-from worker.tasks import fetch_data_from_quandl
+from .models import Painting
+from worker.tasks import populate_database
+
 
 class IndexView(generic.ListView):
     template_name = 'api/artworks/index.html'
     context_object_name = 'artworks'
 
     def get_queryset(self):
-        return Artwork.objects.order_by('-created_at')[:5]
+        return Painting.objects.order_by('-created_at')[:5]
+
 
 class DetailView(generic.DetailView):
-    model = Artwork
+    model = Painting
     template_name = 'api/artworks/detail.html'
 
+
 def coucou(request):
-    fetch_data_from_quandl.s(database_code=1,dataset_code=1).delay()
-        
-    return HttpResponse("You're looking at question.")
+    populate_database.s().delay()
+    return HttpResponse('cc')

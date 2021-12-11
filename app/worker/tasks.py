@@ -1,8 +1,6 @@
 import logging
 import json
 from api.models import Movement, Location, Creator, Depiction, Genre, Material, Painting
-from django.core.exceptions import MultipleObjectsReturned
-from django.db import IntegrityError
 from django.db import models
 from .worker import app
 from .sparql_wrapper import get_paintings_with_columns, get_painting_count
@@ -12,26 +10,17 @@ creations_errors_logger = logging.getLogger('creations_errors_logger')
 
 
 @app.task(bind=True, name='populate_database')
-def populate_database(self):
-    return 'hahaha'
-    # painting_count = get_painting_count()
+def populate_database(self, offset=0):
+    try:
+        painting_count = get_painting_count()
 
-    # cache_path = os.getcwd()+'/worker/tmp/cache.json'
-    # with open(cache_path, 'r') as file:
-    #     cache = json.load(file)
-
-    # cache['painting_count'] = painting_count
-
-    # with open(cache_path, 'w') as file:
-    #     json.dump(cache, file)
-
-    # offset = 0
-    # limit = 20
-    # while offset <= 10000:
-    #     # while offset <= int(cache['painting_count']):
-    #     app.send_task('get_painting_interval', args=[limit, offset])
-    # # get_painting_interval(limit, offset)
-    #     offset += limit
+        limit = 20
+        while offset <= painting_count:
+            app.send_task('import_from_paintings_interval', args=[limit, offset])
+            offset += limit
+    except Exception as e:
+        log = {'error': e, 'offset': offset, 'painting_count': painting_count}
+        logger.warning(log)
 
 
 @app.task(bind=True, name='import_from_paintings_interval', rate_limit='0.5/s')

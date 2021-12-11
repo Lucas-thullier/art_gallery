@@ -1,9 +1,0 @@
-{% if artworks %}
-    <ul>
-    {% for artwork in artworks %}
-        <li><a href="{% url 'gallery:detail' artwork.id %}">cc </a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>Aucune peinture disponible.</p>
-{% endif %}

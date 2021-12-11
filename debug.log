@@ -21,3 +21,84 @@ Watching for file changes with StatReloader
 Watching for file changes with StatReloader
 /workspace/app/worker/tasks.py changed, reloading.
 Watching for file changes with StatReloader
+Internal Server Error: /api/artworks/coucou
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/workspace/app/api/views.py", line 25, in coucou
+    t = import_from_paintings_interval(20, 20)
+  File "/usr/local/lib/python3.10/site-packages/celery/local.py", line 188, in __call__
+    return self._get_current_object()(*a, **kw)
+  File "/usr/local/lib/python3.10/site-packages/celery/app/task.py", line 392, in __call__
+    return self.run(*args, **kwargs)
+  File "/workspace/app/worker/tasks.py", line 44, in import_from_paintings_interval
+    logs = handle_creation(models_to_fill, mappings)
+  File "/workspace/app/worker/tasks.py", line 160, in handle_creation
+    logs['relations']['model_name']['id'] = model.id
+KeyError: 'model_name'
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tests/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tests/sparql_handling.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tests/sparql_handling.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tests/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tests/sparql_handling.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tests/sparql_handling.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tests/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tests/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tests/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tests/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tests/test_sparql_repository.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tests/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/__init__.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/sparql_wrapper.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/sparql_wrapper.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/sparql_wrapper.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/sparql_wrapper.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/sparql_wrapper.py changed, reloading.
+Watching for file changes with StatReloader
+Backing off execute_sparql_query(...) for 1.0s (requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://query.wikidata.org/sparql?query=%23Tool%3A+WikibaseIntegrator+wbi_functions.execute_sparql_query%0A&format=json)
+Backing off execute_sparql_query(...) for 2.0s (requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://query.wikidata.org/sparql?query=%23Tool%3A+WikibaseIntegrator+wbi_functions.execute_sparql_query%0A&format=json)
+Backing off execute_sparql_query(...) for 4.0s (requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://query.wikidata.org/sparql?query=%23Tool%3A+WikibaseIntegrator+wbi_functions.execute_sparql_query%0A&format=json)
+Backing off execute_sparql_query(...) for 8.0s (requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://query.wikidata.org/sparql?query=%23Tool%3A+WikibaseIntegrator+wbi_functions.execute_sparql_query%0A&format=json)
+Backing off execute_sparql_query(...) for 16.0s (requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://query.wikidata.org/sparql?query=%23Tool%3A+WikibaseIntegrator+wbi_functions.execute_sparql_query%0A&format=json)
+Backing off execute_sparql_query(...) for 32.0s (requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://query.wikidata.org/sparql?query=%23Tool%3A+WikibaseIntegrator+wbi_functions.execute_sparql_query%0A&format=json)

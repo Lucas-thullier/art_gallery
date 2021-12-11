@@ -3,7 +3,7 @@ import json
 from api.models import Movement, Location, Creator, Depiction, Genre, Material, Painting
 from django.db import models
 from .worker import app
-from .sparql_wrapper import get_paintings_with_full_data, get_painting_count
+from .sparql_wrapper import get_paintings_with_columns, get_painting_count
 
 logger = logging.getLogger('import_paintings_logger')
 
@@ -31,9 +31,9 @@ def populate_database(self):
     #     offset += limit
 
 
-@app.task(bind=True, name='get_painting_interval', rate_limit='0.5/s')
+@app.task(bind=True, name='import_from_paintings_interval', rate_limit='0.5/s')
 def import_from_paintings_interval(self, limit, offset):
-    paintings_with_full_data = get_paintings_with_full_data(limit, offset)
+    paintings_with_full_data = get_paintings_with_columns(limit, offset)
     paintings: list = paintings_with_full_data['paintings']
 
     mappings = get_mappings()
@@ -137,7 +137,7 @@ def handle_creation(models_to_fill: dict, mappings: dict) -> dict:
     logs = {
         'painting': {
             'id': None,
-            'already_exist' : None
+            'is_new' : None
         },
         'relations': {},
     }
@@ -146,7 +146,7 @@ def handle_creation(models_to_fill: dict, mappings: dict) -> dict:
         if len(data) > 0:
             model: models.Model = mappings[model_name]['model']
 
-            model, is_already_created = model.objects.get_or_create(
+            model, is_new = model.objects.get_or_create(
                 wikidata_url=data['wikidata_url'],
                 defaults=data
             )
@@ -154,11 +154,12 @@ def handle_creation(models_to_fill: dict, mappings: dict) -> dict:
             if isinstance(model, Painting):
                 painting = model
                 logs['painting']['id'] = painting.id
-                logs['painting']['already_exist'] = is_already_created
+                logs['painting']['is_new'] = is_new
             else:
                 relations[model_name] = model
-                logs['relations']['model_name']['id'] = model.id
-                logs['relations']['model_name']['already_exist'] = is_already_created
+                logs['relations'][model_name] = {}
+                logs['relations'][model_name]['id'] = model.id
+                logs['relations'][model_name]['is_new'] = is_new
 
     for relation_name, model in relations.items():
         painting_relation = getattr(

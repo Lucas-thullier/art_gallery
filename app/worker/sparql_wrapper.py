@@ -2,16 +2,16 @@ from wikibaseintegrator import wbi_functions
 from .sparql_repository import paintings_full_data, count_paintings_full_data
 
 
-def get_painting_count():
+def get_painting_count() -> int:
     query = count_paintings_full_data()
 
     response = wbi_functions.execute_sparql_query(query)
     painting_count = response['results']['bindings'][0]['painting_count']['value']
 
-    return painting_count
+    return int(painting_count)
 
 
-def get_paintings_with_full_data(limit: int = 20, offset: int = 20) -> dict:
+def get_paintings_with_columns(limit: int = 20, offset: int = 20) -> dict:
     query = paintings_full_data(limit, offset)
 
     response = wbi_functions.execute_sparql_query(query)

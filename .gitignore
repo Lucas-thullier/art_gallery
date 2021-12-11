@@ -1,6 +1,6 @@
-/data/db/
-!/data/.gitkeep
 .vscode/
 .devcontainer/
 .env
-**/__pycache__/
+
+**/__pycache__
+**/*.log

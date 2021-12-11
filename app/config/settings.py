@@ -152,12 +152,21 @@ LOGGING = {
         'import_paintings_handler': {
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'worker', 'logs', 'import_paintings.log'),
+        },
+        'creations_errors_handler': {
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'worker', 'logs', 'creations_errors.log'),
+            'level': 'WARNING'
         }
     },
     'loggers': {
         'import_paintings_logger': {
             'handlers': ['import_paintings_handler'],
             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            'propagate': False,
+        },
+        'creations_errors_logger': {
+            'handlers': ['creations_errors_handler'],
             'propagate': False,
         },
     },

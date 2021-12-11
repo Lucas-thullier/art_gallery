@@ -1,11 +1,14 @@
 import logging
 import json
 from api.models import Movement, Location, Creator, Depiction, Genre, Material, Painting
+from django.core.exceptions import MultipleObjectsReturned
+from django.db import IntegrityError
 from django.db import models
 from .worker import app
 from .sparql_wrapper import get_paintings_with_columns, get_painting_count
 
 logger = logging.getLogger('import_paintings_logger')
+creations_errors_logger = logging.getLogger('creations_errors_logger')
 
 
 @app.task(bind=True, name='populate_database')
@@ -137,7 +140,7 @@ def handle_creation(models_to_fill: dict, mappings: dict) -> dict:
     logs = {
         'painting': {
             'id': None,
-            'is_new' : None
+            'is_new': None
         },
         'relations': {},
     }
@@ -146,20 +149,26 @@ def handle_creation(models_to_fill: dict, mappings: dict) -> dict:
         if len(data) > 0:
             model: models.Model = mappings[model_name]['model']
 
-            model, is_new = model.objects.get_or_create(
-                wikidata_url=data['wikidata_url'],
-                defaults=data
-            )
-            
-            if isinstance(model, Painting):
-                painting = model
-                logs['painting']['id'] = painting.id
-                logs['painting']['is_new'] = is_new
-            else:
-                relations[model_name] = model
-                logs['relations'][model_name] = {}
-                logs['relations'][model_name]['id'] = model.id
-                logs['relations'][model_name]['is_new'] = is_new
+            try:
+                model, is_new = model.objects.get_or_create(
+                    wikidata_url=data['wikidata_url'],
+                    defaults=data
+                )
+
+                if is_new:
+                    model.save()
+
+                if isinstance(model, Painting):
+                    painting = model
+                    logs['painting']['id'] = painting.id
+                    logs['painting']['is_new'] = is_new
+                else:
+                    relations[model_name] = model
+                    logs['relations'][model_name] = {}
+                    logs['relations'][model_name]['id'] = model.id
+                    logs['relations'][model_name]['is_new'] = is_new
+            except Exception as e:
+                creations_errors_logger.warning({'error': e, 'model': model})
 
     for relation_name, model in relations.items():
         painting_relation = getattr(

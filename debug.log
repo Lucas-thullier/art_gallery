@@ -102,3 +102,33 @@ Backing off execute_sparql_query(...) for 4.0s (requests.exceptions.HTTPError: 4
 Backing off execute_sparql_query(...) for 8.0s (requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://query.wikidata.org/sparql?query=%23Tool%3A+WikibaseIntegrator+wbi_functions.execute_sparql_query%0A&format=json)
 Backing off execute_sparql_query(...) for 16.0s (requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://query.wikidata.org/sparql?query=%23Tool%3A+WikibaseIntegrator+wbi_functions.execute_sparql_query%0A&format=json)
 Backing off execute_sparql_query(...) for 32.0s (requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://query.wikidata.org/sparql?query=%23Tool%3A+WikibaseIntegrator+wbi_functions.execute_sparql_query%0A&format=json)
+/workspace/app/worker/sparql_wrapper.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/workspace/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader

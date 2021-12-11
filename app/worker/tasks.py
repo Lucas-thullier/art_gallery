@@ -1,9 +1,11 @@
 import logging
+import json
 from api.models import Movement, Location, Creator, Depiction, Genre, Material, Painting
 from django.db import models
 from .worker import app
 from .sparql_wrapper import get_paintings_with_full_data, get_painting_count
-logger = logging.getLogger(__name__)
+
+logger = logging.getLogger('import_paintings_logger')
 
 
 @app.task(bind=True, name='populate_database')
@@ -30,22 +32,24 @@ def populate_database(self):
 
 
 @app.task(bind=True, name='get_painting_interval', rate_limit='0.5/s')
-def get_painting_interval(self, limit, offset):
+def import_from_paintings_interval(self, limit, offset):
     paintings_with_full_data = get_paintings_with_full_data(limit, offset)
     paintings: list = paintings_with_full_data['paintings']
 
     mappings = get_mappings()
 
     for painting in paintings:
-        models_to_fill = extract_data_from_mapping(painting, mappings)
+        models_to_fill = remap_data_for_model(painting, mappings)
 
-        handle_creation(models_to_fill, mappings)
+        logs = handle_creation(models_to_fill, mappings)
+        logger.info(json.dumps(logs))
 
 
 def get_mappings() -> dict:
     return {
         'Painting': {
             'model': Painting,
+            'relation_name': False,
             'mappings':
             {
                 'painting': 'wikidata_url',
@@ -115,7 +119,7 @@ def get_mappings() -> dict:
     }
 
 
-def extract_data_from_mapping(painting: dict, mappings: dict) -> dict:
+def remap_data_for_model(painting: dict, mappings: dict) -> dict:
     models_names = list(mappings)
     models_to_fill = {model_name: {} for model_name in models_names}
 
@@ -127,28 +131,34 @@ def extract_data_from_mapping(painting: dict, mappings: dict) -> dict:
     return models_to_fill
 
 
-def handle_creation(models_to_fill: dict, mappings: dict) -> None:
+def handle_creation(models_to_fill: dict, mappings: dict) -> dict:
     painting = None
     relations = {}
+    logs = {
+        'painting': {
+            'id': None,
+            'already_exist' : None
+        },
+        'relations': {},
+    }
+
     for model_name, data in models_to_fill.items():
         if len(data) > 0:
             model: models.Model = mappings[model_name]['model']
 
-            collection = model.objects.filter(
-                wikidata_url=data['wikidata_url'])
-            if len(collection) > 0:
-                already_existing_model = collection[0]
-                if isinstance(already_existing_model, Painting):
-                    painting = already_existing_model
-                else:
-                    relations[model_name] = already_existing_model
+            model, is_already_created = model.objects.get_or_create(
+                wikidata_url=data['wikidata_url'],
+                defaults=data
+            )
+            
+            if isinstance(model, Painting):
+                painting = model
+                logs['painting']['id'] = painting.id
+                logs['painting']['already_exist'] = is_already_created
             else:
-                new_model: models.Model = model(**data)
-                new_model.save()
-                if isinstance(new_model, Painting):
-                    painting = new_model
-                else:
-                    relations[model_name] = new_model
+                relations[model_name] = model
+                logs['relations']['model_name']['id'] = model.id
+                logs['relations']['model_name']['already_exist'] = is_already_created
 
     for relation_name, model in relations.items():
         painting_relation = getattr(
@@ -156,3 +166,5 @@ def handle_creation(models_to_fill: dict, mappings: dict) -> None:
         painting_relation.add(model)
 
     painting.save()
+
+    return logs

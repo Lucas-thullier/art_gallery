@@ -1,0 +1,1334 @@
+Watching for file changes with StatReloader
+/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x7f67d25902b0>> raised: SyntaxError('invalid syntax. Perhaps you forgot a comma?', ('/app/worker/tasks.py', 164, 21, "        'painting': painting.id\n", 167, 14))
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/celery/utils/dispatch/signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "/usr/local/lib/python3.10/site-packages/celery/fixups/django.py", line 82, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "/usr/local/lib/python3.10/site-packages/celery/fixups/django.py", line 121, in validate_models
+    run_checks()
+  File "/usr/local/lib/python3.10/site-packages/django/core/checks/registry.py", line 76, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/usr/local/lib/python3.10/site-packages/django/core/checks/urls.py", line 13, in check_url_config
+    return check_resolver(resolver)
+  File "/usr/local/lib/python3.10/site-packages/django/core/checks/urls.py", line 23, in check_resolver
+    return check_method()
+  File "/usr/local/lib/python3.10/site-packages/django/urls/resolvers.py", line 416, in check
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/django/urls/resolvers.py", line 602, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/django/urls/resolvers.py", line 595, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/app/config/urls.py", line 21, in <module>
+    path('api/', include('api.urls')),
+  File "/usr/local/lib/python3.10/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/app/api/urls.py", line 3, in <module>
+    from . import views
+  File "/app/api/views.py", line 8, in <module>
+    from worker.tasks import get_painting_interval, populate_database
+  File "/app/worker/tasks.py", line 164
+    'painting': painting.id
+                
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+{"painting": 1, "relations": {"Movement": 1, "Location": 1, "Genre": 1, "Creator": 1, "Material": 1}}
+{"painting": 1, "relations": {"Movement": 1, "Location": 1, "Genre": 1, "Creator": 1, "Material": 1}}
+{"painting": 2, "relations": {}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 2, "Depiction": 1}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 3, "Depiction": 1}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 4, "Depiction": 1}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 2, "Depiction": 2}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 3, "Depiction": 2}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 4, "Depiction": 2}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 2, "Depiction": 3}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 3, "Depiction": 3}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 4, "Depiction": 3}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 2, "Depiction": 4}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 3, "Depiction": 4}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 4, "Depiction": 4}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 2, "Depiction": 5}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 3, "Depiction": 5}}
+{"painting": 3, "relations": {"Location": 2, "Creator": 2, "Material": 4, "Depiction": 5}}
+{"painting": 4, "relations": {"Location": 3, "Genre": 2, "Creator": 3, "Material": 5, "Depiction": 6}}
+{"painting": 4, "relations": {"Location": 3, "Genre": 2, "Creator": 3, "Material": 6, "Depiction": 6}}
+{"painting": 5, "relations": {"Location": 4, "Creator": 4, "Depiction": 7}}
+{"painting": 5, "relations": {"Location": 4, "Creator": 4, "Depiction": 8}}
+{"painting": 5, "relations": {"Location": 4, "Creator": 4, "Depiction": 9}}
+{"painting": 6, "relations": {"Location": 4, "Creator": 5, "Depiction": 10}}
+{"painting": 6, "relations": {"Location": 4, "Creator": 5, "Depiction": 11}}
+{"painting": 6, "relations": {"Location": 4, "Creator": 5, "Depiction": 12}}
+{"painting": 6, "relations": {"Location": 4, "Creator": 5, "Depiction": 13}}
+{"painting": 6, "relations": {"Location": 4, "Creator": 5, "Depiction": 8}}
+{"painting": 7, "relations": {"Location": 4, "Creator": 6, "Material": 7, "Depiction": 7}}
+{"painting": 7, "relations": {"Location": 4, "Creator": 6, "Material": 8, "Depiction": 7}}
+{"painting": 7, "relations": {"Location": 4, "Creator": 6, "Material": 9, "Depiction": 7}}
+{"painting": 7, "relations": {"Location": 4, "Creator": 6, "Material": 10, "Depiction": 7}}
+{"painting": 8, "relations": {"Creator": 7, "Material": 2, "Depiction": 14}}
+{"painting": 8, "relations": {"Creator": 7, "Material": 8, "Depiction": 14}}
+{"painting": 8, "relations": {"Creator": 7, "Material": 3, "Depiction": 14}}
+{"painting": 8, "relations": {"Creator": 7, "Material": 4, "Depiction": 14}}
+{"painting": 9, "relations": {"Location": 5, "Genre": 2, "Creator": 8, "Material": 3, "Depiction": 15}}
+{"painting": 9, "relations": {"Location": 5, "Genre": 2, "Creator": 8, "Material": 4, "Depiction": 15}}
+{"painting": 10, "relations": {"Location": 6, "Creator": 9, "Material": 2}}
+{"painting": 10, "relations": {"Location": 6, "Creator": 9, "Material": 4}}
+{"painting": 11, "relations": {"Material": 8}}
+{"painting": 11, "relations": {"Material": 8}}
+{"painting": 11, "relations": {"Material": 4}}
+{"painting": 11, "relations": {"Material": 4}}
+{"painting": 12, "relations": {"Creator": 10, "Material": 2}}
+{"painting": 12, "relations": {"Creator": 10, "Material": 8}}
+{"painting": 12, "relations": {"Creator": 10, "Material": 3}}
+{"painting": 12, "relations": {"Creator": 10, "Material": 4}}
+{"painting": 12, "relations": {"Creator": 10, "Material": 2}}
+{"painting": 12, "relations": {"Creator": 10, "Material": 8}}
+{"painting": 12, "relations": {"Creator": 10, "Material": 3}}
+{"painting": 12, "relations": {"Creator": 10, "Material": 4}}
+{"painting": 13, "relations": {"Creator": 11, "Material": 8}}
+{"painting": 13, "relations": {"Creator": 11, "Material": 8}}
+{"painting": 13, "relations": {"Creator": 11, "Material": 3}}
+{"painting": 13, "relations": {"Creator": 11, "Material": 3}}
+{"painting": 13, "relations": {"Creator": 11, "Material": 4}}
+{"painting": 13, "relations": {"Creator": 11, "Material": 4}}
+{"painting": 14, "relations": {"Material": 8}}
+{"painting": 14, "relations": {"Material": 11}}
+{"painting": 14, "relations": {"Material": 4}}
+{"painting": 14, "relations": {"Material": 12}}
+{"painting": 15, "relations": {"Material": 7}}
+{"painting": 15, "relations": {"Material": 8}}
+{"painting": 15, "relations": {"Material": 3}}
+{"painting": 15, "relations": {"Material": 13}}
+{"painting": 16, "relations": {"Material": 7}}
+{"painting": 16, "relations": {"Material": 8}}
+{"painting": 16, "relations": {"Material": 3}}
+{"painting": 16, "relations": {"Material": 13}}
+{"painting": 17, "relations": {"Material": 8}}
+{"painting": 17, "relations": {"Material": 3}}
+{"painting": 17, "relations": {"Material": 4}}
+{"painting": 18, "relations": {"Material": 2}}
+{"painting": 18, "relations": {"Material": 2}}
+{"painting": 18, "relations": {"Material": 8}}
+{"painting": 18, "relations": {"Material": 8}}
+{"painting": 18, "relations": {"Material": 3}}
+{"painting": 18, "relations": {"Material": 3}}
+{"painting": 18, "relations": {"Material": 4}}
+{"painting": 18, "relations": {"Material": 4}}
+{"painting": 19, "relations": {"Material": 7}}
+{"painting": 19, "relations": {"Material": 8}}
+{"painting": 19, "relations": {"Material": 3}}
+{"painting": 20, "relations": {"Location": 7, "Material": 2, "Depiction": 16}}
+{"painting": 20, "relations": {"Location": 7, "Material": 7, "Depiction": 16}}
+{"painting": 20, "relations": {"Location": 7, "Material": 10, "Depiction": 16}}
+{"painting": 20, "relations": {"Location": 7, "Material": 2, "Depiction": 17}}
+{"painting": 20, "relations": {"Location": 7, "Material": 7, "Depiction": 17}}
+{"painting": 20, "relations": {"Location": 7, "Material": 10, "Depiction": 17}}
+/app/api/views.py changed, reloading.
+Watching for file changes with StatReloader
+Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x7f6059e182b0>> raised: ImportError("cannot import name 'import_from_paintings_interval' from 'worker.tasks' (/app/worker/tasks.py)")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/celery/utils/dispatch/signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "/usr/local/lib/python3.10/site-packages/celery/fixups/django.py", line 82, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "/usr/local/lib/python3.10/site-packages/celery/fixups/django.py", line 121, in validate_models
+    run_checks()
+  File "/usr/local/lib/python3.10/site-packages/django/core/checks/registry.py", line 76, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/usr/local/lib/python3.10/site-packages/django/core/checks/urls.py", line 13, in check_url_config
+    return check_resolver(resolver)
+  File "/usr/local/lib/python3.10/site-packages/django/core/checks/urls.py", line 23, in check_resolver
+    return check_method()
+  File "/usr/local/lib/python3.10/site-packages/django/urls/resolvers.py", line 416, in check
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/django/urls/resolvers.py", line 602, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.10/site-packages/django/urls/resolvers.py", line 595, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/app/config/urls.py", line 21, in <module>
+    path('api/', include('api.urls')),
+  File "/usr/local/lib/python3.10/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/local/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/app/api/urls.py", line 3, in <module>
+    from . import views
+  File "/app/api/views.py", line 8, in <module>
+    from worker.tasks import import_from_paintings_interval, populate_database
+ImportError: cannot import name 'import_from_paintings_interval' from 'worker.tasks' (/app/worker/tasks.py)
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+{"painting": 1, "relations": {"Creator": 1, "Material": 1}}
+{"painting": 1, "relations": {"Creator": 1, "Material": 2}}
+{"painting": 1, "relations": {"Creator": 1, "Material": 3}}
+{"painting": 1, "relations": {"Creator": 1, "Material": 4}}
+{"painting": 2, "relations": {"Material": 1}}
+{"painting": 2, "relations": {"Material": 2}}
+{"painting": 2, "relations": {"Material": 5}}
+{"painting": 2, "relations": {"Material": 4}}
+{"painting": 3, "relations": {"Material": 1}}
+{"painting": 3, "relations": {"Material": 6}}
+{"painting": 3, "relations": {"Material": 2}}
+{"painting": 3, "relations": {"Material": 3}}
+{"painting": 4, "relations": {"Material": 6}}
+{"painting": 4, "relations": {"Material": 2}}
+{"painting": 4, "relations": {"Material": 5}}
+{"painting": 5, "relations": {"Material": 6}}
+{"painting": 5, "relations": {"Material": 3}}
+{"painting": 6, "relations": {"Material": 2}}
+{"painting": 6, "relations": {"Material": 2}}
+{"painting": 6, "relations": {"Material": 3}}
+{"painting": 6, "relations": {"Material": 3}}
+{"painting": 6, "relations": {"Material": 4}}
+{"painting": 6, "relations": {"Material": 4}}
+{"painting": 7, "relations": {"Material": 1}}
+{"painting": 7, "relations": {"Material": 1}}
+{"painting": 7, "relations": {"Material": 7}}
+{"painting": 7, "relations": {"Material": 7}}
+{"painting": 7, "relations": {"Material": 3}}
+{"painting": 7, "relations": {"Material": 3}}
+{"painting": 7, "relations": {"Material": 4}}
+{"painting": 7, "relations": {"Material": 4}}
+{"painting": 8, "relations": {"Depiction": 1}}
+{"painting": 8, "relations": {"Depiction": 2}}
+{"painting": 8, "relations": {"Depiction": 3}}
+{"painting": 8, "relations": {"Depiction": 4}}
+{"painting": 8, "relations": {"Depiction": 1}}
+{"painting": 8, "relations": {"Depiction": 2}}
+{"painting": 8, "relations": {"Depiction": 3}}
+{"painting": 8, "relations": {"Depiction": 4}}
+{"painting": 9, "relations": {}}
+{"painting": 10, "relations": {"Creator": 2}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 1}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 6}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 2}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 8}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 1}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 6}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 2}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 8}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 13, "relations": {}}
+{"painting": 14, "relations": {"Creator": 5, "Depiction": 5}}
+{"painting": 15, "relations": {"Depiction": 6}}
+{"painting": 15, "relations": {"Depiction": 5}}
+{"painting": 15, "relations": {"Depiction": 7}}
+{"painting": 16, "relations": {"Location": 1, "Creator": 6, "Depiction": 8}}
+{"painting": 17, "relations": {"Location": 1, "Creator": 7, "Depiction": 9}}
+{"painting": 17, "relations": {"Location": 1, "Creator": 7, "Depiction": 10}}
+{"painting": 17, "relations": {"Location": 1, "Creator": 7, "Depiction": 11}}
+{"painting": 18, "relations": {"Location": 1, "Creator": 8, "Depiction": 12}}
+{"painting": 18, "relations": {"Location": 1, "Creator": 8, "Depiction": 13}}
+{"painting": 18, "relations": {"Location": 1, "Creator": 8, "Depiction": 14}}
+{"painting": 18, "relations": {"Location": 1, "Creator": 8, "Depiction": 15}}
+{"painting": 19, "relations": {"Location": 1, "Creator": 9, "Depiction": 1}}
+{"painting": 19, "relations": {"Location": 1, "Creator": 9, "Depiction": 16}}
+{"painting": 19, "relations": {"Location": 1, "Creator": 9, "Depiction": 17}}
+{"painting": 19, "relations": {"Location": 1, "Creator": 9, "Depiction": 18}}
+{"painting": 20, "relations": {"Location": 1, "Creator": 10, "Depiction": 16}}
+{"painting": 20, "relations": {"Location": 1, "Creator": 10, "Depiction": 19}}
+{"painting": 20, "relations": {"Location": 1, "Creator": 10, "Depiction": 4}}
+{"painting": 20, "relations": {"Location": 1, "Creator": 10, "Depiction": 14}}
+Not Found: /favicon.ico
+{"painting": 1, "relations": {"Creator": 1, "Material": 1}}
+{"painting": 1, "relations": {"Creator": 1, "Material": 2}}
+{"painting": 1, "relations": {"Creator": 1, "Material": 3}}
+{"painting": 1, "relations": {"Creator": 1, "Material": 4}}
+{"painting": 2, "relations": {"Material": 1}}
+{"painting": 2, "relations": {"Material": 2}}
+{"painting": 2, "relations": {"Material": 5}}
+{"painting": 2, "relations": {"Material": 4}}
+{"painting": 3, "relations": {"Material": 1}}
+{"painting": 3, "relations": {"Material": 6}}
+{"painting": 3, "relations": {"Material": 2}}
+{"painting": 3, "relations": {"Material": 3}}
+{"painting": 4, "relations": {"Material": 6}}
+{"painting": 4, "relations": {"Material": 2}}
+{"painting": 4, "relations": {"Material": 5}}
+{"painting": 5, "relations": {"Material": 6}}
+{"painting": 5, "relations": {"Material": 3}}
+{"painting": 6, "relations": {"Material": 2}}
+{"painting": 6, "relations": {"Material": 2}}
+{"painting": 6, "relations": {"Material": 3}}
+{"painting": 6, "relations": {"Material": 3}}
+{"painting": 6, "relations": {"Material": 4}}
+{"painting": 6, "relations": {"Material": 4}}
+{"painting": 7, "relations": {"Material": 1}}
+{"painting": 7, "relations": {"Material": 1}}
+{"painting": 7, "relations": {"Material": 7}}
+{"painting": 7, "relations": {"Material": 7}}
+{"painting": 7, "relations": {"Material": 3}}
+{"painting": 7, "relations": {"Material": 3}}
+{"painting": 7, "relations": {"Material": 4}}
+{"painting": 7, "relations": {"Material": 4}}
+{"painting": 8, "relations": {"Depiction": 1}}
+{"painting": 8, "relations": {"Depiction": 2}}
+{"painting": 8, "relations": {"Depiction": 3}}
+{"painting": 8, "relations": {"Depiction": 4}}
+{"painting": 8, "relations": {"Depiction": 1}}
+{"painting": 8, "relations": {"Depiction": 2}}
+{"painting": 8, "relations": {"Depiction": 3}}
+{"painting": 8, "relations": {"Depiction": 4}}
+{"painting": 9, "relations": {}}
+{"painting": 10, "relations": {"Creator": 2}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 1}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 6}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 2}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 8}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 1}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 6}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 2}}
+{"painting": 11, "relations": {"Creator": 3, "Material": 8}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 12, "relations": {"Creator": 4}}
+{"painting": 13, "relations": {}}
+{"painting": 14, "relations": {"Creator": 5, "Depiction": 5}}
+{"painting": 15, "relations": {"Depiction": 6}}
+{"painting": 15, "relations": {"Depiction": 5}}
+{"painting": 15, "relations": {"Depiction": 7}}
+{"painting": 16, "relations": {"Location": 1, "Creator": 6, "Depiction": 8}}
+{"painting": 17, "relations": {"Location": 1, "Creator": 7, "Depiction": 9}}
+{"painting": 17, "relations": {"Location": 1, "Creator": 7, "Depiction": 10}}
+{"painting": 17, "relations": {"Location": 1, "Creator": 7, "Depiction": 11}}
+{"painting": 18, "relations": {"Location": 1, "Creator": 8, "Depiction": 12}}
+{"painting": 18, "relations": {"Location": 1, "Creator": 8, "Depiction": 13}}
+{"painting": 18, "relations": {"Location": 1, "Creator": 8, "Depiction": 14}}
+{"painting": 18, "relations": {"Location": 1, "Creator": 8, "Depiction": 15}}
+{"painting": 19, "relations": {"Location": 1, "Creator": 9, "Depiction": 1}}
+{"painting": 19, "relations": {"Location": 1, "Creator": 9, "Depiction": 16}}
+{"painting": 19, "relations": {"Location": 1, "Creator": 9, "Depiction": 17}}
+{"painting": 19, "relations": {"Location": 1, "Creator": 9, "Depiction": 18}}
+{"painting": 20, "relations": {"Location": 1, "Creator": 10, "Depiction": 16}}
+{"painting": 20, "relations": {"Location": 1, "Creator": 10, "Depiction": 19}}
+{"painting": 20, "relations": {"Location": 1, "Creator": 10, "Depiction": 4}}
+{"painting": 20, "relations": {"Location": 1, "Creator": 10, "Depiction": 14}}
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+{"painting": 21, "relations": {}}
+{"painting": 22, "relations": {"Depiction": 20}}
+{"painting": 22, "relations": {"Depiction": 21}}
+{"painting": 23, "relations": {"Genre": 1, "Creator": 11, "Depiction": 22}}
+{"painting": 23, "relations": {"Genre": 1, "Creator": 11, "Depiction": 23}}
+{"painting": 23, "relations": {"Genre": 1, "Creator": 11, "Depiction": 24}}
+{"painting": 23, "relations": {"Genre": 1, "Creator": 11, "Depiction": 25}}
+{"painting": 23, "relations": {"Genre": 1, "Creator": 11, "Depiction": 26}}
+{"painting": 24, "relations": {"Location": 2, "Genre": 2, "Creator": 12, "Material": 9, "Depiction": 27}}
+{"painting": 24, "relations": {"Location": 2, "Genre": 2, "Creator": 12, "Material": 4, "Depiction": 27}}
+{"painting": 24, "relations": {"Location": 2, "Genre": 2, "Creator": 12, "Material": 9, "Depiction": 28}}
+{"painting": 24, "relations": {"Location": 2, "Genre": 2, "Creator": 12, "Material": 4, "Depiction": 28}}
+{"painting": 24, "relations": {"Location": 2, "Genre": 2, "Creator": 12, "Material": 9, "Depiction": 29}}
+{"painting": 24, "relations": {"Location": 2, "Genre": 2, "Creator": 12, "Material": 4, "Depiction": 29}}
+{"painting": 24, "relations": {"Location": 2, "Genre": 2, "Creator": 12, "Material": 9, "Depiction": 30}}
+{"painting": 24, "relations": {"Location": 2, "Genre": 2, "Creator": 12, "Material": 4, "Depiction": 30}}
+{"painting": 24, "relations": {"Location": 2, "Genre": 2, "Creator": 12, "Material": 9, "Depiction": 31}}
+{"painting": 24, "relations": {"Location": 2, "Genre": 2, "Creator": 12, "Material": 4, "Depiction": 31}}
+{"painting": 25, "relations": {"Location": 2, "Genre": 3, "Creator": 13, "Material": 2, "Depiction": 32}}
+{"painting": 25, "relations": {"Location": 2, "Genre": 3, "Creator": 13, "Material": 10, "Depiction": 32}}
+{"painting": 25, "relations": {"Location": 2, "Genre": 3, "Creator": 13, "Material": 4, "Depiction": 32}}
+{"painting": 25, "relations": {"Location": 2, "Genre": 3, "Creator": 13, "Material": 2, "Depiction": 33}}
+{"painting": 25, "relations": {"Location": 2, "Genre": 3, "Creator": 13, "Material": 10, "Depiction": 33}}
+{"painting": 25, "relations": {"Location": 2, "Genre": 3, "Creator": 13, "Material": 4, "Depiction": 33}}
+{"painting": 25, "relations": {"Location": 2, "Genre": 3, "Creator": 13, "Material": 2, "Depiction": 34}}
+{"painting": 25, "relations": {"Location": 2, "Genre": 3, "Creator": 13, "Material": 10, "Depiction": 34}}
+{"painting": 25, "relations": {"Location": 2, "Genre": 3, "Creator": 13, "Material": 4, "Depiction": 34}}
+{"painting": 25, "relations": {"Location": 2, "Genre": 3, "Creator": 13, "Material": 2, "Depiction": 35}}
+{"painting": 25, "relations": {"Location": 2, "Genre": 3, "Creator": 13, "Material": 10, "Depiction": 35}}
+{"painting": 25, "relations": {"Location": 2, "Genre": 3, "Creator": 13, "Material": 4, "Depiction": 35}}
+{"painting": 26, "relations": {"Location": 3, "Creator": 14, "Depiction": 1}}
+{"painting": 26, "relations": {"Location": 3, "Creator": 14, "Depiction": 36}}
+{"painting": 26, "relations": {"Location": 3, "Creator": 14, "Depiction": 37}}
+{"painting": 26, "relations": {"Location": 3, "Creator": 14, "Depiction": 38}}
+{"painting": 27, "relations": {"Location": 2, "Genre": 2, "Creator": 15, "Material": 9, "Depiction": 39}}
+{"painting": 27, "relations": {"Location": 2, "Genre": 2, "Creator": 15, "Material": 4, "Depiction": 39}}
+{"painting": 27, "relations": {"Location": 2, "Genre": 2, "Creator": 15, "Material": 9, "Depiction": 40}}
+{"painting": 27, "relations": {"Location": 2, "Genre": 2, "Creator": 15, "Material": 4, "Depiction": 40}}
+{"painting": 28, "relations": {"Genre": 2, "Creator": 16, "Material": 9, "Depiction": 37}}
+{"painting": 28, "relations": {"Genre": 2, "Creator": 16, "Material": 4, "Depiction": 37}}
+{"painting": 28, "relations": {"Genre": 2, "Creator": 16, "Material": 9, "Depiction": 41}}
+{"painting": 28, "relations": {"Genre": 2, "Creator": 16, "Material": 4, "Depiction": 41}}
+{"painting": 29, "relations": {"Location": 2, "Genre": 4, "Creator": 17, "Material": 8, "Depiction": 37}}
+{"painting": 29, "relations": {"Location": 2, "Genre": 2, "Creator": 17, "Material": 8, "Depiction": 37}}
+{"painting": 29, "relations": {"Location": 2, "Genre": 4, "Creator": 17, "Material": 4, "Depiction": 37}}
+{"painting": 29, "relations": {"Location": 2, "Genre": 2, "Creator": 17, "Material": 4, "Depiction": 37}}
+{"painting": 29, "relations": {"Location": 2, "Genre": 4, "Creator": 17, "Material": 8, "Depiction": 42}}
+{"painting": 29, "relations": {"Location": 2, "Genre": 2, "Creator": 17, "Material": 8, "Depiction": 42}}
+{"painting": 29, "relations": {"Location": 2, "Genre": 4, "Creator": 17, "Material": 4, "Depiction": 42}}
+{"painting": 29, "relations": {"Location": 2, "Genre": 2, "Creator": 17, "Material": 4, "Depiction": 42}}
+{"painting": 29, "relations": {"Location": 2, "Genre": 4, "Creator": 17, "Material": 8, "Depiction": 43}}
+{"painting": 29, "relations": {"Location": 2, "Genre": 2, "Creator": 17, "Material": 8, "Depiction": 43}}
+{"painting": 29, "relations": {"Location": 2, "Genre": 4, "Creator": 17, "Material": 4, "Depiction": 43}}
+{"painting": 29, "relations": {"Location": 2, "Genre": 2, "Creator": 17, "Material": 4, "Depiction": 43}}
+{"painting": 30, "relations": {"Location": 4, "Creator": 5, "Material": 1}}
+{"painting": 30, "relations": {"Location": 4, "Creator": 5, "Material": 4}}
+{"painting": 31, "relations": {"Material": 2}}
+{"painting": 31, "relations": {"Material": 3}}
+{"painting": 32, "relations": {"Material": 2}}
+{"painting": 32, "relations": {"Material": 3}}
+{"painting": 32, "relations": {"Material": 11}}
+{"painting": 33, "relations": {"Creator": 18, "Material": 1}}
+{"painting": 33, "relations": {"Creator": 18, "Material": 3}}
+{"painting": 33, "relations": {"Creator": 18, "Material": 4}}
+{"painting": 34, "relations": {"Material": 1}}
+{"painting": 34, "relations": {"Material": 1}}
+{"painting": 34, "relations": {"Material": 2}}
+{"painting": 34, "relations": {"Material": 2}}
+{"painting": 34, "relations": {"Material": 3}}
+{"painting": 34, "relations": {"Material": 3}}
+{"painting": 34, "relations": {"Material": 4}}
+{"painting": 34, "relations": {"Material": 4}}
+{"painting": 35, "relations": {"Material": 1}}
+{"painting": 35, "relations": {"Material": 2}}
+{"painting": 35, "relations": {"Material": 3}}
+{"painting": 35, "relations": {"Material": 4}}
+{"painting": 36, "relations": {"Material": 2}}
+{"painting": 36, "relations": {"Material": 3}}
+{"painting": 36, "relations": {"Material": 4}}
+{"painting": 37, "relations": {"Material": 1}}
+{"painting": 37, "relations": {"Material": 2}}
+{"painting": 37, "relations": {"Material": 3}}
+{"painting": 37, "relations": {"Material": 4}}
+{"painting": 38, "relations": {"Creator": 19, "Material": 1}}
+{"painting": 38, "relations": {"Creator": 19, "Material": 2}}
+{"painting": 38, "relations": {"Creator": 19, "Material": 3}}
+{"painting": 38, "relations": {"Creator": 19, "Material": 4}}
+{"painting": 39, "relations": {"Material": 6}}
+{"painting": 39, "relations": {"Material": 2}}
+{"painting": 39, "relations": {"Material": 3}}
+{"painting": 40, "relations": {"Material": 1}}
+{"painting": 40, "relations": {"Material": 2}}
+{"painting": 40, "relations": {"Material": 3}}
+{"painting": 40, "relations": {"Material": 4}}
+{"painting": 1, "relations": {}}
+{"painting": 2, "relations": {"Depiction": 1}}
+{"painting": 2, "relations": {"Depiction": 2}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 3}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 4}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 5}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 6}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 7}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 8}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 8}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 9}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 9}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 10}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 10}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 11}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 11}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 12}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 12}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 3, "Depiction": 13}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 4, "Depiction": 13}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 2, "Depiction": 13}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 3, "Depiction": 14}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 4, "Depiction": 14}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 2, "Depiction": 14}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 3, "Depiction": 15}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 4, "Depiction": 15}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 2, "Depiction": 15}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 3, "Depiction": 16}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 4, "Depiction": 16}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 2, "Depiction": 16}}
+{"painting": 6, "relations": {"Location": 2, "Creator": 4, "Depiction": 17}}
+{"painting": 6, "relations": {"Location": 2, "Creator": 4, "Depiction": 18}}
+{"painting": 6, "relations": {"Location": 2, "Creator": 4, "Depiction": 19}}
+{"painting": 6, "relations": {"Location": 2, "Creator": 4, "Depiction": 20}}
+{"painting": 7, "relations": {"Location": 1, "Genre": 2, "Creator": 5, "Material": 1, "Depiction": 21}}
+{"painting": 7, "relations": {"Location": 1, "Genre": 2, "Creator": 5, "Material": 2, "Depiction": 21}}
+{"painting": 7, "relations": {"Location": 1, "Genre": 2, "Creator": 5, "Material": 1, "Depiction": 22}}
+{"painting": 7, "relations": {"Location": 1, "Genre": 2, "Creator": 5, "Material": 2, "Depiction": 22}}
+{"painting": 8, "relations": {"Genre": 2, "Creator": 6, "Material": 1, "Depiction": 19}}
+{"painting": 8, "relations": {"Genre": 2, "Creator": 6, "Material": 2, "Depiction": 19}}
+{"painting": 8, "relations": {"Genre": 2, "Creator": 6, "Material": 1, "Depiction": 23}}
+{"painting": 8, "relations": {"Genre": 2, "Creator": 6, "Material": 2, "Depiction": 23}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 5, "Depiction": 19}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 5, "Depiction": 19}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 2, "Depiction": 19}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 2, "Depiction": 19}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 5, "Depiction": 24}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 5, "Depiction": 24}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 2, "Depiction": 24}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 2, "Depiction": 24}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 5, "Depiction": 25}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 5, "Depiction": 25}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 2, "Depiction": 25}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 2, "Depiction": 25}}
+{"painting": 10, "relations": {"Location": 3, "Creator": 8, "Material": 6}}
+{"painting": 10, "relations": {"Location": 3, "Creator": 8, "Material": 2}}
+{"painting": 11, "relations": {"Material": 3}}
+{"painting": 11, "relations": {"Material": 7}}
+{"painting": 12, "relations": {"Material": 3}}
+{"painting": 12, "relations": {"Material": 7}}
+{"painting": 12, "relations": {"Material": 8}}
+{"painting": 13, "relations": {"Creator": 9, "Material": 6}}
+{"painting": 13, "relations": {"Creator": 9, "Material": 7}}
+{"painting": 13, "relations": {"Creator": 9, "Material": 2}}
+{"painting": 14, "relations": {"Material": 6}}
+{"painting": 14, "relations": {"Material": 6}}
+{"painting": 14, "relations": {"Material": 3}}
+{"painting": 14, "relations": {"Material": 3}}
+{"painting": 14, "relations": {"Material": 7}}
+{"painting": 14, "relations": {"Material": 7}}
+{"painting": 14, "relations": {"Material": 2}}
+{"painting": 14, "relations": {"Material": 2}}
+{"painting": 15, "relations": {"Material": 6}}
+{"painting": 15, "relations": {"Material": 3}}
+{"painting": 15, "relations": {"Material": 7}}
+{"painting": 15, "relations": {"Material": 2}}
+{"painting": 16, "relations": {"Material": 3}}
+{"painting": 16, "relations": {"Material": 7}}
+{"painting": 16, "relations": {"Material": 2}}
+{"painting": 17, "relations": {"Material": 6}}
+{"painting": 17, "relations": {"Material": 3}}
+{"painting": 17, "relations": {"Material": 7}}
+{"painting": 17, "relations": {"Material": 2}}
+{"painting": 18, "relations": {"Creator": 10, "Material": 6}}
+{"painting": 18, "relations": {"Creator": 10, "Material": 3}}
+{"painting": 18, "relations": {"Creator": 10, "Material": 7}}
+{"painting": 18, "relations": {"Creator": 10, "Material": 2}}
+{"painting": 19, "relations": {"Material": 9}}
+{"painting": 19, "relations": {"Material": 3}}
+{"painting": 19, "relations": {"Material": 7}}
+{"painting": 20, "relations": {"Material": 6}}
+{"painting": 20, "relations": {"Material": 3}}
+{"painting": 20, "relations": {"Material": 7}}
+{"painting": 20, "relations": {"Material": 2}}
+{"painting": 21, "relations": {"Movement": 1, "Location": 4, "Genre": 5, "Creator": 11, "Material": 10}}
+{"painting": 21, "relations": {"Movement": 1, "Location": 4, "Genre": 5, "Creator": 11, "Material": 10}}
+{"painting": 22, "relations": {}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 6, "Depiction": 26}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 7, "Depiction": 26}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 2, "Depiction": 26}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 6, "Depiction": 27}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 7, "Depiction": 27}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 2, "Depiction": 27}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 6, "Depiction": 28}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 7, "Depiction": 28}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 2, "Depiction": 28}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 6, "Depiction": 29}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 7, "Depiction": 29}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 2, "Depiction": 29}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 6, "Depiction": 30}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 7, "Depiction": 30}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 2, "Depiction": 30}}
+{"painting": 24, "relations": {"Location": 6, "Genre": 3, "Creator": 13, "Material": 11, "Depiction": 31}}
+{"painting": 24, "relations": {"Location": 6, "Genre": 3, "Creator": 13, "Material": 12, "Depiction": 31}}
+{"painting": 25, "relations": {"Location": 2, "Creator": 14, "Depiction": 17}}
+{"painting": 25, "relations": {"Location": 2, "Creator": 14, "Depiction": 19}}
+{"painting": 25, "relations": {"Location": 2, "Creator": 14, "Depiction": 32}}
+{"painting": 26, "relations": {"Location": 2, "Creator": 15, "Depiction": 33}}
+{"painting": 26, "relations": {"Location": 2, "Creator": 15, "Depiction": 34}}
+{"painting": 26, "relations": {"Location": 2, "Creator": 15, "Depiction": 35}}
+{"painting": 26, "relations": {"Location": 2, "Creator": 15, "Depiction": 18}}
+{"painting": 26, "relations": {"Location": 2, "Creator": 15, "Depiction": 19}}
+{"painting": 27, "relations": {"Location": 2, "Creator": 16, "Material": 9, "Depiction": 17}}
+{"painting": 27, "relations": {"Location": 2, "Creator": 16, "Material": 3, "Depiction": 17}}
+{"painting": 27, "relations": {"Location": 2, "Creator": 16, "Material": 13, "Depiction": 17}}
+{"painting": 27, "relations": {"Location": 2, "Creator": 16, "Material": 14, "Depiction": 17}}
+{"painting": 28, "relations": {"Creator": 17, "Material": 6, "Depiction": 36}}
+{"painting": 28, "relations": {"Creator": 17, "Material": 3, "Depiction": 36}}
+{"painting": 28, "relations": {"Creator": 17, "Material": 7, "Depiction": 36}}
+{"painting": 28, "relations": {"Creator": 17, "Material": 2, "Depiction": 36}}
+{"painting": 29, "relations": {"Location": 7, "Genre": 3, "Creator": 18, "Material": 7, "Depiction": 37}}
+{"painting": 29, "relations": {"Location": 7, "Genre": 3, "Creator": 18, "Material": 2, "Depiction": 37}}
+{"painting": 30, "relations": {"Location": 3, "Creator": 8, "Material": 6}}
+{"painting": 30, "relations": {"Location": 3, "Creator": 8, "Material": 2}}
+{"painting": 31, "relations": {"Material": 3}}
+{"painting": 31, "relations": {"Material": 3}}
+{"painting": 31, "relations": {"Material": 2}}
+{"painting": 31, "relations": {"Material": 2}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 6}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 3}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 7}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 2}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 6}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 3}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 7}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 2}}
+{"painting": 33, "relations": {"Creator": 19, "Material": 3}}
+{"painting": 33, "relations": {"Creator": 19, "Material": 3}}
+{"painting": 33, "relations": {"Creator": 19, "Material": 7}}
+{"painting": 33, "relations": {"Creator": 19, "Material": 7}}
+{"painting": 33, "relations": {"Creator": 19, "Material": 2}}
+{"painting": 33, "relations": {"Creator": 19, "Material": 2}}
+{"painting": 34, "relations": {"Material": 3}}
+{"painting": 34, "relations": {"Material": 15}}
+{"painting": 34, "relations": {"Material": 2}}
+{"painting": 34, "relations": {"Material": 16}}
+{"painting": 35, "relations": {"Material": 9}}
+{"painting": 35, "relations": {"Material": 3}}
+{"painting": 35, "relations": {"Material": 7}}
+{"painting": 35, "relations": {"Material": 17}}
+{"painting": 36, "relations": {"Material": 9}}
+{"painting": 36, "relations": {"Material": 3}}
+{"painting": 36, "relations": {"Material": 7}}
+{"painting": 36, "relations": {"Material": 17}}
+{"painting": 37, "relations": {"Material": 3}}
+{"painting": 37, "relations": {"Material": 7}}
+{"painting": 37, "relations": {"Material": 2}}
+{"painting": 38, "relations": {"Material": 6}}
+{"painting": 38, "relations": {"Material": 6}}
+{"painting": 38, "relations": {"Material": 3}}
+{"painting": 38, "relations": {"Material": 3}}
+{"painting": 38, "relations": {"Material": 7}}
+{"painting": 38, "relations": {"Material": 7}}
+{"painting": 38, "relations": {"Material": 2}}
+{"painting": 38, "relations": {"Material": 2}}
+{"painting": 39, "relations": {"Material": 9}}
+{"painting": 39, "relations": {"Material": 3}}
+{"painting": 39, "relations": {"Material": 7}}
+{"painting": 40, "relations": {"Location": 8, "Material": 6, "Depiction": 38}}
+{"painting": 40, "relations": {"Location": 8, "Material": 9, "Depiction": 38}}
+{"painting": 40, "relations": {"Location": 8, "Material": 14, "Depiction": 38}}
+{"painting": 40, "relations": {"Location": 8, "Material": 6, "Depiction": 39}}
+{"painting": 40, "relations": {"Location": 8, "Material": 9, "Depiction": 39}}
+{"painting": 40, "relations": {"Location": 8, "Material": 14, "Depiction": 39}}
+{"painting": 21, "relations": {"Movement": 1, "Location": 4, "Genre": 5, "Creator": 11, "Material": 10}}
+{"painting": 21, "relations": {"Movement": 1, "Location": 4, "Genre": 5, "Creator": 11, "Material": 10}}
+{"painting": 22, "relations": {}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 6, "Depiction": 26}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 7, "Depiction": 26}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 2, "Depiction": 26}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 6, "Depiction": 27}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 7, "Depiction": 27}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 2, "Depiction": 27}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 6, "Depiction": 28}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 7, "Depiction": 28}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 2, "Depiction": 28}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 6, "Depiction": 29}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 7, "Depiction": 29}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 2, "Depiction": 29}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 6, "Depiction": 30}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 7, "Depiction": 30}}
+{"painting": 23, "relations": {"Location": 5, "Creator": 12, "Material": 2, "Depiction": 30}}
+{"painting": 24, "relations": {"Location": 6, "Genre": 3, "Creator": 13, "Material": 11, "Depiction": 31}}
+{"painting": 24, "relations": {"Location": 6, "Genre": 3, "Creator": 13, "Material": 12, "Depiction": 31}}
+{"painting": 25, "relations": {"Location": 2, "Creator": 14, "Depiction": 17}}
+{"painting": 25, "relations": {"Location": 2, "Creator": 14, "Depiction": 19}}
+{"painting": 25, "relations": {"Location": 2, "Creator": 14, "Depiction": 32}}
+{"painting": 26, "relations": {"Location": 2, "Creator": 15, "Depiction": 33}}
+{"painting": 26, "relations": {"Location": 2, "Creator": 15, "Depiction": 34}}
+{"painting": 26, "relations": {"Location": 2, "Creator": 15, "Depiction": 35}}
+{"painting": 26, "relations": {"Location": 2, "Creator": 15, "Depiction": 18}}
+{"painting": 26, "relations": {"Location": 2, "Creator": 15, "Depiction": 19}}
+{"painting": 27, "relations": {"Location": 2, "Creator": 16, "Material": 9, "Depiction": 17}}
+{"painting": 27, "relations": {"Location": 2, "Creator": 16, "Material": 3, "Depiction": 17}}
+{"painting": 27, "relations": {"Location": 2, "Creator": 16, "Material": 13, "Depiction": 17}}
+{"painting": 27, "relations": {"Location": 2, "Creator": 16, "Material": 14, "Depiction": 17}}
+{"painting": 28, "relations": {"Creator": 17, "Material": 6, "Depiction": 36}}
+{"painting": 28, "relations": {"Creator": 17, "Material": 3, "Depiction": 36}}
+{"painting": 28, "relations": {"Creator": 17, "Material": 7, "Depiction": 36}}
+{"painting": 28, "relations": {"Creator": 17, "Material": 2, "Depiction": 36}}
+{"painting": 29, "relations": {"Location": 7, "Genre": 3, "Creator": 18, "Material": 7, "Depiction": 37}}
+{"painting": 29, "relations": {"Location": 7, "Genre": 3, "Creator": 18, "Material": 2, "Depiction": 37}}
+{"painting": 30, "relations": {"Location": 3, "Creator": 8, "Material": 6}}
+{"painting": 30, "relations": {"Location": 3, "Creator": 8, "Material": 2}}
+{"painting": 31, "relations": {"Material": 3}}
+{"painting": 31, "relations": {"Material": 3}}
+{"painting": 31, "relations": {"Material": 2}}
+{"painting": 31, "relations": {"Material": 2}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 6}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 3}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 7}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 2}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 6}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 3}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 7}}
+{"painting": 32, "relations": {"Creator": 10, "Material": 2}}
+{"painting": 33, "relations": {"Creator": 19, "Material": 3}}
+{"painting": 33, "relations": {"Creator": 19, "Material": 3}}
+{"painting": 33, "relations": {"Creator": 19, "Material": 7}}
+{"painting": 33, "relations": {"Creator": 19, "Material": 7}}
+{"painting": 33, "relations": {"Creator": 19, "Material": 2}}
+{"painting": 33, "relations": {"Creator": 19, "Material": 2}}
+{"painting": 34, "relations": {"Material": 3}}
+{"painting": 34, "relations": {"Material": 15}}
+{"painting": 34, "relations": {"Material": 2}}
+{"painting": 34, "relations": {"Material": 16}}
+{"painting": 35, "relations": {"Material": 9}}
+{"painting": 35, "relations": {"Material": 3}}
+{"painting": 35, "relations": {"Material": 7}}
+{"painting": 35, "relations": {"Material": 17}}
+{"painting": 36, "relations": {"Material": 9}}
+{"painting": 36, "relations": {"Material": 3}}
+{"painting": 36, "relations": {"Material": 7}}
+{"painting": 36, "relations": {"Material": 17}}
+{"painting": 37, "relations": {"Material": 3}}
+{"painting": 37, "relations": {"Material": 7}}
+{"painting": 37, "relations": {"Material": 2}}
+{"painting": 38, "relations": {"Material": 6}}
+{"painting": 38, "relations": {"Material": 6}}
+{"painting": 38, "relations": {"Material": 3}}
+{"painting": 38, "relations": {"Material": 3}}
+{"painting": 38, "relations": {"Material": 7}}
+{"painting": 38, "relations": {"Material": 7}}
+{"painting": 38, "relations": {"Material": 2}}
+{"painting": 38, "relations": {"Material": 2}}
+{"painting": 39, "relations": {"Material": 9}}
+{"painting": 39, "relations": {"Material": 3}}
+{"painting": 39, "relations": {"Material": 7}}
+{"painting": 40, "relations": {"Location": 8, "Material": 6, "Depiction": 38}}
+{"painting": 40, "relations": {"Location": 8, "Material": 9, "Depiction": 38}}
+{"painting": 40, "relations": {"Location": 8, "Material": 14, "Depiction": 38}}
+{"painting": 40, "relations": {"Location": 8, "Material": 6, "Depiction": 39}}
+{"painting": 40, "relations": {"Location": 8, "Material": 9, "Depiction": 39}}
+{"painting": 40, "relations": {"Location": 8, "Material": 14, "Depiction": 39}}
+{"painting": 1, "relations": {}}
+{"painting": 2, "relations": {"Depiction": 1}}
+{"painting": 2, "relations": {"Depiction": 2}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 3}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 4}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 5}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 6}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 7}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 8}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 8}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 9}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 9}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 10}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 10}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 11}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 11}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 12}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 12}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 3, "Depiction": 13}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 4, "Depiction": 13}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 2, "Depiction": 13}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 3, "Depiction": 14}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 4, "Depiction": 14}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 2, "Depiction": 14}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 3, "Depiction": 15}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 4, "Depiction": 15}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 2, "Depiction": 15}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 3, "Depiction": 16}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 4, "Depiction": 16}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 2, "Depiction": 16}}
+{"painting": 6, "relations": {"Location": 2, "Creator": 4, "Depiction": 17}}
+{"painting": 6, "relations": {"Location": 2, "Creator": 4, "Depiction": 18}}
+{"painting": 6, "relations": {"Location": 2, "Creator": 4, "Depiction": 19}}
+{"painting": 6, "relations": {"Location": 2, "Creator": 4, "Depiction": 20}}
+{"painting": 7, "relations": {"Location": 1, "Genre": 2, "Creator": 5, "Material": 1, "Depiction": 21}}
+{"painting": 7, "relations": {"Location": 1, "Genre": 2, "Creator": 5, "Material": 2, "Depiction": 21}}
+{"painting": 7, "relations": {"Location": 1, "Genre": 2, "Creator": 5, "Material": 1, "Depiction": 22}}
+{"painting": 7, "relations": {"Location": 1, "Genre": 2, "Creator": 5, "Material": 2, "Depiction": 22}}
+{"painting": 8, "relations": {"Genre": 2, "Creator": 6, "Material": 1, "Depiction": 19}}
+{"painting": 8, "relations": {"Genre": 2, "Creator": 6, "Material": 2, "Depiction": 19}}
+{"painting": 8, "relations": {"Genre": 2, "Creator": 6, "Material": 1, "Depiction": 23}}
+{"painting": 8, "relations": {"Genre": 2, "Creator": 6, "Material": 2, "Depiction": 23}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 5, "Depiction": 19}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 5, "Depiction": 19}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 2, "Depiction": 19}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 2, "Depiction": 19}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 5, "Depiction": 24}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 5, "Depiction": 24}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 2, "Depiction": 24}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 2, "Depiction": 24}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 5, "Depiction": 25}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 5, "Depiction": 25}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 2, "Depiction": 25}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 2, "Depiction": 25}}
+{"painting": 10, "relations": {"Location": 3, "Creator": 8, "Material": 6}}
+{"painting": 10, "relations": {"Location": 3, "Creator": 8, "Material": 2}}
+{"painting": 11, "relations": {"Material": 3}}
+{"painting": 11, "relations": {"Material": 7}}
+{"painting": 12, "relations": {"Material": 3}}
+{"painting": 12, "relations": {"Material": 7}}
+{"painting": 12, "relations": {"Material": 8}}
+{"painting": 13, "relations": {"Creator": 9, "Material": 6}}
+{"painting": 13, "relations": {"Creator": 9, "Material": 7}}
+{"painting": 13, "relations": {"Creator": 9, "Material": 2}}
+{"painting": 14, "relations": {"Material": 6}}
+{"painting": 14, "relations": {"Material": 6}}
+{"painting": 14, "relations": {"Material": 3}}
+{"painting": 14, "relations": {"Material": 3}}
+{"painting": 14, "relations": {"Material": 7}}
+{"painting": 14, "relations": {"Material": 7}}
+{"painting": 14, "relations": {"Material": 2}}
+{"painting": 14, "relations": {"Material": 2}}
+{"painting": 15, "relations": {"Material": 6}}
+{"painting": 15, "relations": {"Material": 3}}
+{"painting": 15, "relations": {"Material": 7}}
+{"painting": 15, "relations": {"Material": 2}}
+{"painting": 16, "relations": {"Material": 3}}
+{"painting": 16, "relations": {"Material": 7}}
+{"painting": 16, "relations": {"Material": 2}}
+{"painting": 17, "relations": {"Material": 6}}
+{"painting": 17, "relations": {"Material": 3}}
+{"painting": 17, "relations": {"Material": 7}}
+{"painting": 17, "relations": {"Material": 2}}
+{"painting": 18, "relations": {"Creator": 10, "Material": 6}}
+{"painting": 18, "relations": {"Creator": 10, "Material": 3}}
+{"painting": 18, "relations": {"Creator": 10, "Material": 7}}
+{"painting": 18, "relations": {"Creator": 10, "Material": 2}}
+{"painting": 19, "relations": {"Material": 9}}
+{"painting": 19, "relations": {"Material": 3}}
+{"painting": 19, "relations": {"Material": 7}}
+{"painting": 20, "relations": {"Material": 6}}
+{"painting": 20, "relations": {"Material": 3}}
+{"painting": 20, "relations": {"Material": 7}}
+{"painting": 20, "relations": {"Material": 2}}
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+Model : Painting already exist
+Model : Creator already exist
+{"painting": 41, "relations": {"Creator": 20, "Material": 6}}
+{"painting": 41, "relations": {"Creator": 20, "Material": 3}}
+{"painting": 41, "relations": {"Creator": 20, "Material": 7}}
+{"painting": 41, "relations": {"Creator": 20, "Material": 2}}
+Model : Painting already exist
+{"painting": 42, "relations": {"Material": 6}}
+{"painting": 42, "relations": {"Material": 3}}
+{"painting": 42, "relations": {"Material": 15}}
+{"painting": 42, "relations": {"Material": 2}}
+Model : Painting already exist
+{"painting": 43, "relations": {"Material": 6}}
+{"painting": 43, "relations": {"Material": 9}}
+{"painting": 43, "relations": {"Material": 3}}
+{"painting": 43, "relations": {"Material": 7}}
+Model : Painting already exist
+{"painting": 44, "relations": {"Material": 9}}
+{"painting": 44, "relations": {"Material": 3}}
+{"painting": 44, "relations": {"Material": 15}}
+Model : Painting already exist
+{"painting": 45, "relations": {"Material": 9}}
+{"painting": 45, "relations": {"Material": 7}}
+Model : Painting already exist
+{"painting": 46, "relations": {"Material": 3}}
+{"painting": 46, "relations": {"Material": 3}}
+{"painting": 46, "relations": {"Material": 7}}
+{"painting": 46, "relations": {"Material": 7}}
+{"painting": 46, "relations": {"Material": 2}}
+{"painting": 46, "relations": {"Material": 2}}
+Model : Painting already exist
+{"painting": 47, "relations": {"Material": 6}}
+{"painting": 47, "relations": {"Material": 6}}
+Model : Material already exist
+{"painting": 47, "relations": {"Material": 18}}
+{"painting": 47, "relations": {"Material": 18}}
+{"painting": 47, "relations": {"Material": 7}}
+{"painting": 47, "relations": {"Material": 7}}
+{"painting": 47, "relations": {"Material": 2}}
+{"painting": 47, "relations": {"Material": 2}}
+Model : Painting already exist
+{"painting": 48, "relations": {"Depiction": 17}}
+Model : Depiction already exist
+{"painting": 48, "relations": {"Depiction": 40}}
+Model : Depiction already exist
+{"painting": 48, "relations": {"Depiction": 41}}
+Model : Depiction already exist
+{"painting": 48, "relations": {"Depiction": 42}}
+{"painting": 48, "relations": {"Depiction": 17}}
+{"painting": 48, "relations": {"Depiction": 40}}
+{"painting": 48, "relations": {"Depiction": 41}}
+{"painting": 48, "relations": {"Depiction": 42}}
+Model : Painting already exist
+{"painting": 49, "relations": {}}
+Model : Painting already exist
+Model : Creator already exist
+{"painting": 50, "relations": {"Creator": 21}}
+Model : Painting already exist
+Model : Creator already exist
+{"painting": 51, "relations": {"Creator": 22, "Material": 6}}
+{"painting": 51, "relations": {"Creator": 22, "Material": 9}}
+{"painting": 51, "relations": {"Creator": 22, "Material": 3}}
+{"painting": 51, "relations": {"Creator": 22, "Material": 5}}
+{"painting": 51, "relations": {"Creator": 22, "Material": 6}}
+{"painting": 51, "relations": {"Creator": 22, "Material": 9}}
+{"painting": 51, "relations": {"Creator": 22, "Material": 3}}
+{"painting": 51, "relations": {"Creator": 22, "Material": 5}}
+Model : Painting already exist
+Model : Creator already exist
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+{"painting": 52, "relations": {"Creator": 23}}
+Model : Painting already exist
+{"painting": 53, "relations": {}}
+Model : Painting already exist
+Model : Depiction already exist
+{"painting": 54, "relations": {"Creator": 8, "Depiction": 43}}
+Model : Painting already exist
+Model : Depiction already exist
+{"painting": 55, "relations": {"Depiction": 44}}
+{"painting": 55, "relations": {"Depiction": 43}}
+Model : Depiction already exist
+{"painting": 55, "relations": {"Depiction": 45}}
+Model : Painting already exist
+Model : Location already exist
+Model : Creator already exist
+Model : Depiction already exist
+{"painting": 56, "relations": {"Location": 9, "Creator": 24, "Depiction": 46}}
+Model : Painting already exist
+Model : Creator already exist
+Model : Depiction already exist
+{"painting": 57, "relations": {"Location": 9, "Creator": 25, "Depiction": 47}}
+Model : Depiction already exist
+{"painting": 57, "relations": {"Location": 9, "Creator": 25, "Depiction": 48}}
+Model : Depiction already exist
+{"painting": 57, "relations": {"Location": 9, "Creator": 25, "Depiction": 49}}
+Model : Painting already exist
+Model : Creator already exist
+Model : Depiction already exist
+{"painting": 58, "relations": {"Location": 9, "Creator": 26, "Depiction": 50}}
+Model : Depiction already exist
+{"painting": 58, "relations": {"Location": 9, "Creator": 26, "Depiction": 51}}
+Model : Depiction already exist
+{"painting": 58, "relations": {"Location": 9, "Creator": 26, "Depiction": 52}}
+Model : Depiction already exist
+{"painting": 58, "relations": {"Location": 9, "Creator": 26, "Depiction": 53}}
+Model : Painting already exist
+Model : Creator already exist
+{"painting": 59, "relations": {"Location": 9, "Creator": 27, "Depiction": 17}}
+Model : Depiction already exist
+{"painting": 59, "relations": {"Location": 9, "Creator": 27, "Depiction": 54}}
+Model : Depiction already exist
+{"painting": 59, "relations": {"Location": 9, "Creator": 27, "Depiction": 55}}
+Model : Depiction already exist
+{"painting": 59, "relations": {"Location": 9, "Creator": 27, "Depiction": 56}}
+Model : Painting already exist
+Model : Creator already exist
+{"painting": 60, "relations": {"Location": 9, "Creator": 28, "Depiction": 54}}
+Model : Depiction already exist
+{"painting": 60, "relations": {"Location": 9, "Creator": 28, "Depiction": 57}}
+{"painting": 60, "relations": {"Location": 9, "Creator": 28, "Depiction": 42}}
+{"painting": 60, "relations": {"Location": 9, "Creator": 28, "Depiction": 52}}
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+{"painting": 1, "relations": {}}
+{"painting": 2, "relations": {"Depiction": 1}}
+{"painting": 2, "relations": {"Depiction": 2}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 3}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 4}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 5}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 6}}
+{"painting": 3, "relations": {"Genre": 1, "Creator": 1, "Depiction": 7}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 8}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 8}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 9}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 9}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 10}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 10}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 11}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 11}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 1, "Depiction": 12}}
+{"painting": 4, "relations": {"Location": 1, "Genre": 2, "Creator": 2, "Material": 2, "Depiction": 12}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 3, "Depiction": 13}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 4, "Depiction": 13}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 2, "Depiction": 13}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 3, "Depiction": 14}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 4, "Depiction": 14}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 2, "Depiction": 14}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 3, "Depiction": 15}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 4, "Depiction": 15}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 2, "Depiction": 15}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 3, "Depiction": 16}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 4, "Depiction": 16}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 3, "Creator": 3, "Material": 2, "Depiction": 16}}
+{"painting": 6, "relations": {"Location": 2, "Creator": 4, "Depiction": 17}}
+{"painting": 6, "relations": {"Location": 2, "Creator": 4, "Depiction": 18}}
+{"painting": 6, "relations": {"Location": 2, "Creator": 4, "Depiction": 19}}
+{"painting": 6, "relations": {"Location": 2, "Creator": 4, "Depiction": 20}}
+{"painting": 7, "relations": {"Location": 1, "Genre": 2, "Creator": 5, "Material": 1, "Depiction": 21}}
+{"painting": 7, "relations": {"Location": 1, "Genre": 2, "Creator": 5, "Material": 2, "Depiction": 21}}
+{"painting": 7, "relations": {"Location": 1, "Genre": 2, "Creator": 5, "Material": 1, "Depiction": 22}}
+{"painting": 7, "relations": {"Location": 1, "Genre": 2, "Creator": 5, "Material": 2, "Depiction": 22}}
+{"painting": 8, "relations": {"Genre": 2, "Creator": 6, "Material": 1, "Depiction": 19}}
+{"painting": 8, "relations": {"Genre": 2, "Creator": 6, "Material": 2, "Depiction": 19}}
+{"painting": 8, "relations": {"Genre": 2, "Creator": 6, "Material": 1, "Depiction": 23}}
+{"painting": 8, "relations": {"Genre": 2, "Creator": 6, "Material": 2, "Depiction": 23}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 5, "Depiction": 19}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 5, "Depiction": 19}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 2, "Depiction": 19}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 2, "Depiction": 19}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 5, "Depiction": 24}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 5, "Depiction": 24}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 2, "Depiction": 24}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 2, "Depiction": 24}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 5, "Depiction": 25}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 5, "Depiction": 25}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 4, "Creator": 7, "Material": 2, "Depiction": 25}}
+{"painting": 9, "relations": {"Location": 1, "Genre": 2, "Creator": 7, "Material": 2, "Depiction": 25}}
+{"painting": 10, "relations": {"Location": 3, "Creator": 8, "Material": 6}}
+{"painting": 10, "relations": {"Location": 3, "Creator": 8, "Material": 2}}
+{"painting": 11, "relations": {"Material": 3}}
+{"painting": 11, "relations": {"Material": 7}}
+{"painting": 12, "relations": {"Material": 3}}
+{"painting": 12, "relations": {"Material": 7}}
+{"painting": 12, "relations": {"Material": 8}}
+{"painting": 13, "relations": {"Creator": 9, "Material": 6}}
+{"painting": 13, "relations": {"Creator": 9, "Material": 7}}
+{"painting": 13, "relations": {"Creator": 9, "Material": 2}}
+{"painting": 14, "relations": {"Material": 6}}
+{"painting": 14, "relations": {"Material": 6}}
+{"painting": 14, "relations": {"Material": 3}}
+{"painting": 14, "relations": {"Material": 3}}
+{"painting": 14, "relations": {"Material": 7}}
+{"painting": 14, "relations": {"Material": 7}}
+{"painting": 14, "relations": {"Material": 2}}
+{"painting": 14, "relations": {"Material": 2}}
+{"painting": 15, "relations": {"Material": 6}}
+{"painting": 15, "relations": {"Material": 3}}
+{"painting": 15, "relations": {"Material": 7}}
+{"painting": 15, "relations": {"Material": 2}}
+{"painting": 16, "relations": {"Material": 3}}
+{"painting": 16, "relations": {"Material": 7}}
+{"painting": 16, "relations": {"Material": 2}}
+{"painting": 17, "relations": {"Material": 6}}
+{"painting": 17, "relations": {"Material": 3}}
+{"painting": 17, "relations": {"Material": 7}}
+{"painting": 17, "relations": {"Material": 2}}
+{"painting": 18, "relations": {"Creator": 10, "Material": 6}}
+{"painting": 18, "relations": {"Creator": 10, "Material": 3}}
+{"painting": 18, "relations": {"Creator": 10, "Material": 7}}
+{"painting": 18, "relations": {"Creator": 10, "Material": 2}}
+{"painting": 19, "relations": {"Material": 9}}
+{"painting": 19, "relations": {"Material": 3}}
+{"painting": 19, "relations": {"Material": 7}}
+{"painting": 20, "relations": {"Material": 6}}
+{"painting": 20, "relations": {"Material": 3}}
+{"painting": 20, "relations": {"Material": 7}}
+{"painting": 20, "relations": {"Material": 2}}
+Not Found: /favicon.ico
+/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/app/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Model : Painting already exist
+Model : Depiction already exist
+{"painting": 1, "relations": {"Depiction": 1}}
+Model : Painting already exist
+{"painting": 2, "relations": {}}
+Model : Painting already exist
+Model : Location already exist
+Model : Genre already exist
+Model : Creator already exist
+Model : Material already exist
+{"painting": 3, "relations": {"Location": 1, "Genre": 1, "Creator": 1, "Material": 1, "Depiction": 1}}
+Model : Material already exist
+{"painting": 3, "relations": {"Location": 1, "Genre": 1, "Creator": 1, "Material": 2, "Depiction": 1}}
+Model : Depiction already exist
+{"painting": 3, "relations": {"Location": 1, "Genre": 1, "Creator": 1, "Material": 1, "Depiction": 2}}
+{"painting": 3, "relations": {"Location": 1, "Genre": 1, "Creator": 1, "Material": 2, "Depiction": 2}}
+Model : Depiction already exist
+{"painting": 3, "relations": {"Location": 1, "Genre": 1, "Creator": 1, "Material": 1, "Depiction": 3}}
+{"painting": 3, "relations": {"Location": 1, "Genre": 1, "Creator": 1, "Material": 2, "Depiction": 3}}
+Model : Depiction already exist
+{"painting": 3, "relations": {"Location": 1, "Genre": 1, "Creator": 1, "Material": 1, "Depiction": 4}}
+{"painting": 3, "relations": {"Location": 1, "Genre": 1, "Creator": 1, "Material": 2, "Depiction": 4}}
+Model : Depiction already exist
+{"painting": 3, "relations": {"Location": 1, "Genre": 1, "Creator": 1, "Material": 1, "Depiction": 5}}
+{"painting": 3, "relations": {"Location": 1, "Genre": 1, "Creator": 1, "Material": 2, "Depiction": 5}}
+Model : Painting already exist
+Model : Location already exist
+Model : Creator already exist
+Model : Depiction already exist
+{"painting": 4, "relations": {"Location": 2, "Creator": 2, "Depiction": 6}}
+Model : Depiction already exist
+{"painting": 4, "relations": {"Location": 2, "Creator": 2, "Depiction": 7}}
+Model : Depiction already exist
+{"painting": 4, "relations": {"Location": 2, "Creator": 2, "Depiction": 8}}
+Model : Depiction already exist
+{"painting": 4, "relations": {"Location": 2, "Creator": 2, "Depiction": 9}}
+Model : Painting already exist
+Model : Genre already exist
+Model : Creator already exist
+Model : Material already exist
+Model : Depiction already exist
+{"painting": 5, "relations": {"Location": 1, "Genre": 2, "Creator": 3, "Material": 3, "Depiction": 10}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 2, "Creator": 3, "Material": 2, "Depiction": 10}}
+Model : Depiction already exist
+{"painting": 5, "relations": {"Location": 1, "Genre": 2, "Creator": 3, "Material": 3, "Depiction": 11}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 2, "Creator": 3, "Material": 2, "Depiction": 11}}
+Model : Depiction already exist
+{"painting": 5, "relations": {"Location": 1, "Genre": 2, "Creator": 3, "Material": 3, "Depiction": 12}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 2, "Creator": 3, "Material": 2, "Depiction": 12}}
+Model : Depiction already exist
+{"painting": 5, "relations": {"Location": 1, "Genre": 2, "Creator": 3, "Material": 3, "Depiction": 13}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 2, "Creator": 3, "Material": 2, "Depiction": 13}}
+Model : Depiction already exist
+{"painting": 5, "relations": {"Location": 1, "Genre": 2, "Creator": 3, "Material": 3, "Depiction": 14}}
+{"painting": 5, "relations": {"Location": 1, "Genre": 2, "Creator": 3, "Material": 2, "Depiction": 14}}
+Model : Painting already exist
+Model : Material already exist
+{"painting": 6, "relations": {"Material": 4}}
+{"painting": 6, "relations": {"Material": 1}}
+Model : Painting already exist
+Model : Creator already exist
+Model : Material already exist
+{"painting": 7, "relations": {"Creator": 4, "Material": 5}}
+{"painting": 7, "relations": {"Creator": 4, "Material": 4}}
+{"painting": 7, "relations": {"Creator": 4, "Material": 1}}
+{"painting": 7, "relations": {"Creator": 4, "Material": 2}}
+Model : Painting already exist
+{"painting": 8, "relations": {"Material": 5}}
+{"painting": 8, "relations": {"Material": 4}}
+{"painting": 8, "relations": {"Material": 1}}
+{"painting": 8, "relations": {"Material": 2}}
+Model : Painting already exist
+Model : Material already exist
+{"painting": 9, "relations": {"Material": 6}}
+{"painting": 9, "relations": {"Material": 4}}
+{"painting": 9, "relations": {"Material": 1}}
+Model : Painting already exist
+{"painting": 10, "relations": {"Material": 1}}
+{"painting": 10, "relations": {"Material": 2}}
+Model : Painting already exist
+Model : Depiction already exist
+{"painting": 11, "relations": {"Depiction": 15}}
+{"painting": 11, "relations": {"Depiction": 15}}
+{"painting": 11, "relations": {"Depiction": 15}}
+{"painting": 11, "relations": {"Depiction": 15}}
+Model : Painting already exist
+{"painting": 12, "relations": {"Material": 5}}
+{"painting": 12, "relations": {"Material": 6}}
+Model : Material already exist
+{"painting": 12, "relations": {"Material": 7}}
+Model : Painting already exist
+Model : Location already exist
+Model : Creator already exist
+{"painting": 13, "relations": {"Location": 3, "Creator": 5, "Material": 6}}
+{"painting": 13, "relations": {"Location": 3, "Creator": 5, "Material": 7}}
+Model : Material already exist
+{"painting": 13, "relations": {"Location": 3, "Creator": 5, "Material": 8}}
+Model : Painting already exist
+Model : Depiction already exist
+{"painting": 14, "relations": {"Depiction": 16}}
+Model : Depiction already exist
+{"painting": 14, "relations": {"Depiction": 17}}
+Model : Painting already exist
+Model : Creator already exist
+Model : Depiction already exist
+{"painting": 15, "relations": {"Creator": 6, "Material": 5, "Depiction": 18}}
+Model : Material already exist
+{"painting": 15, "relations": {"Creator": 6, "Material": 9, "Depiction": 18}}
+{"painting": 15, "relations": {"Creator": 6, "Material": 6, "Depiction": 18}}
+{"painting": 15, "relations": {"Creator": 6, "Material": 4, "Depiction": 18}}
+Model : Material already exist
+{"painting": 15, "relations": {"Creator": 6, "Material": 10, "Depiction": 18}}
+{"painting": 15, "relations": {"Creator": 6, "Material": 5, "Depiction": 18}}
+{"painting": 15, "relations": {"Creator": 6, "Material": 9, "Depiction": 18}}
+{"painting": 15, "relations": {"Creator": 6, "Material": 6, "Depiction": 18}}
+{"painting": 15, "relations": {"Creator": 6, "Material": 4, "Depiction": 18}}
+{"painting": 15, "relations": {"Creator": 6, "Material": 10, "Depiction": 18}}
+{"painting": 15, "relations": {"Creator": 6, "Material": 5, "Depiction": 18}}
+{"painting": 15, "relations": {"Creator": 6, "Material": 9, "Depiction": 18}}
+{"painting": 15, "relations": {"Creator": 6, "Material": 6, "Depiction": 18}}
+{"painting": 15, "relations": {"Creator": 6, "Material": 4, "Depiction": 18}}
+{"painting": 15, "relations": {"Creator": 6, "Material": 10, "Depiction": 18}}
+Model : Painting already exist
+{"painting": 16, "relations": {"Creator": 2, "Depiction": 7}}
+{"painting": 16, "relations": {"Creator": 2, "Depiction": 7}}
+Model : Painting already exist
+{"painting": 17, "relations": {}}
+Model : Painting already exist
+Model : Location already exist
+Model : Creator already exist
+{"painting": 18, "relations": {"Location": 4, "Creator": 7, "Depiction": 6}}
+Model : Depiction already exist
+{"painting": 18, "relations": {"Location": 4, "Creator": 7, "Depiction": 19}}
+Model : Painting already exist
+Model : Creator already exist
+Model : Depiction already exist
+{"painting": 19, "relations": {"Location": 4, "Creator": 8, "Depiction": 20}}
+Model : Depiction already exist
+{"painting": 19, "relations": {"Location": 4, "Creator": 8, "Depiction": 21}}
+Model : Painting already exist
+Model : Creator already exist
+{"painting": 20, "relations": {"Location": 4, "Creator": 9, "Depiction": 20}}
+Model : Depiction already exist
+{"painting": 20, "relations": {"Location": 4, "Creator": 9, "Depiction": 22}}
+Model : Depiction already exist
+{"painting": 20, "relations": {"Location": 4, "Creator": 9, "Depiction": 23}}
+/app/worker/tasks.py changed, reloading.
+Watching for file changes with StatReloader
+/app/config/settings.py changed, reloading.

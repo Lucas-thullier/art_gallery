@@ -1,0 +1,151 @@
+Model : Painting already exist
+{"painting": 21, "relations": {}}
+Model : Painting already exist
+Model : Depiction already exist
+{"painting": 22, "relations": {"Depiction": 24}}
+Model : Depiction already exist
+{"painting": 22, "relations": {"Depiction": 25}}
+Model : Painting already exist
+Model : Genre already exist
+Model : Creator already exist
+Model : Depiction already exist
+{"painting": 23, "relations": {"Genre": 3, "Creator": 10, "Depiction": 26}}
+Model : Depiction already exist
+{"painting": 23, "relations": {"Genre": 3, "Creator": 10, "Depiction": 27}}
+Model : Depiction already exist
+{"painting": 23, "relations": {"Genre": 3, "Creator": 10, "Depiction": 28}}
+Model : Depiction already exist
+{"painting": 23, "relations": {"Genre": 3, "Creator": 10, "Depiction": 29}}
+Model : Depiction already exist
+{"painting": 23, "relations": {"Genre": 3, "Creator": 10, "Depiction": 30}}
+Model : Painting already exist
+Model : Genre already exist
+Model : Creator already exist
+Model : Depiction already exist
+{"painting": 24, "relations": {"Location": 1, "Genre": 4, "Creator": 11, "Material": 3, "Depiction": 31}}
+{"painting": 24, "relations": {"Location": 1, "Genre": 4, "Creator": 11, "Material": 2, "Depiction": 31}}
+Model : Depiction already exist
+{"painting": 24, "relations": {"Location": 1, "Genre": 4, "Creator": 11, "Material": 3, "Depiction": 32}}
+{"painting": 24, "relations": {"Location": 1, "Genre": 4, "Creator": 11, "Material": 2, "Depiction": 32}}
+Model : Depiction already exist
+{"painting": 24, "relations": {"Location": 1, "Genre": 4, "Creator": 11, "Material": 3, "Depiction": 33}}
+{"painting": 24, "relations": {"Location": 1, "Genre": 4, "Creator": 11, "Material": 2, "Depiction": 33}}
+Model : Depiction already exist
+{"painting": 24, "relations": {"Location": 1, "Genre": 4, "Creator": 11, "Material": 3, "Depiction": 34}}
+{"painting": 24, "relations": {"Location": 1, "Genre": 4, "Creator": 11, "Material": 2, "Depiction": 34}}
+Model : Depiction already exist
+{"painting": 24, "relations": {"Location": 1, "Genre": 4, "Creator": 11, "Material": 3, "Depiction": 35}}
+{"painting": 24, "relations": {"Location": 1, "Genre": 4, "Creator": 11, "Material": 2, "Depiction": 35}}
+Model : Painting already exist
+Model : Creator already exist
+{"painting": 25, "relations": {"Location": 1, "Genre": 1, "Creator": 12, "Material": 4, "Depiction": 1}}
+Model : Material already exist
+{"painting": 25, "relations": {"Location": 1, "Genre": 1, "Creator": 12, "Material": 11, "Depiction": 1}}
+{"painting": 25, "relations": {"Location": 1, "Genre": 1, "Creator": 12, "Material": 2, "Depiction": 1}}
+{"painting": 25, "relations": {"Location": 1, "Genre": 1, "Creator": 12, "Material": 4, "Depiction": 2}}
+{"painting": 25, "relations": {"Location": 1, "Genre": 1, "Creator": 12, "Material": 11, "Depiction": 2}}
+{"painting": 25, "relations": {"Location": 1, "Genre": 1, "Creator": 12, "Material": 2, "Depiction": 2}}
+Model : Depiction already exist
+{"painting": 25, "relations": {"Location": 1, "Genre": 1, "Creator": 12, "Material": 4, "Depiction": 36}}
+{"painting": 25, "relations": {"Location": 1, "Genre": 1, "Creator": 12, "Material": 11, "Depiction": 36}}
+{"painting": 25, "relations": {"Location": 1, "Genre": 1, "Creator": 12, "Material": 2, "Depiction": 36}}
+Model : Depiction already exist
+{"painting": 25, "relations": {"Location": 1, "Genre": 1, "Creator": 12, "Material": 4, "Depiction": 37}}
+{"painting": 25, "relations": {"Location": 1, "Genre": 1, "Creator": 12, "Material": 11, "Depiction": 37}}
+{"painting": 25, "relations": {"Location": 1, "Genre": 1, "Creator": 12, "Material": 2, "Depiction": 37}}
+Model : Painting already exist
+Model : Creator already exist
+{"painting": 26, "relations": {"Location": 2, "Creator": 13, "Depiction": 6}}
+Model : Depiction already exist
+{"painting": 26, "relations": {"Location": 2, "Creator": 13, "Depiction": 38}}
+{"painting": 26, "relations": {"Location": 2, "Creator": 13, "Depiction": 7}}
+Model : Depiction already exist
+{"painting": 26, "relations": {"Location": 2, "Creator": 13, "Depiction": 39}}
+Model : Painting already exist
+Model : Creator already exist
+Model : Depiction already exist
+{"painting": 27, "relations": {"Location": 1, "Genre": 4, "Creator": 14, "Material": 3, "Depiction": 40}}
+{"painting": 27, "relations": {"Location": 1, "Genre": 4, "Creator": 14, "Material": 2, "Depiction": 40}}
+Model : Depiction already exist
+{"painting": 27, "relations": {"Location": 1, "Genre": 4, "Creator": 14, "Material": 3, "Depiction": 41}}
+{"painting": 27, "relations": {"Location": 1, "Genre": 4, "Creator": 14, "Material": 2, "Depiction": 41}}
+Model : Painting already exist
+Model : Creator already exist
+{"painting": 28, "relations": {"Genre": 4, "Creator": 15, "Material": 3, "Depiction": 7}}
+{"painting": 28, "relations": {"Genre": 4, "Creator": 15, "Material": 2, "Depiction": 7}}
+Model : Depiction already exist
+{"painting": 28, "relations": {"Genre": 4, "Creator": 15, "Material": 3, "Depiction": 42}}
+{"painting": 28, "relations": {"Genre": 4, "Creator": 15, "Material": 2, "Depiction": 42}}
+Model : Painting already exist
+Model : Genre already exist
+Model : Creator already exist
+{"painting": 29, "relations": {"Location": 1, "Genre": 5, "Creator": 16, "Material": 7, "Depiction": 7}}
+{"painting": 29, "relations": {"Location": 1, "Genre": 4, "Creator": 16, "Material": 7, "Depiction": 7}}
+{"painting": 29, "relations": {"Location": 1, "Genre": 5, "Creator": 16, "Material": 2, "Depiction": 7}}
+{"painting": 29, "relations": {"Location": 1, "Genre": 4, "Creator": 16, "Material": 2, "Depiction": 7}}
+Model : Depiction already exist
+{"painting": 29, "relations": {"Location": 1, "Genre": 5, "Creator": 16, "Material": 7, "Depiction": 43}}
+{"painting": 29, "relations": {"Location": 1, "Genre": 4, "Creator": 16, "Material": 7, "Depiction": 43}}
+{"painting": 29, "relations": {"Location": 1, "Genre": 5, "Creator": 16, "Material": 2, "Depiction": 43}}
+{"painting": 29, "relations": {"Location": 1, "Genre": 4, "Creator": 16, "Material": 2, "Depiction": 43}}
+Model : Depiction already exist
+{"painting": 29, "relations": {"Location": 1, "Genre": 5, "Creator": 16, "Material": 7, "Depiction": 44}}
+{"painting": 29, "relations": {"Location": 1, "Genre": 4, "Creator": 16, "Material": 7, "Depiction": 44}}
+{"painting": 29, "relations": {"Location": 1, "Genre": 5, "Creator": 16, "Material": 2, "Depiction": 44}}
+{"painting": 29, "relations": {"Location": 1, "Genre": 4, "Creator": 16, "Material": 2, "Depiction": 44}}
+Model : Painting already exist
+Model : Location already exist
+Model : Creator already exist
+{"painting": 30, "relations": {"Location": 5, "Creator": 17, "Material": 5}}
+{"painting": 30, "relations": {"Location": 5, "Creator": 17, "Material": 2}}
+Model : Painting already exist
+{"painting": 31, "relations": {"Material": 4}}
+{"painting": 31, "relations": {"Material": 1}}
+Model : Painting already exist
+{"painting": 32, "relations": {"Material": 4}}
+{"painting": 32, "relations": {"Material": 1}}
+Model : Material already exist
+{"painting": 32, "relations": {"Material": 12}}
+Model : Painting already exist
+Model : Creator already exist
+{"painting": 33, "relations": {"Creator": 18, "Material": 5}}
+{"painting": 33, "relations": {"Creator": 18, "Material": 1}}
+{"painting": 33, "relations": {"Creator": 18, "Material": 2}}
+Model : Painting already exist
+{"painting": 34, "relations": {"Material": 5}}
+{"painting": 34, "relations": {"Material": 5}}
+{"painting": 34, "relations": {"Material": 4}}
+{"painting": 34, "relations": {"Material": 4}}
+{"painting": 34, "relations": {"Material": 1}}
+{"painting": 34, "relations": {"Material": 1}}
+{"painting": 34, "relations": {"Material": 2}}
+{"painting": 34, "relations": {"Material": 2}}
+Model : Painting already exist
+{"painting": 35, "relations": {"Material": 5}}
+{"painting": 35, "relations": {"Material": 4}}
+{"painting": 35, "relations": {"Material": 1}}
+{"painting": 35, "relations": {"Material": 2}}
+Model : Painting already exist
+{"painting": 36, "relations": {"Material": 4}}
+{"painting": 36, "relations": {"Material": 1}}
+{"painting": 36, "relations": {"Material": 2}}
+Model : Painting already exist
+{"painting": 37, "relations": {"Material": 5}}
+{"painting": 37, "relations": {"Material": 4}}
+{"painting": 37, "relations": {"Material": 1}}
+{"painting": 37, "relations": {"Material": 2}}
+Model : Painting already exist
+Model : Creator already exist
+{"painting": 38, "relations": {"Creator": 19, "Material": 5}}
+{"painting": 38, "relations": {"Creator": 19, "Material": 4}}
+{"painting": 38, "relations": {"Creator": 19, "Material": 1}}
+{"painting": 38, "relations": {"Creator": 19, "Material": 2}}
+Model : Painting already exist
+{"painting": 39, "relations": {"Material": 6}}
+{"painting": 39, "relations": {"Material": 4}}
+{"painting": 39, "relations": {"Material": 1}}
+Model : Painting already exist
+{"painting": 40, "relations": {"Material": 5}}
+{"painting": 40, "relations": {"Material": 4}}
+{"painting": 40, "relations": {"Material": 1}}
+{"painting": 40, "relations": {"Material": 2}}

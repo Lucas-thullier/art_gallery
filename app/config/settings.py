@@ -135,3 +135,34 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Handle logs
+LOG_PATH = os.path.join(BASE_DIR, 'log')
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+        'import_paintings_handler': {
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'worker', 'logs', 'import_paintings.log'),
+        }
+    },
+    'loggers': {
+        'import_paintings_logger': {
+            'handlers': ['import_paintings_handler'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            'propagate': False,
+        },
+    },
+    'root': {
+        'handlers': ['console', 'file'],
+        'level': 'INFO',
+    },
+}

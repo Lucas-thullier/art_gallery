@@ -11,14 +11,17 @@ def get_painting_count():
     return painting_count
 
 
-def get_paintings_with_full_data(limit=20, offset=20):
+def get_paintings_with_full_data(limit: int = 20, offset: int = 20) -> dict:
     query = paintings_full_data(limit, offset)
 
     response = wbi_functions.execute_sparql_query(query)
-    paintings = response['results']['bindings']
 
     columns = response['head']['vars']
+    paintings = response['results']['bindings']
 
-    paintings_with_full_data = {'columns': columns, 'paintings': paintings}
-    
+    paintings_with_full_data = {
+        'columns': columns,
+        'paintings': paintings
+    }
+
     return paintings_with_full_data

@@ -1,4 +1,4 @@
-def count_paintings_full_data():
+def count_paintings_full_data() -> str:
     query = """
     SELECT (COUNT(*) AS ?painting_count) WHERE {
         ?painting p:P31 ?statement0.
@@ -8,7 +8,7 @@ def count_paintings_full_data():
     return query
 
 
-def paintings_full_data(limit=20, offset=20):
+def paintings_full_data(limit: int = 20, offset: int = 20) -> str:
     query = """
     SELECT ?painting ?paintingLabel ?pic ?inception ?movement ?movementLabel ?location ?locationLabel ?owned_by ?native_label ?title ?genre ?genreLabel ?creator ?creatorLabel ?made_from_material ?made_from_materialLabel ?depicts ?depictsLabel ?width ?height ?described_at WHERE {
         {

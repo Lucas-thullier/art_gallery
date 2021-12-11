@@ -3,9 +3,9 @@ from django.template import context
 from django.views import generic
 from django.shortcuts import render
 from django.http import HttpResponse
-
+import json
 from .models import Painting
-from worker.tasks import populate_database
+from worker.tasks import get_painting_interval, populate_database
 
 
 class IndexView(generic.ListView):
@@ -22,5 +22,8 @@ class DetailView(generic.DetailView):
 
 
 def coucou(request):
-    populate_database.s().delay()
-    return HttpResponse('cc')
+    t = get_painting_interval(20,20)
+    # populate_database.s().delay()
+    # return HttpResponse(t)
+    return HttpResponse(json.dumps(t))
+    # return HttpResponse('cc')

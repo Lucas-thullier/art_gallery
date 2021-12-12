@@ -5,8 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import json
 from .models import Painting
-from .repository import with_readable_name, with_picture
-from worker.tasks import import_from_paintings_interval, populate_database
+from worker.tasks import populate_database
 
 
 class IndexView(generic.ListView):
@@ -14,11 +13,9 @@ class IndexView(generic.ListView):
     context_object_name = 'paintings'
 
     def get_queryset(self):
-        base_manager = Painting.objects
-        paintings_query = with_readable_name(base_manager)
-        paintings_query = with_picture(paintings_query)
+        paintings_query = Painting.repository.with_picture().with_readable_name()
 
-        return paintings_query.order_by('-created_at')[:5]
+        return paintings_query.order_by('-created_at')[:50]
 
 
 class DetailView(generic.DetailView):
@@ -32,3 +29,7 @@ def coucou(request):
     # return HttpResponse(t)
     return HttpResponse('let\'s go')
     # return HttpResponse('cc')
+
+def test(request):
+    paintings_query = Painting.repository.with_picture().with_readable_name()
+    return HttpResponse(paintings_query.query)

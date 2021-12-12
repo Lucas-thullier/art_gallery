@@ -1,1 +1,1 @@
-from .painting import with_picture, with_readable_name
+from .PaintingQuerySet import PaintingQuerySet

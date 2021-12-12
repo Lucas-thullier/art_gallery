@@ -8,4 +8,5 @@ urlpatterns = [
     path('painting/<int:pk>/', views.DetailView.as_view(), name='detail'),
     
     path('artworks/coucou', views.coucou, name='coucou'),
+    path('painting/test', views.test, name='test'),
 ]

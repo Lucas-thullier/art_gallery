@@ -8,58 +8,73 @@ services:
     env_file: &envfile
       - .env
     networks:
-      - main
+      - my-app-network
     ports:
       - '5432:5432'
     restart: on-failure
     volumes:
-      - postgresql-data:/var/lib/postgresql/data
+      - postgresdata:/var/lib/postgresql/data
 
-  app:
-    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000 & watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A worker.worker.app worker --loglevel=INFO"
-    container_name: app
+  backend:
+    container_name: backend
     env_file: *envfile
     depends_on:
       - db
       - rabbitmq
+    volumes:
+      - my-app:/home/app
     ports:
       - '8000:8000'
-    hostname: app
-    build: .
-    image: &app app
-    volumes:
-      - ./app:/app
+    hostname: backend
+    build: ./backend
     networks:
-      - main
+      - my-app-network
     restart: on-failure
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000 & watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A worker.worker.app worker --loglevel=INFO"
+
+  frontend:
+    container_name: frontend
+    hostname: frontend
+    build: ./frontend
+    volumes:
+      - my-app:/home/app
+    ports:
+      - 8080:8080
+    networks:
+      - my-app-network
+    restart: on-failure
+    command: bash -c "yarn serve"
 
   rabbitmq:
-      container_name: rabbitmq
-      hostname: rabbitmq
-      image: rabbitmq:3.8-alpine
-      env_file: *envfile
-      networks:
-        - main
-      ports:
-        - '5672:5672'
-        - '15672:15672'
-      restart: on-failure
+    container_name: rabbitmq
+    hostname: rabbitmq
+    image: rabbitmq:3.8-alpine
+    env_file: *envfile
+    networks:
+      - my-app-network
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    restart: on-failure
 
   flower:
     image: zoomeranalytics/flower:0.9.1-4.0.2
     container_name: flower
     hostname: flower
-    restart: "no"
+    restart: 'no'
     env_file: *envfile
     ports:
-      - "5555:5555"
+      - '5555:5555'
     depends_on:
       - rabbitmq
     networks:
-      - main
-
-networks:
-  main:
+      - my-app-network
 
 volumes:
-  postgresql-data:
+  my-app:
+    external: true
+  postgresdata:
+
+networks:
+  my-app-network:
+    external: true

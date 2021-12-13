@@ -32,4 +32,4 @@ def coucou(request):
 
 def test(request):
     paintings_query = Painting.repository.with_picture().with_readable_name()
-    return HttpResponse(paintings_query.query)
+    return HttpResponse('yoyoyoyoyoyoyoyoyoyoyo')

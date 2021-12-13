@@ -3,7 +3,7 @@ FROM node:lts-alpine
 RUN apk update && apk add bash
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN yarn install -g http-server
+RUN yarn global install http-server
 
 WORKDIR /home/app/frontend
 

@@ -42,3 +42,10 @@ def get_viewable_paintings(request):
     serialized_paintings = serialize('json', paintings, fields=('name'))
 
     return HttpResponse(serialized_paintings, content_type='application/json; charset=utf-8')
+
+def get_painting_by_id(request, painting_id):
+    painting = Painting.objects.filter(id=painting_id)
+
+    serialized_painting = serialize('json', painting, fields=('name', 'width', 'height', 'picture_url'))
+
+    return HttpResponse(serialized_painting, content_type='application/json; charset=utf-8')

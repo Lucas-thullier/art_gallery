@@ -1,6 +1,10 @@
 <template>
   <ul>
-    <li v-for="painting in paintings" :key="painting.pk">
+    <li
+      class="text-2xl font-bold text-blue-800"
+      v-for="painting in paintings"
+      :key="painting.pk"
+    >
       <a :href="`#/painting/${painting.pk}`">{{ painting.fields.name }}</a>
     </li>
   </ul>

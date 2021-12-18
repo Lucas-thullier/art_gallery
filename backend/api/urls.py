@@ -9,4 +9,6 @@ urlpatterns = [
     
     path('painting/coucou', views.coucou, name='coucou'),
     path('painting/test', views.test, name='test'),
+
+    path('painting/all', views.get_viewable_paintings, name='all_paintings'),
 ]

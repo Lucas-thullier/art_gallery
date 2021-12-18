@@ -8,7 +8,7 @@ from .Genre import Genre
 from .Location import Location
 from .Material import Material
 from .Movement import Movement
-from ..repository import PaintingQuerySet
+from ..repositories import PaintingQuerySet
 
 
 class Painting(models.Model):

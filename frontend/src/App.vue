@@ -1,18 +1,7 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HelloWorld msg="Welcome to Your Vue.js App" />
 </template>
-
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
 <style>
 #app {
@@ -24,3 +13,23 @@ export default {
   margin-top: 60px;
 }
 </style>
+
+<script>
+import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios'
+
+export default {
+  name: 'App',
+  components: {
+    HelloWorld,
+  },
+  mounted() {
+    axios
+      .get('http://localhost:8000/api/painting/all')
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((e) => console.error(e))
+  },
+}
+</script>

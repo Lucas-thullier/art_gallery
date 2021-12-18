@@ -47,4 +47,4 @@ class Painting(models.Model):
     created_at = models.DateTimeField(default=now)
     updated_at = models.DateTimeField(default=now)
 
-    repository: models.Manager = PaintingQuerySet.as_manager()
+    objects: models.Manager = PaintingQuerySet.as_manager()

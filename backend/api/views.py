@@ -31,5 +31,5 @@ def coucou(request):
     # return HttpResponse('cc')
 
 def test(request):
-    paintings_query = Painting.repository.with_picture().with_readable_name()
+    paintings_query = Painting.objects.with_picture().with_readable_name()
     return HttpResponse('yoyoyoyoyoyoyoyoyoyoyo')

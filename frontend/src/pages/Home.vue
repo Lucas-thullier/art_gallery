@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <!--<ul>
     <li
       class="text-2xl font-bold text-blue-800"
       v-for="painting in paintings"
@@ -7,7 +7,8 @@
     >
       <a :href="`#/painting/${painting.pk}`">{{ painting.fields.name }}</a>
     </li>
-  </ul>
+  </ul>-->
+  <product-list v-bind:products="this.paintings"></product-list>
 </template>
 
 <script>

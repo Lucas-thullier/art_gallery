@@ -39,7 +39,7 @@ def test(request):
 def get_viewable_paintings(request):
     paintings = Painting.objects.with_picture().with_readable_name()[:5]
 
-    serialized_paintings = serialize('json', paintings, fields=('name'))
+    serialized_paintings = serialize('json', paintings, fields=('name', 'width', 'height', 'picture_url'))
 
     return HttpResponse(serialized_paintings, content_type='application/json; charset=utf-8')
 

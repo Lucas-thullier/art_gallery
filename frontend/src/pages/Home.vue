@@ -1,14 +1,9 @@
-<template>
-  <!--<ul>
-    <li
-      class="text-2xl font-bold text-blue-800"
-      v-for="painting in paintings"
-      :key="painting.pk"
-    >
-      <a :href="`#/painting/${painting.pk}`">{{ painting.fields.name }}</a>
-    </li>
-  </ul>-->
-  <product-list v-bind:products="this.paintings"></product-list>
+<template class>
+  <section class="bg-gray-700 flex flex-row">
+    <go-to-paginate v-bind:orientation="'left'"></go-to-paginate>
+    <product-list v-bind:products="this.paintingsData.paintings"></product-list>
+    <go-to-paginate v-bind:orientation="'right'"></go-to-paginate>
+  </section>
 </template>
 
 <script>
@@ -18,14 +13,22 @@ export default {
   name: 'Home',
   data() {
     return {
-      paintings: [],
+      paintingsData: {
+        paintings: [],
+        count: 0,
+        paginator: {
+          next: '',
+          previous: '',
+        },
+      },
+      paintingsCount: 0,
     }
   },
   mounted() {
     axios
       .get('http://localhost:8000/api/painting/all')
       .then((response) => {
-        this.paintings.push(...response.data)
+        this.paintingsData.paintings.push(...response.data.results)
       })
       .catch((e) => console.error(e))
   },

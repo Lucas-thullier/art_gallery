@@ -1,12 +1,16 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index'
-import Navbar from './components/Navbar'
-import ProductList from './components/ProductList'
+import components from './components/index'
+
 import '@/assets/tailwind.css'
 
 const app = createApp(App)
-app.component('navbar', Navbar)
-app.component('product-list', ProductList)
+
+for (const key in components) {
+  app.component(key, components[key])
+}
+
+
 app.use(router)
 app.mount('#app')

@@ -5,6 +5,21 @@
 </template>
 
 <style>
+html,
+body,
+#app {
+  height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+#app > section {
+  flex: 1;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

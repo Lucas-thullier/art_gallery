@@ -152,9 +152,7 @@ import {
 } from '@headlessui/vue'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
 
-const navigation = [
-  { name: 'Home', href: '/', current: true },
-]
+const navigation = [{ name: 'Home', href: '/', current: true }]
 
 export default {
   components: {

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # externals apps
     "corsheaders",
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -184,4 +185,11 @@ LOGGING = {
         'handlers': ['console', 'file'],
         'level': 'INFO',
     },
+}
+
+
+# Pagination
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 8
 }

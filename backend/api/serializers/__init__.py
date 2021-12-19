@@ -1,0 +1,1 @@
+from .PaintingSerializer import PaintingSerializer

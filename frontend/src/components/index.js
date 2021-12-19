@@ -1,6 +1,6 @@
-import Navbar from './Navbar'
-import ProductList from './ProductList'
-import GoToPaginate from './GoToPaginate'
+import Navbar from '@components/Navbar'
+import ProductList from '@components/ProductList'
+import GoToPaginate from '@components/GoToPaginate'
 
 export default {
   'navbar': Navbar,

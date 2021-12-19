@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
-import * as getters from './getters'
-import * as actions from './actions'
-import mutations from './mutations'
+import * as getters from '@store/getters'
+import * as actions from '@store/actions'
+import mutations from '@store/mutations'
 
 const state = {
   paintings: {

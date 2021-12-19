@@ -83,7 +83,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'About',
+  name: 'Detail',
   data() {
     return {
       painting: {},
@@ -92,7 +92,9 @@ export default {
   },
   mounted() {
     axios
-      .get(`http://localhost:8000/api/painting/${this.$route.params.id}`)
+      .get(
+        `${process.env.VUE_APP_BACKEND_URL}/api/painting/${this.$route.params.id}`
+      )
       .then((response) => {
         this.painting = response.data
         this.isLoaded = true

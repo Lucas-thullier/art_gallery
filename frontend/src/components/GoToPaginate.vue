@@ -13,7 +13,7 @@
 
 <script>
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/vue/solid'
-import { getPaintings } from '../store/actions'
+import { getPaintings } from '@store/actions'
 
 export default {
   name: 'GoToPaginate',

@@ -7,11 +7,11 @@
 </template>
 
 <script>
-import store from '../store'
-import { getPaintings } from '../store/actions'
+import store from '@store'
+import { getPaintings } from '@store/actions'
 import { mapState } from 'vuex'
 
-getPaintings(store, 'http://localhost:8000/api/painting/all/')
+getPaintings(store, `${process.env.VUE_APP_BACKEND_URL}/api/painting/all/`)
 
 export default {
   name: 'Home',

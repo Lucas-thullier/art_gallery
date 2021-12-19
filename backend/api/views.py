@@ -1,7 +1,8 @@
 from django.http import HttpResponse
-from .models import Painting
+
+from .models import Painting, Creator
 from worker.tasks import populate_database
-from api.serializers import PaintingSerializer
+from api.serializers import PaintingSerializer, CreatorSerializer
 from rest_framework import generics
 
 
@@ -16,3 +17,13 @@ class PaintingsSet(generics.ListAPIView):
 class PaintingDetail(generics.RetrieveAPIView):
     queryset = Painting.objects.all()
     serializer_class = PaintingSerializer
+
+class CreatorsSet(generics.ListAPIView):
+    queryset = Creator.objects.all()
+    serializer_class = CreatorSerializer
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+class CreatorDetail(generics.RetrieveAPIView):
+    queryset = Creator.objects.all()
+    serializer_class = CreatorSerializer

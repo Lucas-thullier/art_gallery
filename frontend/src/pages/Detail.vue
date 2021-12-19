@@ -1,13 +1,21 @@
 <template>
-  <section class="bg-gray-700 text-white body-font">
-    <div class="container px-5 py-24 mx-auto flex flex-wrap">
-      <div class="flex flex-wrap w-full">
-        <img
-          class="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12"
-          :src="this.painting.picture_url"
-          alt="step"
-        />
-        <div class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
+  <section class="flex bg-gray-700 text-white body-font">
+    <div class="h-full container px-5 py-16 mx-auto grid grid-cols-3 gap-x-6">
+      <div class="col-span-2">
+        <div
+          class="grid bg-gray-800 place-items-center min-h-full min-w-full bg-inherit aspect-w-1 aspect-h-1 rounded-md overflow-hidden"
+        >
+          <img
+            class="object-center rounded object-cover max-h-184"
+            :src="this.painting.picture_url"
+            alt="step"
+          />
+        </div>
+      </div>
+      <div class="bg-gray-800 rounded">
+        {{ this.painting.name }}
+      </div>
+      <!-- <div class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
           <div class="flex relative pb-12">
             <div class="flex-grow pl-4">
               <h2
@@ -24,7 +32,7 @@
           <div class="flex relative pb-12">
             <div class="flex-grow pl-4">
               <h2
-                class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider"
+                class="font-medium title-font text-sm text-gray-900 tracking-wider"
               >
                 STEP 2
               </h2>
@@ -73,8 +81,7 @@
               </p>
             </div>
           </div>
-        </div>
-      </div>
+        </div> -->
     </div>
   </section>
 </template>

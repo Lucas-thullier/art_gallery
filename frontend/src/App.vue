@@ -9,6 +9,7 @@ html,
 body,
 #app {
   height: 100vh;
+  overflow: hidden;
 }
 
 #app {

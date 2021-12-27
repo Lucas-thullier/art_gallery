@@ -1,5 +1,5 @@
 <template class>
-  <section class="bg-gray-700 flex flex-row">
+  <section class="bg-gray-700 flex flex-row items-center">
     <go-to-paginate v-bind:orientation="'left'" />
     <product-list v-bind:products="paintings" />
     <go-to-paginate v-bind:orientation="'right'" />

@@ -18,6 +18,7 @@ class PaintingSerializer(serializers.ModelSerializer):
             'picture_url',
             'height',
             'width',
+            'inception_at',
             'creators',
             'depicts',
             'genres',

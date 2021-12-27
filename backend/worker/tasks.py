@@ -147,7 +147,7 @@ def handle_creation(models_to_fill: dict, mappings: dict) -> dict:
                 if is_new:
                     model_instance.save()
                 
-                if isinstance(model, Painting):
+                if isinstance(model_instance, Painting):
                     painting: Painting = model_instance
                     logs['painting']['id'] = painting.id
                     logs['painting']['is_new'] = is_new
@@ -157,14 +157,13 @@ def handle_creation(models_to_fill: dict, mappings: dict) -> dict:
                     logs['relations'][model_name]['id'] = model_instance.id
                     logs['relations'][model_name]['is_new'] = is_new
             except Exception as e:
-                creations_errors_logger.warning({'error': e, 'model': ''})
+                creations_errors_logger.warning({'error': e, 'model': model_instance})
 
-    for relation_name, relation_model in relations.items():
-        if painting is not None:
+    if painting is not None:
+        for relation_name, relation_model in relations.items():
             painting_relation = getattr(painting, mappings[relation_name]['relation_name'])
             painting_relation.add(relation_model)
 
-    if painting is not None:
         painting.save()
 
     return logs

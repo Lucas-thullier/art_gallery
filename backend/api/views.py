@@ -1,13 +1,14 @@
 from django.http import HttpResponse
 
 from .models import Painting, Creator
-from worker.tasks import populate_database
+from worker.tasks import import_from_paintings_interval, populate_database
 from api.serializers import PaintingSerializer, CreatorSerializer
 from rest_framework import generics
 
 
 def coucou(request):
-    populate_database.s().delay()
+    # populate_database.s().delay()
+    import_from_paintings_interval(1, 0)
     return HttpResponse('let\'s go')
 
 class PaintingsSet(generics.ListAPIView):

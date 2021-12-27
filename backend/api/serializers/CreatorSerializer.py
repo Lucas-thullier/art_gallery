@@ -1,10 +1,12 @@
 from rest_framework import serializers
-from api.models import Painting, Creator
+from api.models import Creator
 
-class CreatorSerializer(serializers.ModelSerializer):
+class CreatorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Creator
+
         fields = [
             'id',
             'name',
+            'paintings'
         ]

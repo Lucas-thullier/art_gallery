@@ -36,13 +36,14 @@ class Painting(models.Model):
     height = models.PositiveIntegerField(null=True)
     described_at = models.CharField(max_length=500, null=True)
 
-    creators = models.ManyToManyField(Creator)
-    movements = models.ManyToManyField(Movement)
-    genres = models.ManyToManyField(Genre)
-    depicts = models.ManyToManyField(Depiction)
-    materials = models.ManyToManyField(Material)
+    creators = models.ManyToManyField(Creator, related_name='paintings')
+    movements = models.ManyToManyField(Movement, related_name='paintings')
+    genres = models.ManyToManyField(Genre, related_name='paintings')
+    depicts = models.ManyToManyField(Depiction, related_name='paintings')
+    materials = models.ManyToManyField(Material, related_name='paintings')
+
     locations = models.ManyToManyField(
-        Location, related_name='actual_location')
+        Location, related_name='paintings')
 
     created_at = models.DateTimeField(default=now)
     updated_at = models.DateTimeField(default=now)

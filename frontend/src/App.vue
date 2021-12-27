@@ -1,3 +1,5 @@
+<script setup></script>
+
 <template>
   <navbar></navbar>
 
@@ -9,7 +11,6 @@ html,
 body,
 #app {
   height: 100vh;
-  overflow: hidden;
 }
 
 #app {

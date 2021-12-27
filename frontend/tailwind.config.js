@@ -1,6 +1,5 @@
 module.exports = {
-  purge: ['./public/**/*.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./public/**/*.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
       maxHeight: {
@@ -8,11 +7,10 @@ module.exports = {
       },
       height: {
         184: '46rem',
+        "93percent": '93%',
+        "7percent": '7%',
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 }

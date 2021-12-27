@@ -11,7 +11,7 @@ import store from '@store'
 import { getPaintings } from '@store/actions'
 import { mapState } from 'vuex'
 
-getPaintings(store, `${process.env.VUE_APP_BACKEND_URL}/api/painting/all/`)
+getPaintings(store, `${import.meta.env.VITE_APP_BACKEND_URL}/api/painting/all/`)
 
 export default {
   name: 'Home',

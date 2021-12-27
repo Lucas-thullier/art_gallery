@@ -8,7 +8,7 @@ from rest_framework import generics
 
 def coucou(request):
     # populate_database.s().delay()
-    import_from_paintings_interval(1, 0)
+    import_from_paintings_interval(30, 0)
     return HttpResponse('let\'s go')
 
 class PaintingsSet(generics.ListAPIView):

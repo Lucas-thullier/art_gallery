@@ -1,10 +1,10 @@
 <template>
   <section class="flex bg-gray-700 text-white body-font h-93percent">
     <div
-      class="h-full container p-5 mx-auto flex flex-row align-items justify-evenly"
+      class="h-full container p-5 mx-auto grid place-items-center"
     >
       <img
-        class="object-center rounded object-cover"
+        class="rounded object-contain max-h-full"
         :src="this.painting.picture_url"
         alt="step"
       />

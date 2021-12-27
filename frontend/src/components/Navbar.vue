@@ -6,7 +6,16 @@
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
           <DisclosureButton
-            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            class="
+              inline-flex
+              items-center
+              justify-center
+              p-2
+              rounded-md
+              text-gray-400
+              hover:text-white hover:bg-gray-700
+              focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white
+            "
           >
             <span class="sr-only">Open main menu</span>
             <MenuIcon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
@@ -14,7 +23,12 @@
           </DisclosureButton>
         </div>
         <div
-          class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
+          class="
+            flex-1 flex
+            items-center
+            justify-center
+            sm:items-stretch sm:justify-start
+          "
         >
           <div class="flex-shrink-0 flex items-center">
             <img
@@ -49,9 +63,20 @@
         <!-- Searchbar -->
         <div class="py-2 relative mx-auto text-white">
           <input
-            class="border-2 bg-gray-700 border-gray-700 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+            class="
+              border-2
+              bg-gray-700
+              border-gray-700
+              h-10
+              px-5
+              pr-16
+              rounded-lg
+              text-sm
+              focus:outline-none
+            "
             type="search"
             name="search"
+            autocomplete="off"
             placeholder="Search"
           />
           <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
@@ -64,7 +89,7 @@
               x="0px"
               y="0px"
               viewBox="0 0 56.966 56.966"
-              style="enable-background:new 0 0 56.966 56.966;"
+              style="enable-background: new 0 0 56.966 56.966"
               xml:space="preserve"
               width="512px"
               height="512px"
@@ -78,11 +103,30 @@
         <!-- fin Searchbar -->
 
         <div
-          class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+          class="
+            absolute
+            inset-y-0
+            right-0
+            flex
+            items-center
+            pr-2
+            sm:static sm:inset-auto sm:ml-6 sm:pr-0
+          "
         >
           <button
             type="button"
-            class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+            class="
+              bg-gray-800
+              p-1
+              rounded-full
+              text-gray-400
+              hover:text-white
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-offset-gray-800
+              focus:ring-white
+            "
           >
             <span class="sr-only">View notifications</span>
             <BellIcon class="h-6 w-6" aria-hidden="true" />
@@ -92,7 +136,17 @@
           <Menu as="div" class="ml-3 relative">
             <div>
               <MenuButton
-                class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                class="
+                  bg-gray-800
+                  flex
+                  text-sm
+                  rounded-full
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-offset-2
+                  focus:ring-offset-gray-800
+                  focus:ring-white
+                "
               >
                 <span class="sr-only">Open user menu</span>
                 <img
@@ -111,7 +165,19 @@
               leave-to-class="transform opacity-0 scale-95"
             >
               <MenuItems
-                class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                class="
+                  origin-top-right
+                  absolute
+                  right-0
+                  mt-2
+                  w-48
+                  rounded-md
+                  shadow-lg
+                  py-1
+                  bg-white
+                  ring-1 ring-black ring-opacity-5
+                  focus:outline-none
+                "
               >
                 <MenuItem v-slot="{ active }">
                   <a

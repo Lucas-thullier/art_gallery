@@ -104,7 +104,6 @@ export default {
         this.creationDate = new Intl.DateTimeFormat('en-US').format(
           new Date(this.painting.inception_at)
         )
-        console.log(response.data)
       })
       .catch((e) => console.error(e))
   },

@@ -5,3 +5,4 @@ from .LocationSerializer import LocationSerializer
 from .MaterialSerializer import MaterialSerializer
 from .MovementSerializer import MovementSerializer
 from .PaintingSerializer import PaintingSerializer
+from .DynamicDepthSerializer import DynamicDepthSerializer

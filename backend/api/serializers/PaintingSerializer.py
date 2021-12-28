@@ -1,23 +1,19 @@
-from rest_framework import serializers
+from api.serializers import CreatorSerializer, GenreSerializer, DepictionSerializer, LocationSerializer, MaterialSerializer, MovementSerializer
+from api.serializers.DynamicDepthSerializer import DynamicDepthSerializer
 from api.models import Painting
 
 
-class PaintingSerializer(serializers.HyperlinkedModelSerializer):
-    creators = serializers.HyperlinkedIdentityField(
-        many=True, view_name='creator-detail', read_only=True)
-    depicts = serializers.HyperlinkedIdentityField(
-        many=True, view_name='depiction-detail', read_only=True)
-    genres = serializers.HyperlinkedIdentityField(
-        many=True, view_name='genre-detail', read_only=True)
-    locations = serializers.HyperlinkedIdentityField(
-        many=True, view_name='location-detail', read_only=True)
-    materials = serializers.HyperlinkedIdentityField(
-        many=True, view_name='material-detail', read_only=True)
-    movements = serializers.HyperlinkedIdentityField(
-        many=True, view_name='movement-detail', read_only=True)
+class PaintingSerializer(DynamicDepthSerializer):
+    creators = CreatorSerializer(many=True, read_only=True, nest=True)
+    depicts = DepictionSerializer(many=True, read_only=True, nest=True)
+    genres = GenreSerializer(many=True, read_only=True, nest=True)
+    locations = LocationSerializer(many=True, read_only=True, nest=True)
+    materials = MaterialSerializer(many=True, read_only=True, nest=True)
+    movements = MovementSerializer(many=True, read_only=True, nest=True)
 
     class Meta:
         model = Painting
+        depth = 1
         fields = [
             'id',
             'name',

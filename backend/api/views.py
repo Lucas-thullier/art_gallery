@@ -28,72 +28,87 @@ def api_root(request, format=None):
 
 
 class PaintingsSet(generics.ListAPIView):
-    queryset = Painting.objects.with_picture().with_readable_name()
+    queryset = Painting.objects.prefetch_related(
+        'creators',
+        'depicts',
+        'genres',
+        'locations',
+        'materials',
+        'movements'
+    ).with_picture().with_readable_name()
+
     serializer_class = PaintingSerializer
 
 
 class PaintingDetail(generics.RetrieveAPIView):
-    queryset = Painting.objects.all()
+    queryset = Painting.objects.prefetch_related(
+        'creators',
+        'depicts',
+        'genres',
+        'locations',
+        'materials',
+        'movements'
+    ).all()
     serializer_class = PaintingSerializer
 
 
 class CreatorsSet(generics.ListAPIView):
-    queryset = Creator.objects.all()
+    queryset = Creator.objects.prefetch_related('paintings').all()
     serializer_class = CreatorSerializer
     # def perform_create(self, serializer):
     #     serializer.save(owner=self.request.user)
 
 
 class CreatorDetail(generics.RetrieveAPIView):
+    queryset = Creator.objects.prefetch_related('paintings').all()
     serializer_class = CreatorSerializer
-    queryset = Creator.objects.all()
 
 
 class DepictsSet(generics.ListAPIView):
-    queryset = Depiction.objects.all()
+    queryset = Depiction.objects.prefetch_related('paintings').all()
     serializer_class = DepictionSerializer
 
 
 class DepictionDetail(generics.RetrieveAPIView):
+    queryset = Depiction.objects.prefetch_related('paintings').all()
     serializer_class = DepictionSerializer
-    queryset = Depiction.objects.all()
 
 
 class GenresSet(generics.ListAPIView):
-    queryset = Genre.objects.all()
+    queryset = Genre.objects.prefetch_related('paintings').all()
     serializer_class = GenreSerializer
 
 
 class GenreDetail(generics.RetrieveAPIView):
+    queryset = Genre.objects.prefetch_related('paintings').all()
     serializer_class = GenreSerializer
-    queryset = Genre.objects.all()
 
 
 class LocationsSet(generics.ListAPIView):
-    queryset = Location.objects.all()
+    queryset = Location.objects.prefetch_related('paintings').all()
     serializer_class = LocationSerializer
 
 
 class LocationDetail(generics.RetrieveAPIView):
+    queryset = Location.objects.prefetch_related('paintings').all()
     serializer_class = LocationSerializer
-    queryset = Location.objects.all()
 
 
 class MaterialsSet(generics.ListAPIView):
-    queryset = Material.objects.all()
+    queryset = Material.objects.prefetch_related('paintings').all()
     serializer_class = MaterialSerializer
 
 
 class MaterialDetail(generics.RetrieveAPIView):
+    queryset = Material.objects.prefetch_related('paintings').all()
     serializer_class = MaterialSerializer
-    queryset = Material.objects.all()
 
 
 class MovementsSet(generics.ListAPIView):
-    queryset = Movement.objects.all()
+    queryset = Movement.objects.prefetch_related('paintings').all()
     serializer_class = MovementSerializer
 
 
 class MovementDetail(generics.RetrieveAPIView):
+    queryset = Movement.objects.prefetch_related('paintings').all()
     serializer_class = MovementSerializer
-    queryset = Movement.objects.all()

@@ -1,10 +1,11 @@
-from rest_framework import serializers
 from api.models import Location
+from api.serializers.DynamicDepthSerializer import DynamicDepthSerializer
 
 
-class LocationSerializer(serializers.HyperlinkedModelSerializer):
+class LocationSerializer(DynamicDepthSerializer):
     class Meta:
         model = Location
+        depth = 1
         fields = [
             'id',
             'name',

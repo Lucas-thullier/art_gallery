@@ -5,3 +5,4 @@ celery>=5.2
 requests>=2.26
 wikibaseintegrator~=0.11.0
 django-cors-headers==3.10.1
+django-debug-toolbar==3.2.4

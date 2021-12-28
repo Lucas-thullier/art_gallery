@@ -7,6 +7,10 @@
 ARG VARIANT=focal
 FROM mcr.microsoft.com/vscode/devcontainers/base:${VARIANT}
 
+
+RUN apt-get update && apt-get -y install python3
+RUN apt-get update && apt-get -y install python3-pip
+
 # Install Docker CE CLI
 RUN apt-get update \
   && apt-get install -y apt-transport-https ca-certificates curl gnupg2 lsb-release \

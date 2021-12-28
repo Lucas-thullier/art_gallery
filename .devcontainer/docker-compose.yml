@@ -13,9 +13,6 @@ services:
       - my-app:/workspace
       # Persist VS Code extensions between rebuilds
       - vscode-extensions:/root/.vscode-server/extensions
-      # And/or for VS Code Insiders
-      - vscode-extensions-insiders:/root/.vscode-server-insiders/extensions
-
     networks:
       - my-app-network
     container_name: my-dockerized-app
@@ -26,7 +23,6 @@ volumes:
   my-app:
     external: true
   vscode-extensions:
-  vscode-extensions-insiders:
 
 # This external network is shared with the main docker-compose.yml config
 # Ensures that services started from inside this dev container can all communicate

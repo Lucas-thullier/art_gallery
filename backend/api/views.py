@@ -26,9 +26,11 @@ def api_root(request, format=None):
 #     import_from_paintings_interval(30, 0)
 #     return HttpResponse('let\'s go')
 
+
 class PaintingsSet(generics.ListAPIView):
     queryset = Painting.objects.with_picture().with_readable_name()
     serializer_class = PaintingSerializer
+
 
 class PaintingDetail(generics.RetrieveAPIView):
     queryset = Painting.objects.all()
@@ -41,6 +43,7 @@ class CreatorsSet(generics.ListAPIView):
     # def perform_create(self, serializer):
     #     serializer.save(owner=self.request.user)
 
+
 class CreatorDetail(generics.RetrieveAPIView):
     serializer_class = CreatorSerializer
     queryset = Creator.objects.all()
@@ -50,37 +53,46 @@ class DepictsSet(generics.ListAPIView):
     queryset = Depiction.objects.all()
     serializer_class = DepictionSerializer
 
+
 class DepictionDetail(generics.RetrieveAPIView):
     serializer_class = DepictionSerializer
     queryset = Depiction.objects.all()
+
 
 class GenresSet(generics.ListAPIView):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
 
+
 class GenreDetail(generics.RetrieveAPIView):
     serializer_class = GenreSerializer
     queryset = Genre.objects.all()
+
 
 class LocationsSet(generics.ListAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
 
+
 class LocationDetail(generics.RetrieveAPIView):
     serializer_class = LocationSerializer
     queryset = Location.objects.all()
+
 
 class MaterialsSet(generics.ListAPIView):
     queryset = Material.objects.all()
     serializer_class = MaterialSerializer
 
+
 class MaterialDetail(generics.RetrieveAPIView):
     serializer_class = MaterialSerializer
     queryset = Material.objects.all()
 
+
 class MovementsSet(generics.ListAPIView):
     queryset = Movement.objects.all()
     serializer_class = MovementSerializer
+
 
 class MovementDetail(generics.RetrieveAPIView):
     serializer_class = MovementSerializer

@@ -16,7 +16,8 @@ def populate_database(self, offset=0):
 
         limit = 20
         while offset <= painting_count:
-            app.send_task('import_from_paintings_interval', args=[limit, offset])
+            app.send_task('import_from_paintings_interval',
+                          args=[limit, offset])
             offset += limit
     except Exception as e:
         log = {'error': e, 'offset': offset, 'painting_count': painting_count}
@@ -146,7 +147,7 @@ def handle_creation(models_to_fill: dict, mappings: dict) -> dict:
 
                 if is_new:
                     model_instance.save()
-                
+
                 if isinstance(model_instance, Painting):
                     painting: Painting = model_instance
                     logs['painting']['id'] = painting.id
@@ -157,11 +158,13 @@ def handle_creation(models_to_fill: dict, mappings: dict) -> dict:
                     logs['relations'][model_name]['id'] = model_instance.id
                     logs['relations'][model_name]['is_new'] = is_new
             except Exception as e:
-                creations_errors_logger.warning({'error': e, 'model': model_instance})
+                creations_errors_logger.warning(
+                    {'error': e, 'model': model_instance})
 
     if painting is not None:
         for relation_name, relation_model in relations.items():
-            painting_relation = getattr(painting, mappings[relation_name]['relation_name'])
+            painting_relation = getattr(
+                painting, mappings[relation_name]['relation_name'])
             painting_relation.add(relation_model)
 
         painting.save()

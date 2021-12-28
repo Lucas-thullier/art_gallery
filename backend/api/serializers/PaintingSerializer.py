@@ -15,8 +15,8 @@ class PaintingSerializer(DynamicDepthSerializer):
         model = Painting
         depth = 1
         fields = [
-            'id',
             'name',
+            'url',
             'picture_url',
             'height',
             'width',

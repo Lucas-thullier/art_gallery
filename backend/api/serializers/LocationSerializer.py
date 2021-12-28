@@ -7,7 +7,7 @@ class LocationSerializer(DynamicDepthSerializer):
         model = Location
         depth = 1
         fields = [
-            'id',
             'name',
+            'url',
             'paintings'
         ]

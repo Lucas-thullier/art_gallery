@@ -7,7 +7,7 @@ class MovementSerializer(DynamicDepthSerializer):
         model = Movement
         depth = 1
         fields = [
-            'id',
             'name',
+            'url',
             'paintings'
         ]

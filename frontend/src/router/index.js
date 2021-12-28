@@ -6,7 +6,12 @@ import PageNotFound from '@pages/PageNotFound.vue'
 const routes = [
   { path: '/:pathMatch(.*)*', component: PageNotFound },
   { path: '/', component: Home },
-  { path: '/painting/:id', component: Detail },
+  { 
+    path: '/painting/:id',
+    component: Detail,
+    name: 'DetailView',
+    props: true
+  },
 ]
 
 const router = createRouter({

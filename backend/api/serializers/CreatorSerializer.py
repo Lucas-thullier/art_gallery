@@ -7,6 +7,7 @@ class CreatorSerializer(DynamicDepthSerializer):
         model = Creator
         depth = 1
         fields = [
+            'id',
             'name',
             'url',
             'paintings'

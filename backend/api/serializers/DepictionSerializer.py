@@ -7,6 +7,7 @@ class DepictionSerializer(DynamicDepthSerializer):
         model = Depiction
         depth = 1
         fields = [
+            'id',
             'name',
             'url',
             'paintings'

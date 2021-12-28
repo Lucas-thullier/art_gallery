@@ -7,6 +7,7 @@ class GenreSerializer(DynamicDepthSerializer):
         model = Genre
         depth = 1
         fields = [
+            'id',
             'name',
             'url',
             'paintings'

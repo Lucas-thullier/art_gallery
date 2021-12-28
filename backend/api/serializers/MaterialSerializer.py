@@ -7,6 +7,7 @@ class MaterialSerializer(DynamicDepthSerializer):
         model = Material
         depth = 1
         fields = [
+            'id',
             'name',
             'url',
             'paintings'

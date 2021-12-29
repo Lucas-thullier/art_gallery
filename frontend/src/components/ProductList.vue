@@ -10,11 +10,12 @@
         xl:gap-x-8
       "
     >
-      <div v-for="(product, key) in products" :key="key" class="group relative">
+      <div v-for="product in products" class="group relative">
         <router-link
           :to="{ name: 'DetailView', params: { url: product.url, id: product.id } }"
         >
           <img
+            :key="product.id"
             :src="product.picture_url"
             :alt="product.imageAlt"
             class="

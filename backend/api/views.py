@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 from .models import Painting, Creator, Depiction, Genre, Location, Material, Movement
 from worker.tasks import import_from_paintings_interval, populate_database
-from api.serializers import PaintingSerializer, CreatorSerializer, DepictionSerializer, GenreSerializer, LocationSerializer, MovementSerializer, MaterialSerializer
+from api.serializers import PaintingSerializer, CreatorSerializer, DepictionSerializer, GenreSerializer, LocationSerializer, MovementSerializer, MaterialSerializer, SimplePaintingSerializer
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -50,16 +50,8 @@ def purgeWaitingAndReservedTasks(request):
 
 
 class PaintingsSet(generics.ListAPIView):
-    queryset = Painting.objects.prefetch_related(
-        'creators',
-        'depicts',
-        'genres',
-        'locations',
-        'materials',
-        'movements'
-    ).with_picture().with_readable_name()
-
-    serializer_class = PaintingSerializer
+    queryset = Painting.objects.with_picture().with_readable_name()
+    serializer_class = SimplePaintingSerializer
 
 
 class PaintingDetail(generics.RetrieveAPIView):

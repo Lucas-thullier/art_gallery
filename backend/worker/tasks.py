@@ -159,7 +159,7 @@ def handle_creation(models_to_fill: dict, mappings: dict) -> dict:
                     logs['relations'][model_name]['is_new'] = is_new
             except Exception as e:
                 creations_errors_logger.warning(
-                    {'error': e, 'model': model_instance})
+                    {'error': e, 'model': model_name, 'data': json.dumps(data)})
 
     if painting is not None:
         for relation_name, relation_model in relations.items():

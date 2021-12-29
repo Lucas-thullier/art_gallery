@@ -3,11 +3,13 @@ from rest_framework import routers
 from . import views
 from rest_framework.urlpatterns import format_suffix_patterns
 
-# app_name = 'gallery'
-
 urlpatterns = format_suffix_patterns([
-    # path('painting/coucou/', views.coucou, name='coucou'),
     path('', views.api_root),
+
+    path('painting/coucou/', views.coucou, name='coucou'),
+
+    path('kill-tasks/', views.purgeWaitingAndReservedTasks, name='purgeTasks'),
+
     path('painting/all/', views.PaintingsSet.as_view(), name='paintings-list'),
     path('painting/<int:pk>/', views.PaintingDetail.as_view(),
          name='painting-detail'),

@@ -102,6 +102,7 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_BROKER_URL = 'amqp://myuser:mypassword@rabbitmq:5672'
 # CELERY_worker_cancel_long_running_tasks_on_connection_loss
 CELERY_WORKER_CANCEL_LONG_RUNNING_TASKS_ON_CONNECTION_LOSS = True
+CELERY_POOL_RESTARTS = True
 
 
 # Password validation

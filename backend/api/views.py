@@ -1,3 +1,4 @@
+import json
 from django.http import HttpResponse
 
 from .models import Painting, Creator, Depiction, Genre, Location, Material, Movement
@@ -7,6 +8,7 @@ from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
+from worker.worker import app
 
 
 @api_view(['GET'])
@@ -21,10 +23,30 @@ def api_root(request, format=None):
         'materials': reverse('materials-list', request=request, format=format)
     })
 
-# def coucou(request):
-#     # populate_database.s().delay()
-#     import_from_paintings_interval(30, 0)
-#     return HttpResponse('let\'s go')
+
+def coucou(request):
+    populate_database.s().delay()
+    # import_from_paintings_interval(5, 0)
+    return HttpResponse('let\'s go')
+
+
+def purgeWaitingAndReservedTasks(request):
+    app.control.purge()
+
+    inspector = app.control.inspect()
+    jobs = inspector.active()
+    for hostname in jobs:
+        tasks = jobs[hostname]
+        for task in tasks:
+            app.control.revoke(task['id'], terminate=True)
+
+    jobs = inspector.reserved()
+    for hostname in jobs:
+        tasks = jobs[hostname]
+        for task in tasks:
+            app.control.revoke(task['id'], terminate=True)
+
+    return HttpResponse(print('ok'))
 
 
 class PaintingsSet(generics.ListAPIView):

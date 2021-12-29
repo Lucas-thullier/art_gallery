@@ -1,9 +1,11 @@
 import json
 from django.http import HttpResponse
+from django.db.models import Count
 
 from .models import Painting, Creator, Depiction, Genre, Location, Material, Movement
 from worker.tasks import import_from_paintings_interval, populate_database
-from api.serializers import PaintingSerializer, CreatorSerializer, DepictionSerializer, GenreSerializer, LocationSerializer, MovementSerializer, MaterialSerializer, SimplePaintingSerializer
+from api.serializers.depth_one import PaintingSerializer, CreatorSerializer, DepictionSerializer, GenreSerializer, LocationSerializer, MovementSerializer, MaterialSerializer
+from api.serializers.simple import SimplePaintingSerializer, SimpleCreatorSerializer
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -25,8 +27,11 @@ def api_root(request, format=None):
 
 
 def coucou(request):
-    populate_database.s().delay()
+    # populate_database.s().delay()
     # import_from_paintings_interval(5, 0)
+
+    Painting.objects.all().values('creators').annotate(
+        total=Count('creators')).order_by('-total')
     return HttpResponse('let\'s go')
 
 
@@ -69,12 +74,10 @@ class PaintingDetail(generics.RetrieveAPIView):
 class CreatorsSet(generics.ListAPIView):
     queryset = Creator.objects.prefetch_related('paintings').all()
     serializer_class = CreatorSerializer
-    # def perform_create(self, serializer):
-    #     serializer.save(owner=self.request.user)
 
 
 class CreatorDetail(generics.RetrieveAPIView):
-    queryset = Creator.objects.prefetch_related('paintings').all()
+    queryset = Creator.objects.all()
     serializer_class = CreatorSerializer
 
 

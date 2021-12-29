@@ -15,7 +15,7 @@
 
     <div class="dark:bg-gray-800 flex flex-col justify-between basis-1/2">
       <div>
-        <span>{{ this.creationDate }}</span>
+        <span>{{ this.painting.inception_at }}</span>
       </div>
       <div>
         <h2>Potential Creators</h2>
@@ -139,7 +139,6 @@ export default {
     return {
       painting: {},
       isLoaded: false,
-      creationDate: null,
     }
   },
   mounted() {
@@ -148,9 +147,6 @@ export default {
       .then((response) => {
         this.painting = response.data
         this.isLoaded = true
-        this.creationDate = new Intl.DateTimeFormat('en-US').format(
-          new Date(this.painting.inception_at)
-        )
       })
       .catch((e) => console.error(e))
   },

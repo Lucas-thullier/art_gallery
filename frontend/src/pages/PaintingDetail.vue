@@ -20,7 +20,14 @@
       <div>
         <h2>Potential Creators</h2>
         <span v-for="creator in this.painting.creators" :key="creator.id">
-          {{ creator.name }}
+          <router-link
+            :to="{
+              name: 'CreatorDetail',
+              params: { url: creator.url, id: creator.id },
+            }"
+          >
+            {{ creator.name }}
+          </router-link>
         </span>
       </div>
       <div>
@@ -134,6 +141,7 @@ export default {
   name: 'Detail',
   props: {
     url: String,
+    id: String,
   },
   data() {
     return {
@@ -142,9 +150,14 @@ export default {
     }
   },
   mounted() {
+    const url =
+      this.url ??
+      `${import.meta.env.VITE_APP_BACKEND_URL}/api/painting/${this.id}`
+
     axios
-      .get(this.url)
+      .get(url)
       .then((response) => {
+        console.log(response.data)
         this.painting = response.data
         this.isLoaded = true
       })

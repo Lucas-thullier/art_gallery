@@ -72,7 +72,7 @@ class PaintingDetail(generics.RetrieveAPIView):
 
 
 class CreatorsSet(generics.ListAPIView):
-    queryset = Creator.objects.prefetch_related('paintings').all()
+    queryset = Creator.objects.with_picture().with_readable_name()
     serializer_class = CreatorSerializer
 
 

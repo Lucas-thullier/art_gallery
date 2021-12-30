@@ -88,7 +88,8 @@ def get_mappings() -> dict:
             'relation_name': 'creators',
             'mappings': {
                 'creator': 'wikidata_url',
-                'creatorLabel': 'name'
+                'creatorLabel': 'name',
+                'creatorPic': 'picture_url'
             }
         },
         'Material':
@@ -136,30 +137,31 @@ def handle_creation(models_to_fill: dict, mappings: dict) -> dict:
     }
 
     for model_name, data in models_to_fill.items():
-        if len(data) > 0:
-            model = mappings[model_name]['model']
+        if 'name' in data and not data['name'].startswith('http://'):
+            if len(data) > 0:
+                model = mappings[model_name]['model']
 
-            try:
-                model_instance, is_new = model.objects.get_or_create(
-                    wikidata_url=data['wikidata_url'],
-                    defaults=data
-                )
+                try:
+                    model_instance, is_new = model.objects.get_or_create(
+                        wikidata_url=data['wikidata_url'],
+                        defaults=data
+                    )
 
-                if is_new:
-                    model_instance.save()
+                    if is_new:
+                        model_instance.save()
 
-                if isinstance(model_instance, Painting):
-                    painting: Painting = model_instance
-                    logs['painting']['id'] = painting.id
-                    logs['painting']['is_new'] = is_new
-                else:
-                    relations[model_name] = model_instance
-                    logs['relations'][model_name] = {}
-                    logs['relations'][model_name]['id'] = model_instance.id
-                    logs['relations'][model_name]['is_new'] = is_new
-            except Exception as e:
-                creations_errors_logger.warning(
-                    {'error': e, 'model': model_name, 'data': json.dumps(data)})
+                    if isinstance(model_instance, Painting):
+                        painting: Painting = model_instance
+                        logs['painting']['id'] = painting.id
+                        logs['painting']['is_new'] = is_new
+                    else:
+                        relations[model_name] = model_instance
+                        logs['relations'][model_name] = {}
+                        logs['relations'][model_name]['id'] = model_instance.id
+                        logs['relations'][model_name]['is_new'] = is_new
+                except Exception as e:
+                    creations_errors_logger.warning(
+                        {'error': e, 'model': model_name, 'data': json.dumps(data)})
 
     if painting is not None:
         for relation_name, relation_model in relations.items():

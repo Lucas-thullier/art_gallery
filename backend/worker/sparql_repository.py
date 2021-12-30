@@ -10,7 +10,7 @@ def count_paintings_full_data() -> str:
 
 def paintings_full_data(limit: int = 20, offset: int = 20) -> str:
     query = """
-    SELECT ?painting ?paintingLabel ?pic ?inception ?movement ?movementLabel ?location ?locationLabel ?owned_by ?native_label ?title ?genre ?genreLabel ?creator ?creatorLabel ?made_from_material ?made_from_materialLabel ?depicts ?depictsLabel ?width ?height ?described_at WHERE {
+    SELECT ?painting ?paintingLabel ?pic ?inception ?movement ?movementLabel ?location ?locationLabel ?owned_by ?native_label ?title ?genre ?genreLabel ?creator ?creatorLabel ?creatorPic ?made_from_material ?made_from_materialLabel ?depicts ?depictsLabel ?width ?height ?described_at WHERE {
         {
             SELECT DISTINCT ?painting WHERE {
                 ?painting p:P31 ?statement0.
@@ -28,6 +28,7 @@ def paintings_full_data(limit: int = 20, offset: int = 20) -> str:
         OPTIONAL { ?painting wdt:P1476 ?title. }
         OPTIONAL { ?painting wdt:P136 ?genre. }
         OPTIONAL { ?painting wdt:P170 ?creator. }
+        OPTIONAL { ?painting wdt:P18 ?creatorPic. }
         OPTIONAL { ?painting wdt:P495 ?country_of_origin. }
         OPTIONAL { ?painting wdt:P186 ?made_from_material. }
         OPTIONAL { ?painting wdt:P180 ?depicts. }
@@ -40,3 +41,12 @@ def paintings_full_data(limit: int = 20, offset: int = 20) -> str:
     }"""
 
     return query
+
+
+# SELECT DISTINCT ?creator ?creatorName ?t WHERE {
+#         VALUES ?creator {  wd:Q610556  }
+#         ?creator wdt:P1559 ?creatorName.
+#         ?creator wdt:0 ?id
+#         SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+# }
+# LIMIT 100

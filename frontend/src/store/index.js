@@ -8,9 +8,25 @@ const state = {
     data: [],
     count: 0,
     paginator: {
+      first: `${import.meta.env.VITE_APP_BACKEND_URL}/api/painting/all?page=1`,
       next: '',
       previous: '',
+      last: `${import.meta.env.VITE_APP_BACKEND_URL}/api/painting/all?page=last`,
     },
+    ListView: 'PaintingList',
+    detailView: 'PaintingDetail',
+  },
+  creators: {
+    data: [],
+    count: 0,
+    paginator: {
+      first: `${import.meta.env.VITE_APP_BACKEND_URL}/api/creator/all?page=1`,
+      next: '',
+      previous: '',
+      last: `${import.meta.env.VITE_APP_BACKEND_URL}/api/creator/all?page=last`,
+    },
+    ListView: 'CreatorList',
+    detailView: 'CreatorDetail',
   },
 }
 

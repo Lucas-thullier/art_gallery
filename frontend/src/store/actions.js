@@ -10,3 +10,14 @@ export const getPaintings = ({ commit }, url) => {
       .catch((e) => console.error(e))
   }
 }
+
+export const getCreators = ({ commit }, url) => {
+  if (url != false && url != null) {
+    axios
+      .get(url)
+      .then((response) => {
+        commit('receivePaginatedCreators', response.data)
+      })
+      .catch((e) => console.error(e))
+  }
+}

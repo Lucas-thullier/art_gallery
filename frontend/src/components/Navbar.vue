@@ -45,9 +45,9 @@
           <div class="hidden sm:block sm:ml-6">
             <div class="flex space-x-4">
               <router-link
-                v-for="item in navigation"
-                :to="item.href"
-                :key="item.name"
+                v-for="(item, key) in navigation"
+                :to="item.destination"
+                :key="key"
                 :class="[
                   item.current
                     ? 'bg-gray-900 text-white'
@@ -219,10 +219,9 @@
     <DisclosurePanel class="sm:hidden">
       <div class="px-2 pt-2 pb-3 space-y-1">
         <DisclosureButton
-          v-for="item in navigation"
-          :key="item.name"
-          as="a"
-          :href="item.href"
+          v-for="(item, key) in navigation"
+          :key="key"
+          :to="item.destination"
           :class="[
             item.current
               ? 'bg-gray-900 text-white'
@@ -249,7 +248,24 @@ import {
 } from '@headlessui/vue'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
 
-const navigation = [{ name: 'Home', href: '/', current: true }]
+const navigation = [
+  {
+    name: 'Gallery',
+    destination: {
+      name: 'PaintingList',
+      params: { url: '/painting/all' },
+    },
+    current: true,
+  },
+  {
+    name: 'Artists',
+    destination: {
+      name: 'CreatorList',
+      params: { url: '/creator/all' },
+    },
+    current: true,
+  },
+]
 
 export default {
   components: {

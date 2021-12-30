@@ -7,4 +7,13 @@ export default {
     state.paintings.paginator.next = next
     state.paintings.paginator.previous = previous
   },
+
+  receivePaginatedCreators(state, creators) {
+    const { results, count, next, previous } = creators
+
+    state.creators.data = results
+    state.creators.count = count
+    state.creators.paginator.next = next
+    state.creators.paginator.previous = previous
+  },
 }

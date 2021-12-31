@@ -1,14 +1,15 @@
 import json
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.db.models import Count
 
 from .models import Painting, Creator, Depiction, Genre, Location, Material, Movement
 from worker.tasks import import_from_paintings_interval, populate_database
 from api.serializers.depth_one import PaintingSerializer, CreatorSerializer, DepictionSerializer, GenreSerializer, LocationSerializer, MovementSerializer, MaterialSerializer
-from api.serializers.simple import SimplePaintingSerializer, SimpleCreatorSerializer
+from api.serializers.simple import SimplePaintingSerializer, SimpleCreatorSerializer, SimpleDepictionSerializer
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.renderers import JSONRenderer
 from rest_framework.reverse import reverse
 from worker.worker import app
 
@@ -129,3 +130,31 @@ class MovementsSet(generics.ListAPIView):
 class MovementDetail(generics.RetrieveAPIView):
     queryset = Movement.objects.prefetch_related('paintings').all()
     serializer_class = MovementSerializer
+
+
+def creator_details(request, pk):
+    depicts_details = get_creator_details_from_paintings(
+        Depiction, 'depicts', pk)
+    movements_details = get_creator_details_from_paintings(
+        Movement, 'movements', pk)
+    materials_details = get_creator_details_from_paintings(
+        Material, 'materials', pk)
+
+    details = {
+        'depicts': depicts_details,
+        'movements': movements_details,
+        'materials': materials_details
+    }
+
+    return JsonResponse(details, safe=False)
+
+
+def get_creator_details_from_paintings(class_wanted, class_name, creator_id):
+    creator = Creator.objects.prefetch_related('paintings').get(id=creator_id)
+
+    paintings = creator.paintings.prefetch_related(class_name).all()
+
+    relation_details = class_wanted.objects.filter(paintings__in=paintings).values(
+        'id', 'name').annotate(total=Count('name')).order_by('-total')
+
+    return list(relation_details)

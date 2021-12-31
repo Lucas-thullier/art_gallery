@@ -17,6 +17,9 @@ urlpatterns = format_suffix_patterns([
     path('creator/all/', views.CreatorsSet.as_view(), name='creators-list'),
     path('creator/<int:pk>/', views.CreatorDetail.as_view(),  name='creator-detail'),
 
+    path('creator/<int:pk>/detailed', views.creator_details,  name='creator-detail-full'),
+
+
     path('depiction/all/', views.DepictsSet.as_view(), name='depicts-list'),
     path('depiction/<int:pk>/', views.DepictionDetail.as_view(),
          name='depiction-detail'),

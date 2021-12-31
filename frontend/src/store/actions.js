@@ -49,7 +49,7 @@ export const getMovements = ({ commit }, url) => {
     axios
       .get(url)
       .then((response) => {
-        commit('receivePaginatedDepictMovements', response.data)
+        commit('receivePaginatedMovements', response.data)
       })
       .catch((e) => console.error(e))
   }

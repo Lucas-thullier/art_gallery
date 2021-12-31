@@ -9,7 +9,7 @@ import { mapState } from 'vuex'
 
 getMaterials(
   store,
-  `${import.meta.env.VITE_APP_BACKEND_URL}/api/materials/all/`
+  `${import.meta.env.VITE_APP_BACKEND_URL}/api/material/all/`
 )
 
 export default {

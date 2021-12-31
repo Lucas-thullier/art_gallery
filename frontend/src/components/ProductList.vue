@@ -12,11 +12,15 @@
     >
       <div v-for="product in products" :key="product.id" class="group relative">
         <router-link
-          :to="{ name: detailView, params: { url: product.url, id: product.id } }"
+          :to="{
+            name: detailView,
+            params: { url: product.url, id: product.id },
+          }"
         >
           <img
             :src="product.picture_url"
             :alt="product.imageAlt"
+            @error="setFallbackImageUrl"
             class="
               object-scale-down
               w-full
@@ -40,10 +44,17 @@
 </template>
 
 <script>
+import picture from '@assets/placeholder_profil_picture.jpg'
+
 export default {
   props: {
     products: Array,
-    detailView: String
+    detailView: String,
+  },
+  methods: {
+    setFallbackImageUrl(event) {
+      event.target.src = picture
+    },
   },
 }
 </script>

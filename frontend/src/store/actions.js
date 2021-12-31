@@ -21,3 +21,36 @@ export const getCreators = ({ commit }, url) => {
       .catch((e) => console.error(e))
   }
 }
+
+export const getDepicts = ({ commit }, url) => {
+  if (url != false && url != null) {
+    axios
+      .get(url)
+      .then((response) => {
+        commit('receivePaginatedDepicts', response.data)
+      })
+      .catch((e) => console.error(e))
+  }
+}
+
+export const getMaterials = ({ commit }, url) => {
+  if (url != false && url != null) {
+    axios
+      .get(url)
+      .then((response) => {
+        commit('receivePaginatedMaterials', response.data)
+      })
+      .catch((e) => console.error(e))
+  }
+}
+
+export const getMovements = ({ commit }, url) => {
+  if (url != false && url != null) {
+    axios
+      .get(url)
+      .then((response) => {
+        commit('receivePaginatedDepictMovements', response.data)
+      })
+      .catch((e) => console.error(e))
+  }
+}

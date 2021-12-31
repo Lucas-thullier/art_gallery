@@ -138,7 +138,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'Detail',
+  name: 'PaintingDetail',
   props: {
     url: String,
     id: String,

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex-1 flex items-center justify-center"
+    class="flex-1 flex items-center justify-center max-w-sm"
     @click="this.$emit('fetch', this.$store, this.url)"
     @mouseover="hover = true"
     @mouseleave="hover = false"

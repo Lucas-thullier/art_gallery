@@ -265,6 +265,30 @@ const navigation = [
     },
     current: true,
   },
+  {
+    name: 'Depicts',
+    destination: {
+      name: 'DepictionList',
+      params: { url: '/depiction/all' },
+    },
+    current: true,
+  },
+  {
+    name: 'Movements',
+    destination: {
+      name: 'MovementList',
+      params: { url: '/movement/all' },
+    },
+    current: true,
+  },
+  {
+    name: 'Materials',
+    destination: {
+      name: 'MaterialList',
+      params: { url: '/material/all' },
+    },
+    current: true,
+  },
 ]
 
 export default {

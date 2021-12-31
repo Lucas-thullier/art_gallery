@@ -41,12 +41,14 @@
           :alt="this.creator.name"
         />
       </div>
-      <div>WIP</div>
-      <aside class="overflow-y-scroll text-left" id="creator-data">
+      <aside class="overflow-y-auto text-left" id="creator-data">
         <div
           @click=";(this.actualPainting = key), computePaginator()"
           v-for="(painting, key) in this.allPaintings"
-          class=" transition ease-in-out hover:cursor-pointer hover:bg-gray-700"
+          :class="{
+            'transition ease-in-out hover:cursor-pointer hover:bg-gray-700': true,
+            'bg-gray-700': key == this.actualPainting,
+          }"
         >
           <span>
             {{ painting.name }}
@@ -57,6 +59,62 @@
           </span>
         </div>
       </aside>
+      <div class="flex flex-row justify-between px-3 py-2">
+        <div>
+          <h2>Main Depicts</h2>
+          <div
+            v-for="(depiction, key) in this.creatorDetails['depicts']?.slice(
+              0,
+              3
+            )"
+            :key="key"
+          >
+            <span>
+              {{ depiction.name }}
+            </span>
+            <span> - </span>
+            <span>
+              {{ depiction.total }}
+            </span>
+          </div>
+        </div>
+        <div>
+          <h2>Main Movements</h2>
+          <div
+            v-for="(movement, key) in this.creatorDetails['movements']?.slice(
+              0,
+              3
+            )"
+            :key="key"
+          >
+            <span>
+              {{ movement.name }}
+            </span>
+            <span> - </span>
+            <span>
+              {{ movement.total }}
+            </span>
+          </div>
+        </div>
+        <div>
+          <h2>Main Materials</h2>
+          <div
+            v-for="(material, key) in this.creatorDetails['materials']?.slice(
+              0,
+              3
+            )"
+            :key="key"
+          >
+            <span>
+              {{ material.name }}
+            </span>
+            <span> - </span>
+            <span>
+              {{ material.total }}
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -66,7 +124,7 @@ import axios from 'axios'
 import picture from '@assets/placeholder_profil_picture.jpg'
 
 export default {
-  name: 'Detail',
+  name: 'CreatorDetail',
   props: {
     url: String,
     id: String,
@@ -74,17 +132,21 @@ export default {
   data() {
     return {
       creator: {},
+      creatorDetails: {},
       actualPainting: 0,
       paginator: null,
       isLoaded: false,
       allPaintings: {},
-      anim: true,
     }
   },
   mounted() {
     const url =
       this.url ??
       `${import.meta.env.VITE_APP_BACKEND_URL}/api/creator/${this.id}/`
+
+    const detailsUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/api/creator/${
+      this.id
+    }/detailed`
 
     axios
       .get(url)
@@ -93,6 +155,13 @@ export default {
         this.allPaintings = response.data.paintings
         this.computePaginator()
         this.isLoaded = true
+      })
+      .catch((e) => console.error(e))
+
+    axios
+      .get(detailsUrl)
+      .then((response) => {
+        this.creatorDetails = response.data
       })
       .catch((e) => console.error(e))
   },

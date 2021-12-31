@@ -28,6 +28,42 @@ const state = {
     ListView: 'CreatorList',
     detailView: 'CreatorDetail',
   },
+  materials: {
+    data: [],
+    count: 0,
+    paginator: {
+      first: `${import.meta.env.VITE_APP_BACKEND_URL}/api/materials/all?page=1`,
+      next: '',
+      previous: '',
+      last: `${import.meta.env.VITE_APP_BACKEND_URL}/api/materials/all?page=last`,
+    },
+    ListView: 'MaterialList',
+    detailView: 'MaterialDetail',
+  },
+  depicts: {
+    data: [],
+    count: 0,
+    paginator: {
+      first: `${import.meta.env.VITE_APP_BACKEND_URL}/api/depiction/all?page=1`,
+      next: '',
+      previous: '',
+      last: `${import.meta.env.VITE_APP_BACKEND_URL}/api/depiction/all?page=last`,
+    },
+    ListView: 'DepictionList',
+    detailView: 'DepictionDetail',
+  },
+  movements: {
+    data: [],
+    count: 0,
+    paginator: {
+      first: `${import.meta.env.VITE_APP_BACKEND_URL}/api/movement/all?page=1`,
+      next: '',
+      previous: '',
+      last: `${import.meta.env.VITE_APP_BACKEND_URL}/api/movement/all?page=last`,
+    },
+    ListView: 'MovementList',
+    detailView: 'MovementDetail',
+  },
 }
 
 export default createStore({

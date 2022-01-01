@@ -1,6 +1,7 @@
 import json
 from django.http import HttpResponse, JsonResponse
 from django.db.models import Count
+from django.contrib.postgres.search import SearchVector, SearchQuery
 
 from .models import Painting, Creator, Depiction, Genre, Location, Material, Movement
 from worker.tasks import import_from_paintings_interval, populate_database
@@ -73,7 +74,7 @@ class PaintingDetail(generics.RetrieveAPIView):
 
 
 class CreatorsSet(generics.ListAPIView):
-    queryset = Creator.objects.with_picture().with_readable_name()
+    queryset = Creator.objects.with_picture().with_readable_name().order_by('name')
     serializer_class = CreatorSerializer
 
 
@@ -158,3 +159,37 @@ def get_creator_details_from_paintings(class_wanted, class_name, creator_id):
         'id', 'name').annotate(total=Count('name')).order_by('-total')
 
     return list(relation_details)
+
+
+def fulltext_search(request):
+    user_search = request.GET.get("search")
+    user_search = SearchQuery(user_search)
+
+    paintings = Painting.objects.annotate(
+        search=SearchVector('name')).filter(search=user_search)[:5]
+
+    creators = Creator.objects.annotate(
+        search=SearchVector('name')).filter(search=user_search)[:5]
+
+    depicts = Depiction.objects.annotate(
+        search=SearchVector('name')).filter(search=user_search)[:5]
+
+    search_return = {
+        'paintings': SimplePaintingSerializer(
+            paintings,
+            context={'request': request},
+            many=True
+        ).data,
+        'creators': SimpleCreatorSerializer(
+            creators,
+            context={'request': request},
+            many=True
+        ).data,
+        'depicts': SimpleDepictionSerializer(
+            depicts,
+            context={'request': request},
+            many=True
+        ).data,
+    }
+
+    return JsonResponse(search_return, safe=False)

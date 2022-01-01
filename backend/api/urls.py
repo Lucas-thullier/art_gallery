@@ -7,6 +7,7 @@ urlpatterns = format_suffix_patterns([
     path('', views.api_root),
 
     path('painting/coucou/', views.coucou, name='coucou'),
+    path('fulltext-search/', views.fulltext_search, name='fulltext_search'),
 
     path('kill-tasks/', views.purgeWaitingAndReservedTasks, name='purgeTasks'),
 
@@ -35,7 +36,7 @@ urlpatterns = format_suffix_patterns([
     path('material/<int:pk>/', views.MaterialDetail.as_view(),
          name='material-detail'),
 
-    path('movements/all/', views.MovementsSet.as_view(), name='movements-list'),
+    path('movement/all/', views.MovementsSet.as_view(), name='movements-list'),
     path('movement/<int:pk>/', views.MovementDetail.as_view(),
          name='movement-detail'),
 ])

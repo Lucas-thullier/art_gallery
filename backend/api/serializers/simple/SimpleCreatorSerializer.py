@@ -10,4 +10,5 @@ class SimpleCreatorSerializer(serializers.HyperlinkedModelSerializer):
             'id',
             'name',
             'url',
+            'picture_url'
         ]

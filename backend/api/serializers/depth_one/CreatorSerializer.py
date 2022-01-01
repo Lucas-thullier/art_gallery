@@ -5,6 +5,7 @@ from rest_framework import serializers
 
 class CreatorSerializer(serializers.HyperlinkedModelSerializer):
     paintings = SimplePaintingSerializer(many=True, read_only=True)
+    paintings_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Creator
@@ -13,5 +14,10 @@ class CreatorSerializer(serializers.HyperlinkedModelSerializer):
             'id',
             'name',
             'url',
-            'paintings'
+            'picture_url',
+            'paintings',
+            'paintings_count'
         ]
+
+    def get_paintings_count(self, obj):
+        return obj.paintings.count()

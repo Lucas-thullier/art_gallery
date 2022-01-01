@@ -1,18 +1,15 @@
 <template class>
-  <section class="bg-gray-700 flex flex-row">
-    <go-to-paginate
-      v-bind:orientation="'left'"
-      v-bind:paginator="paginator"
+  <section class="container mx-auto flex flex-col justify-center items-center">
+    <pagination
+      v-show="this.creators.length > 0"
+      :paginator="paginator"
+      :count="count"
       @fetch="getCreators"
+      class="self-end"
     />
     <product-list
       v-bind:products="creators"
       v-bind:detailView="'CreatorDetail'"
-    />
-    <go-to-paginate
-      v-bind:orientation="'right'"
-      v-bind:paginator="paginator"
-      @fetch="getCreators"
     />
   </section>
 </template>
@@ -22,16 +19,21 @@ import store from '@store'
 import { getCreators } from '@store/actions'
 import { mapState } from 'vuex'
 
-getCreators(store, `${import.meta.env.VITE_APP_BACKEND_URL}/api/creator/all/`)
-
 export default {
   name: 'CreatorList',
   methods: {
     getCreators,
   },
+  mounted() {
+    this.getCreators(
+      store,
+      `${import.meta.env.VITE_APP_BACKEND_URL}/api/creator/all/`
+    )
+  },
   computed: mapState({
     creators: (state) => state.creators.data,
     paginator: (state) => state.creators.paginator,
+    count: (state) => state.creators.count,
   }),
 }
 </script>

@@ -3,19 +3,25 @@
 <template>
   <navbar></navbar>
 
-  <router-view></router-view>
+  <router-view v-slot="{ Component }">
+    <keep-alive include="PaintingList">
+      <component :is="Component" />
+    </keep-alive>
+  </router-view>
 </template>
 
 <style>
 html,
 body,
 #app {
-  height: 100vh;
+  min-height: 100vh;
+  @apply lg:h-screen;
 }
 
 #app {
   display: flex;
   flex-direction: column;
+  @apply bg-gray-700;
 }
 
 #app > section {
@@ -23,7 +29,7 @@ body,
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  @apply font-sans;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

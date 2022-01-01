@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-2xl lg:max-w-7xl flex items-center">
+  <div class="flex items-center justify-center flex-1 flex-col">
     <div
       class="
         mt-6
@@ -18,7 +18,7 @@
           }"
         >
           <img
-            :src="product.picture_url"
+            :src="this.picture_url(product)"
             :alt="product.imageAlt"
             @error="setFallbackImageUrl"
             class="
@@ -50,10 +50,21 @@ export default {
   props: {
     products: Array,
     detailView: String,
+    paginator: Object,
+    count: Number,
   },
   methods: {
     setFallbackImageUrl(event) {
       event.target.src = picture
+    },
+    picture_url(product) {
+      if (product.picture_url) {
+        return product.picture_url
+      } else if (product.paintings && product.paintings[0]) {
+        return product.paintings[0].picture_url
+      } else {
+        return picture
+      }
     },
   },
 }

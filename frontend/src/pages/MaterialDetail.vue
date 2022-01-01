@@ -20,9 +20,9 @@ export default {
     }
   },
   mounted() {
-    const url =
-      this.url ??
-      `${import.meta.env.VITE_APP_BACKEND_URL}/api/material/${this.id}`
+    const url = `${import.meta.env.VITE_APP_BACKEND_URL}/api/material/${
+      this.$route.params.id
+    }`
 
     axios
       .get(url)

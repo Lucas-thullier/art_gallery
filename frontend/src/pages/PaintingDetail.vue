@@ -1,5 +1,14 @@
 <template>
-  <section class="flex dark:bg-gray-700 text-white body-font h-93percent">
+  <section
+    class="
+      flex flex-col
+      lg:flex-row
+      dark:bg-gray-700
+      text-white
+      body-font
+      h-93percent
+    "
+  >
     <div class="h-full container p-5 mx-auto grid place-items-center">
       <div>
         <h1>
@@ -7,13 +16,14 @@
         </h1>
       </div>
       <img
-        class="rounded object-contain max-h-full"
+        @click="setModal(true)"
+        class="rounded object-contain cursor-pointer max-h-full"
         :src="this.painting.picture_url"
-        alt="step"
+        :alt="this.painting.name"
       />
     </div>
 
-    <div class="dark:bg-gray-800 flex flex-col justify-between basis-1/2">
+    <div class="dark:bg-gray-800 flex flex-col justify-between lg:basis-1/2">
       <div>
         <span>{{ this.painting.inception_at }}</span>
       </div>
@@ -48,26 +58,6 @@
           :key="material.id"
         >
           {{ material.name }}
-        </span>
-      </div>
-      <div>
-        <h2>Genres</h2>
-        <span
-          class="
-            bg-gray-100
-            inline-block
-            text-gray-800 text-xs
-            font-semibold
-            mr-2
-            px-2.5
-            py-0.5
-            rounded-full
-            dark:bg-gray-700 dark:text-gray-300
-          "
-          v-for="genre in this.painting.genre"
-          :key="genre.id"
-        >
-          {{ genre.name }}
         </span>
       </div>
       <div>
@@ -113,8 +103,8 @@
       <div>
         <h2>Depicts</h2>
         <span
-          v-for="depiction in this.painting.depicts"
-          :key="depiction.id"
+          v-for="(depiction, key) in this.painting.depicts"
+          :key="key"
           class="
             bg-gray-100
             inline-block
@@ -127,10 +117,26 @@
             dark:bg-gray-700 dark:text-gray-300
           "
         >
-          {{ depiction.name }}
+          <router-link
+            class="flex-1 flex flex-col"
+            :to="{
+              name: 'DepictionDetail',
+              params: {
+                url: depiction.url,
+                id: depiction.id,
+              },
+            }"
+          >
+            {{ depiction.name }}
+          </router-link>
         </span>
       </div>
     </div>
+    <full-size-painting
+      :open="open"
+      @setModal="setModal"
+      :picture="this.painting.picture_url"
+    />
   </section>
 </template>
 
@@ -147,21 +153,37 @@ export default {
     return {
       painting: {},
       isLoaded: false,
+      open: false,
     }
   },
-  mounted() {
-    const url =
-      this.url ??
-      `${import.meta.env.VITE_APP_BACKEND_URL}/api/painting/${this.id}`
+  created() {
+    this.fetchData()
+  },
+  methods: {
+    fetchData() {
+      const url = `${import.meta.env.VITE_APP_BACKEND_URL}/api/painting/${
+        this.$route.params.id
+      }/`
 
-    axios
-      .get(url)
-      .then((response) => {
-        console.log(response.data)
-        this.painting = response.data
-        this.isLoaded = true
-      })
-      .catch((e) => console.error(e))
+      axios
+        .get(url)
+        .then((response) => {
+          this.painting = response.data
+          this.isLoaded = true
+        })
+        .catch((e) => console.error(e))
+    },
+    setModal(newValue) {
+      this.open = newValue
+    },
+  },
+
+  watch: {
+    '$route.params.id': function () {
+      if (this.$route?.params?.id) {
+        this.fetchData()
+      }
+    },
   },
 }
 </script>

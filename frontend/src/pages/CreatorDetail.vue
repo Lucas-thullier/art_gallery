@@ -1,48 +1,51 @@
 <template>
-  <section class="flex dark:bg-gray-700 text-white body-font h-93percent">
-    <div
+  <section
+    class="
+      flex flex-col
+      lg:flex-row
+      dark:bg-gray-700
+      text-white
+      body-font
+      h-93percent
+    "
+  >
+    <router-link
       @wheel="scrollTroughtPaintings"
       id="painting-slider"
       ref="paintingSlider"
-      class="h-full container p-5 mx-auto flex flex-row items-center"
+      class="h-full container p-5 mx-auto grid place-items-center"
+      :to="{
+        name: 'PaintingDetail',
+        params: {
+          url: actualDisplayedPainting.url,
+          id: actualDisplayedPainting.id,
+        },
+      }"
     >
-      <div class="min-w-full h-full flex">
-        <router-link
-          class="flex-1 flex flex-col"
-          :to="{
-            name: 'PaintingDetail',
-            params: {
-              url: actualDisplayedPainting.url,
-              id: actualDisplayedPainting.id,
-            },
-          }"
-        >
-          <span>
-            {{ actualDisplayedPainting.name }}
-          </span>
-          <img
-            class="rounded object-contain h-93percent"
-            :src="actualDisplayedPainting.picture_url"
-            :alt="actualDisplayedPainting.name"
-          />
-        </router-link>
-      </div>
-    </div>
+      <span>
+        {{ actualDisplayedPainting.name }}
+      </span>
+      <img
+        class="rounded object-contain max-h-full"
+        :src="actualDisplayedPainting.picture_url"
+        :alt="actualDisplayedPainting.name"
+      />
+    </router-link>
 
-    <div class="dark:bg-gray-800 flex flex-col justify-between basis-1/2">
+    <aside class="dark:bg-gray-800 flex flex-col justify-between basis-1/2">
       <div class="flex flex-row items-center justify-between p-2">
         <h1>
           {{ this.creator.name }}
         </h1>
         <img
-          class="h-24 w-24 rounded-full"
+          class="h-24 w-24 rounded-full object-fill"
           @error="setFallbackImageUrl"
           :src="this.creator.picture_url"
           :alt="this.creator.name"
         />
       </div>
-      <aside class="overflow-y-auto text-left" id="creator-data">
-        <div
+      <ul class="flex-1 text-left overflow-y-auto">
+        <li
           @click=";(this.actualPainting = key), computePaginator()"
           v-for="(painting, key) in this.allPaintings"
           :class="{
@@ -57,65 +60,67 @@
           <span>
             {{ painting.inception_at }}
           </span>
-        </div>
-      </aside>
-      <div class="flex flex-row justify-between px-3 py-2">
-        <div>
-          <h2>Main Depicts</h2>
-          <div
-            v-for="(depiction, key) in this.creatorDetails['depicts']?.slice(
-              0,
-              3
-            )"
-            :key="key"
-          >
-            <span>
-              {{ depiction.name }}
-            </span>
-            <span> - </span>
-            <span>
-              {{ depiction.total }}
-            </span>
+        </li>
+      </ul>
+      <div class="overflow-y-auto text-left" id="creator-data">
+        <div class="flex flex-row justify-between px-3 py-2">
+          <div>
+            <h2>Main Depicts</h2>
+            <div
+              v-for="(depiction, key) in this.creatorDetails['depicts']?.slice(
+                0,
+                3
+              )"
+              :key="key"
+            >
+              <span>
+                {{ depiction.name }}
+              </span>
+              <span> - </span>
+              <span>
+                {{ depiction.total }}
+              </span>
+            </div>
           </div>
-        </div>
-        <div>
-          <h2>Main Movements</h2>
-          <div
-            v-for="(movement, key) in this.creatorDetails['movements']?.slice(
-              0,
-              3
-            )"
-            :key="key"
-          >
-            <span>
-              {{ movement.name }}
-            </span>
-            <span> - </span>
-            <span>
-              {{ movement.total }}
-            </span>
+          <div>
+            <h2>Main Movements</h2>
+            <div
+              v-for="(movement, key) in this.creatorDetails['movements']?.slice(
+                0,
+                3
+              )"
+              :key="key"
+            >
+              <span>
+                {{ movement.name }}
+              </span>
+              <span> - </span>
+              <span>
+                {{ movement.total }}
+              </span>
+            </div>
           </div>
-        </div>
-        <div>
-          <h2>Main Materials</h2>
-          <div
-            v-for="(material, key) in this.creatorDetails['materials']?.slice(
-              0,
-              3
-            )"
-            :key="key"
-          >
-            <span>
-              {{ material.name }}
-            </span>
-            <span> - </span>
-            <span>
-              {{ material.total }}
-            </span>
+          <div>
+            <h2>Main Materials</h2>
+            <div
+              v-for="(material, key) in this.creatorDetails['materials']?.slice(
+                0,
+                3
+              )"
+              :key="key"
+            >
+              <span>
+                {{ material.name }}
+              </span>
+              <span> - </span>
+              <span>
+                {{ material.total }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </aside>
   </section>
 </template>
 
@@ -139,31 +144,8 @@ export default {
       allPaintings: {},
     }
   },
-  mounted() {
-    const url =
-      this.url ??
-      `${import.meta.env.VITE_APP_BACKEND_URL}/api/creator/${this.id}/`
-
-    const detailsUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/api/creator/${
-      this.id
-    }/detailed`
-
-    axios
-      .get(url)
-      .then((response) => {
-        this.creator = response.data
-        this.allPaintings = response.data.paintings
-        this.computePaginator()
-        this.isLoaded = true
-      })
-      .catch((e) => console.error(e))
-
-    axios
-      .get(detailsUrl)
-      .then((response) => {
-        this.creatorDetails = response.data
-      })
-      .catch((e) => console.error(e))
+  created() {
+    this.fetchData()
   },
   methods: {
     setFallbackImageUrl(event) {
@@ -201,6 +183,32 @@ export default {
 
       this.computePaginator()
     },
+    fetchData() {
+      const url = `${import.meta.env.VITE_APP_BACKEND_URL}/api/creator/${
+        this.$route.params.id
+      }/`
+
+      const detailsUrl = `${import.meta.env.VITE_APP_BACKEND_URL}/api/creator/${
+        this.$route.params.id
+      }/detailed`
+
+      axios
+        .get(url)
+        .then((response) => {
+          this.creator = response.data
+          this.allPaintings = response.data.paintings
+          this.computePaginator()
+          this.isLoaded = true
+        })
+        .catch((e) => console.error(e))
+
+      axios
+        .get(detailsUrl)
+        .then((response) => {
+          this.creatorDetails = response.data
+        })
+        .catch((e) => console.error(e))
+    },
   },
   computed: {
     actualDisplayedPainting() {
@@ -208,6 +216,13 @@ export default {
         return this.allPaintings[this.paginator.actual]
       } else {
         return { name: '', id: '0', url: '' }
+      }
+    },
+  },
+  watch: {
+    '$route.params.id': function () {
+      if (this.$route?.params?.id) {
+        this.fetchData()
       }
     },
   },

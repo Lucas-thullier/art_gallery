@@ -1,18 +1,17 @@
-<template class>
-  <section class="bg-gray-700 flex flex-row">
-    <go-to-paginate
-      v-bind:orientation="'left'"
-      v-bind:paginator="paginator"
+<template :is="PaintingList">
+  <section class="container sm:px-3 mx-auto flex flex-col justify-center items-center">
+    <pagination
+      v-show="this.paintings.length > 0"
+      :paginator="paginator"
+      :count="count"
       @fetch="getPaintings"
+      class="self-end"
     />
     <product-list
-      v-bind:products="paintings"
+      :products="paintings"
+      :paginator="paginator"
+      :count="count"
       v-bind:detailView="'PaintingDetail'"
-    />
-    <go-to-paginate
-      v-bind:orientation="'right'"
-      v-bind:paginator="paginator"
-      @fetch="getPaintings"
     />
   </section>
 </template>
@@ -22,16 +21,21 @@ import store from '@store'
 import { getPaintings } from '@store/actions'
 import { mapState } from 'vuex'
 
-getPaintings(store, `${import.meta.env.VITE_APP_BACKEND_URL}/api/painting/all/`)
-
 export default {
   name: 'PaintingList',
   methods: {
     getPaintings,
   },
+  mounted() {
+    this.getPaintings(
+      store,
+      `${import.meta.env.VITE_APP_BACKEND_URL}/api/painting/all/`
+    )
+  },
   computed: mapState({
     paintings: (state) => state.paintings.data,
     paginator: (state) => state.paintings.paginator,
+    count: (state) => state.paintings.count,
   }),
 }
 </script>

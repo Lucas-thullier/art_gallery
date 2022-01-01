@@ -1,10 +1,5 @@
 <template class>
-  <section class="bg-gray-700 flex flex-row justify-between">
-    <go-to-paginate
-      v-bind:orientation="'left'"
-      v-bind:paginator="paginator"
-      @fetch="getDepicts"
-    />
+  <section class="container mx-auto flex flex-col justify-center items-center">
     <div class="self-center">
       <ul class="list-disc text-left bg-gray-800 p-10 rounded">
         <li
@@ -23,11 +18,6 @@
         </li>
       </ul>
     </div>
-    <go-to-paginate
-      v-bind:orientation="'right'"
-      v-bind:paginator="paginator"
-      @fetch="getDepicts"
-    />
   </section>
 </template>
 
@@ -36,12 +26,16 @@ import store from '@store'
 import { getDepicts } from '@store/actions'
 import { mapState } from 'vuex'
 
-getDepicts(store, `${import.meta.env.VITE_APP_BACKEND_URL}/api/depiction/all/`)
-
 export default {
   name: 'DepictionList',
   methods: {
     getDepicts,
+  },
+  mounted() {
+    this.getDepicts(
+      store,
+      `${import.meta.env.VITE_APP_BACKEND_URL}/api/depiction/all/`
+    )
   },
   computed: mapState({
     depicts: (state) => state.depicts.data,

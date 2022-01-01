@@ -1,22 +1,21 @@
 <template>
-  <section class="flex dark:bg-gray-700 text-white body-font h-93percent">
-    <go-to-paginate
-      v-bind:orientation="'left'"
-      v-bind:paginator="this.paginator"
-      @fetch="updatePage"
+  <section
+    class="container sm:px-3 mx-auto flex flex-col justify-center items-center"
+  >
+    <pagination
+      v-show="this.paintings.length > 0"
+      :paginator="paginator"
+      :count="paintings.length"
+      @fetch="fetchData"
+      class="self-end"
     />
-    <div>
-      <h1>{{ this.depiction.name }}</h1>
+    <div class="flex items-center flex-1 flex-col">
+      <h1 class="text-white">{{ this.depiction.name }}</h1>
       <product-list
         v-bind:products="renderedPaintings"
         v-bind:detailView="'PaintingDetail'"
       />
     </div>
-    <go-to-paginate
-      v-bind:orientation="'right'"
-      v-bind:paginator="this.paginator"
-      @fetch="updatePage"
-    />
   </section>
 </template>
 
@@ -40,20 +39,8 @@ export default {
       },
     }
   },
-  mounted() {
-    const url =
-      this.url ??
-      `${import.meta.env.VITE_APP_BACKEND_URL}/api/depiction/${this.id}`
-
-    axios
-      .get(url)
-      .then((response) => {
-        this.depiction = response.data
-        this.paintings = this.depiction.paintings
-        this.isLoaded = true
-        this.updatePaginator()
-      })
-      .catch((e) => console.error(e))
+  created() {
+    this.fetchData()
   },
   methods: {
     updatePaginator() {
@@ -84,6 +71,21 @@ export default {
 
       this.updatePaginator()
     },
+    fetchData() {
+      const url = `${import.meta.env.VITE_APP_BACKEND_URL}/api/depiction/${
+        this.$route.params.id
+      }`
+
+      axios
+        .get(url)
+        .then((response) => {
+          this.depiction = response.data
+          this.paintings = this.depiction.paintings
+          this.isLoaded = true
+          this.updatePaginator()
+        })
+        .catch((e) => console.error(e))
+    },
   },
   computed: {
     renderedPaintings() {
@@ -94,6 +96,13 @@ export default {
         )
       } else {
         return []
+      }
+    },
+  },
+  watch: {
+    '$route.params.id': function (from, to, t) {
+      if (this.$route?.params?.id) {
+        this.fetchData()
       }
     },
   },

@@ -4,7 +4,7 @@
   <navbar></navbar>
 
   <router-view v-slot="{ Component }">
-    <keep-alive include="PaintingList">
+    <keep-alive :include="['PaintingList', 'CreatorList']">
       <component :is="Component" />
     </keep-alive>
   </router-view>

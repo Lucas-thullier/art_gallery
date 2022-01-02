@@ -44,18 +44,20 @@
           <div class="hidden md:block sm:ml-6">
             <div class="flex space-x-4">
               <router-link
-                v-for="(item, key) in navigation"
+                v-for="(item, key) in this.navigation"
                 :to="item.destination"
+                @click="handleCurrent(item)"
                 :key="key"
                 :class="[
+                  'px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-900',
                   item.current
                     ? 'bg-gray-900 text-white'
                     : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'px-3 py-2 rounded-md text-sm font-medium',
                 ]"
                 :aria-current="item.current ? 'page' : undefined"
-                >{{ item.name }}</router-link
               >
+                {{ item.name }}
+              </router-link>
             </div>
           </div>
         </div>
@@ -66,18 +68,20 @@
     <DisclosurePanel class="sm:hidden">
       <div class="px-2 pt-2 pb-3 space-y-1">
         <DisclosureButton
-          v-for="(item, key) in navigation"
+          v-for="(item, key) in this.navigation"
           :key="key"
+          @click="handleCurrent(item)"
           :to="item.destination"
           :class="[
             item.current
               ? 'bg-gray-900 text-white'
-              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+              : 'text-gray-300 hover:bg-gray-900 hover:text-white',
             'block px-3 py-2 rounded-md text-base font-medium',
           ]"
           :aria-current="item.current ? 'page' : undefined"
-          >{{ item.name }}</DisclosureButton
         >
+          {{ item.name }}
+        </DisclosureButton>
       </div>
     </DisclosurePanel>
   </Disclosure>
@@ -95,49 +99,6 @@ import {
 } from '@headlessui/vue'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
 
-const navigation = [
-  {
-    name: 'Gallery',
-    destination: {
-      name: 'PaintingList',
-      params: { url: '/painting/all' },
-    },
-    current: true,
-  },
-  {
-    name: 'Artists',
-    destination: {
-      name: 'CreatorList',
-      params: { url: '/creator/all' },
-    },
-    current: true,
-  },
-  {
-    name: 'Depicts',
-    destination: {
-      name: 'DepictionList',
-      params: { url: '/depiction/all' },
-    },
-    current: true,
-  },
-  {
-    name: 'Movements',
-    destination: {
-      name: 'MovementList',
-      params: { url: '/movement/all' },
-    },
-    current: true,
-  },
-  {
-    name: 'Materials',
-    destination: {
-      name: 'MaterialList',
-      params: { url: '/material/all' },
-    },
-    current: true,
-  },
-]
-
 export default {
   components: {
     Disclosure,
@@ -151,10 +112,60 @@ export default {
     MenuIcon,
     XIcon,
   },
-  setup() {
+  data() {
     return {
-      navigation,
+      navigation: [
+        {
+          name: 'Gallery',
+          destination: {
+            name: 'PaintingList',
+            params: { url: '/painting/all' },
+          },
+          current: false,
+        },
+        {
+          name: 'Artists',
+          destination: {
+            name: 'CreatorList',
+            params: { url: '/creator/all' },
+          },
+          current: false,
+        },
+        {
+          name: 'Depicts',
+          destination: {
+            name: 'DepictionList',
+            params: { url: '/depiction/all' },
+          },
+          current: false,
+        },
+        {
+          name: 'Movements',
+          destination: {
+            name: 'MovementList',
+            params: { url: '/movement/all' },
+          },
+          current: false,
+        },
+        {
+          name: 'Materials',
+          destination: {
+            name: 'MaterialList',
+            params: { url: '/material/all' },
+          },
+          current: false,
+        },
+      ],
     }
+  },
+  methods: {
+    handleCurrent(clickedItem) {
+      this.navigation.forEach((item) => {
+        item.current = false
+      })
+
+      clickedItem.current = true
+    },
   },
 }
 </script>

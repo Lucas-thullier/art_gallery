@@ -39,10 +39,11 @@ Frontend:
 - A minimal responsivness actually
 
 ## Roadmap
-- improve search (actually "van gog" isn't find by example)
-- improve UI on details view
-- implementing UI for Movements and Location
+- Improve search (actually "van gog" isn't find by example)
+- Improve UI on details view
+- Implementing UI for Movements and Location
 - Do some fun stats on Creators
+- Implementing user session to keep liked paintings
 - and much more...
 
 ## Useful commands

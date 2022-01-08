@@ -29,6 +29,7 @@ To launch the project you need to
 
 ## How it work
 Gallery is ship with data seed but it contain tools to fetch data from Wikidata wih SPARQL query (./backend/worker/repositories)
+
 Backend: 
 - an API for Paintings, Creators, Depicts, Movements of paintings. All are hyperlinked between them throught Paintings.
 - some worker with tasks for fetching Wikidata with SPARQL queries (./backend/worker/sparql_repository.py)

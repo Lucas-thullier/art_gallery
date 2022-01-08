@@ -28,7 +28,7 @@ services:
     networks:
       - my-app-network
     restart: on-failure
-    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000 & watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A worker.worker.app worker --loglevel=INFO"
+    command: bash -c "python manage.py runserver 0.0.0.0:8000 & watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A worker.worker.app worker --loglevel=INFO"
 
   frontend:
     container_name: frontend

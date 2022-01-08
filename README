@@ -18,8 +18,10 @@ To launch the project you need to
 - Use Docker
 - remove .example suffixes from ./env.example and ./frontend/.env.example
 - place current working directory at root (before backend and frontend)
-- run docker-compose up
-- feed database with gunzip < ./backend/seeds/initial_dump.gz | docker exec -i db psql -U postgres -d postgres
+- run : docker-compose up
+- feed database with : gunzip < ./backend/seeds/initial_dump.gz | docker exec -i db psql -U postgres -d postgres
+- wait until end of feeding (this may take a while)
+- go to http://localhost:3000/#/painting/all
 
 clear tasks queue:
   celery -A celery purge (le second celery = appli normalement worker.worker.app mais bizaremment non. A verifier pourquoi)

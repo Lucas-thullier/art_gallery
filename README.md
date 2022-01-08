@@ -2,7 +2,9 @@
  Gallery 🎨
 </h1> 
 
+<h1 align="center">
 ## ⚠️ This project is under development ⚠️
+</h1>
 
 <h2 align="center">
 Gallery is a place where you can explore throught wikidata-registered paintings (and that's much paintings)

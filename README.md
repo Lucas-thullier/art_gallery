@@ -19,11 +19,10 @@ Gallery is a place where you can explore throught wikidata-registered paintings 
 
 ## Get Started
 To launch the project you need to use Docker
-- git clone https://github.com/lvnav/art_gallery.git
-- remove .example suffixes from ./env.example and ./frontend/.env.example
-- place current working directory at root (before backend and frontend)
-- run : docker-compose up
-- feed database with : gunzip < ./backend/seeds/initial_dump.gz | docker exec -i db psql -U postgres -d postgres
+- run : git clone https://github.com/lvnav/art_gallery.git
+- run : cd art_gallery
+- run : make
+- run : gunzip < ./backend/seeds/initial_dump.gz | docker exec -i db psql -U postgres -d postgres
 - wait until end of feeding (this may take a while)
 - go to http://localhost:3000/#/painting/all
 

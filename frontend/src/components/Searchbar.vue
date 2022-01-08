@@ -3,6 +3,7 @@
     <div>
       <input
         @keyup.enter="handleSearch"
+        @blur="closeSearchList"
         v-model="searchInput"
         class="
           border-2
@@ -57,14 +58,13 @@
       "
     >
       <ul v-for="(categorie, key) in searchData" :key="key">
-        <li class="bg-gray-900">
+        <li class="bg-gray-900" v-show="categorie.length > 0">
           {{ this.capitalizeWord(key) }}
         </li>
-
         <li
           v-for="element in categorie"
           :key="element.id"
-          class="hover:bg-gray-800 max-h-8 truncate"
+          class="hover:bg-gray-800 max-h-8 flex transition ease-in-out"
           :title="element.name"
         >
           <router-link
@@ -73,7 +73,7 @@
               params: { url: element.url, id: element.id },
             }"
             @click="this.updateStatus"
-            class="max-h-2"
+            class="flex-1 truncate py-1"
           >
             {{ element.name }}
           </router-link>
@@ -93,6 +93,7 @@ export default {
       searchData: {},
       searchTimeout: null,
       isSearching: false,
+      blurTimeout: null,
     }
   },
   methods: {
@@ -109,6 +110,15 @@ export default {
           this.searchData = response.data
         })
         .catch((e) => console.error(e))
+    },
+    closeSearchList(event) {
+      if (this.blurTimeout) {
+        window.clearTimeout(this.blurTimeout)
+      }
+
+      this.blurTimeout = window.setTimeout(() => {
+        this.isSearching = false
+      }, 150)
     },
     capitalizeWord(word) {
       return word.charAt(0).toUpperCase() + word.slice(1)
@@ -139,6 +149,5 @@ export default {
       }
     },
   },
-  computed: {},
 }
 </script>

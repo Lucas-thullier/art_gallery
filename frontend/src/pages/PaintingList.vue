@@ -23,6 +23,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'PaintingList',
+  title: `${import.meta.env.VITE_APP_FRONTEND_NAME} - Paintings`,
   methods: {
     getPaintings,
   },

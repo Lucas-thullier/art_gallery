@@ -130,6 +130,7 @@ import picture from '@assets/placeholder_profil_picture.jpg'
 
 export default {
   name: 'CreatorDetail',
+  title: `${import.meta.env.VITE_APP_FRONTEND_NAME} - Creator`,
   props: {
     url: String,
     id: String,

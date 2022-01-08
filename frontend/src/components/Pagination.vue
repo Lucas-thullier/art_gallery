@@ -2,6 +2,7 @@
   <nav
     class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px pt-4"
     aria-label="Pagination"
+    v-if="parseInt(count / 8) > 1"
   >
     <div
       @click="

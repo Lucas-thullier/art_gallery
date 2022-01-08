@@ -21,6 +21,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'CreatorList',
+  title: `${import.meta.env.VITE_APP_FRONTEND_NAME} - Creators`,
   methods: {
     getCreators,
   },

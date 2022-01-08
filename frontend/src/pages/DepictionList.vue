@@ -28,6 +28,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'DepictionList',
+  title: `${import.meta.env.VITE_APP_FRONTEND_NAME} - Depicts`,
   methods: {
     getDepicts,
   },

@@ -1,7 +1,7 @@
 <template>
   <Disclosure as="nav" class="bg-gray-800" v-slot="{ open }">
-    <div class="mx-auto px-2 sm:px-4 lg:pl-6">
-      <div class="relative flex items-center justify-between h-16">
+    <div class="mx-auto px-2 sm:px-4">
+      <div class="relative mx-auto flex items-center container justify-between">
         <div class="absolute inset-y-0 left-0 flex items-center md:hidden">
           <!-- Mobile menu button-->
           <DisclosureButton
@@ -32,12 +32,12 @@
           <div class="flex-shrink-0 flex items-center">
             <img
               class="block lg:hidden h-8 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+              :src="this.logo"
               alt="Workflow"
             />
             <img
               class="hidden lg:block h-8 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+              :src="this.logo"
               alt="Workflow"
             />
           </div>
@@ -46,7 +46,7 @@
               <router-link
                 v-for="(item, key) in this.navigation"
                 :to="item.destination"
-                @click="handleCurrent(item)"
+                @click="handleCurrent"
                 :key="key"
                 :class="[
                   'px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-900',
@@ -70,7 +70,7 @@
         <DisclosureButton
           v-for="(item, key) in this.navigation"
           :key="key"
-          @click="handleCurrent(item)"
+          @click="handleCurrent"
           :to="item.destination"
           :class="[
             item.current
@@ -98,6 +98,7 @@ import {
   MenuItems,
 } from '@headlessui/vue'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
+import logo from '@assets/paint.png'
 
 export default {
   components: {
@@ -139,32 +140,42 @@ export default {
           },
           current: false,
         },
-        {
-          name: 'Movements',
-          destination: {
-            name: 'MovementList',
-            params: { url: '/movement/all' },
-          },
-          current: false,
-        },
-        {
-          name: 'Materials',
-          destination: {
-            name: 'MaterialList',
-            params: { url: '/material/all' },
-          },
-          current: false,
-        },
+        // {
+        //   name: 'Movements',
+        //   destination: {
+        //     name: 'MovementList',
+        //     params: { url: '/movement/all' },
+        //   },
+        //   current: false,
+        // },
+        // {
+        //   name: 'Materials',
+        //   destination: {
+        //     name: 'MaterialList',
+        //     params: { url: '/material/all' },
+        //   },
+        //   current: false,
+        // },
       ],
+      logo: logo,
     }
   },
   methods: {
-    handleCurrent(clickedItem) {
+    handleCurrent() {
       this.navigation.forEach((item) => {
-        item.current = false
+        if (this.$route.name == item.destination.name) {
+          item.current = true
+        } else {
+          item.current = false
+        }
       })
-
-      clickedItem.current = true
+    },
+  },
+  watch: {
+    '$route': function () {
+      if (this.$route?.name) {
+        this.handleCurrent()
+      }
     },
   },
 }

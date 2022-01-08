@@ -7,6 +7,10 @@ export default [
     component: CreatorList,
     name: 'CreatorList',
     props: true,
+    meta: {
+      title: 'Creators',
+      content: 'Page of artists'
+    }
   },
   {
     path: '/creator/:id',

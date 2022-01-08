@@ -15,6 +15,7 @@ export default defineConfig({
       '@router': path.resolve(__dirname, vueSrc + '/router'),
       '@store': path.resolve(__dirname, vueSrc + '/store'),
       '@assets': path.resolve(__dirname, vueSrc + '/assets'),
+      '@mixins': path.resolve(__dirname, vueSrc + '/mixins'),
     },
     extensions: ['.js', '.vue', '.json'],
   },

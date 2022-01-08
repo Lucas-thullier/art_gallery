@@ -24,11 +24,11 @@
     </div>
 
     <div class="dark:bg-gray-800 flex flex-col justify-between lg:basis-1/2">
-      <div>
+      <div class="border-bottom">
         <span>{{ this.painting.inception_at }}</span>
       </div>
       <div>
-        <h2>Potential Creators</h2>
+        <h2>Creator</h2>
         <span v-for="creator in this.painting.creators" :key="creator.id">
           <router-link
             :to="{
@@ -40,65 +40,67 @@
           </router-link>
         </span>
       </div>
-      <div>
-        <h2>Materials</h2>
-        <span
-          class="
-            bg-gray-100
-            inline-block
-            text-gray-800 text-xs
-            font-semibold
-            mr-2
-            px-2.5
-            py-0.5
-            rounded-full
-            dark:bg-gray-700 dark:text-gray-300
-          "
-          v-for="material in this.painting.materials"
-          :key="material.id"
-        >
-          {{ material.name }}
-        </span>
-      </div>
-      <div>
-        <h2>Movements</h2>
-        <span
-          class="
-            bg-gray-100
-            inline-block
-            text-gray-800 text-xs
-            font-semibold
-            mr-2
-            px-2.5
-            py-0.5
-            rounded-full
-            dark:bg-gray-700 dark:text-gray-300
-          "
-          v-for="movement in this.painting.movements"
-          :key="movement.id"
-        >
-          {{ movement.name }}
-        </span>
-      </div>
-      <div>
-        <h2>Locations</h2>
-        <span
-          class="
-            bg-gray-100
-            inline-block
-            text-gray-800 text-xs
-            font-semibold
-            mr-2
-            px-2.5
-            py-0.5
-            rounded-full
-            dark:bg-gray-700 dark:text-gray-300
-          "
-          v-for="location in this.painting.locations"
-          :key="location.id"
-        >
-          {{ location.name }}
-        </span>
+      <div class="flex flex-row justify-evenly">
+        <div>
+          <h2>Materials</h2>
+          <span
+            class="
+              bg-gray-100
+              inline-block
+              text-gray-800 text-xs
+              font-semibold
+              mr-2
+              px-2.5
+              py-0.5
+              rounded-full
+              dark:bg-gray-700 dark:text-gray-300
+            "
+            v-for="material in this.painting.materials"
+            :key="material.id"
+          >
+            {{ material.name }}
+          </span>
+        </div>
+        <div>
+          <h2>Movements</h2>
+          <span
+            class="
+              bg-gray-100
+              inline-block
+              text-gray-800 text-xs
+              font-semibold
+              mr-2
+              px-2.5
+              py-0.5
+              rounded-full
+              dark:bg-gray-700 dark:text-gray-300
+            "
+            v-for="movement in this.painting.movements"
+            :key="movement.id"
+          >
+            {{ movement.name }}
+          </span>
+        </div>
+        <div>
+          <h2>Locations</h2>
+          <span
+            class="
+              bg-gray-100
+              inline-block
+              text-gray-800 text-xs
+              font-semibold
+              mr-2
+              px-2.5
+              py-0.5
+              rounded-full
+              dark:bg-gray-700 dark:text-gray-300
+            "
+            v-for="location in this.painting.locations"
+            :key="location.id"
+          >
+            {{ location.name }}
+          </span>
+        </div>
       </div>
       <div>
         <h2>Depicts</h2>
@@ -145,6 +147,7 @@ import axios from 'axios'
 
 export default {
   name: 'PaintingDetail',
+  title: `${import.meta.env.VITE_APP_FRONTEND_NAME} - Painting`,
   props: {
     url: String,
     id: String,

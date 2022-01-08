@@ -27,6 +27,23 @@ To launch the project you need to
 - wait until end of feeding (this may take a while)
 - go to http://localhost:3000/#/painting/all
 
+## How it work
+Gallery is ship with data seed but it contain tools to fetch data from Wikidata wih SPARQL query (./backend/worker/repositories)
+Backend: 
+- an API for Paintings, Creators, Depicts, Movements of paintings. All are hyperlinked between them throught Paintings.
+- some worker with tasks for fetching Wikidata with SPARQL queries (./backend/worker/sparql_repository.py)
+
+Frontend:
+- A frontend developed with Vite and Tailwind CSS
+- A minimal responsivness actually
+
+## Roadmap
+- improve search (actually "van gog" isn't find by example)
+- improve UI on details view
+- implementing UI for Movements and Location
+- Do some fun stats on Creators
+- and much more...
+
 ## Useful commands
 ```Backup Database```
   docker exec -t db pg_dumpall -c -U postgres | gzip > ./dump_$(date +"%Y-%m-%d_%H_%M_%S").gz

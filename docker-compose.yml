@@ -68,10 +68,7 @@ services:
       - my-app-network
 
 volumes:
-  my-app:
-    external: true
   postgresdata:
 
 networks:
   my-app-network:
-    external: true

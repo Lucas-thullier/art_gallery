@@ -20,6 +20,7 @@ Gallery is a place where you can explore throught wikidata-registered paintings 
 ## Get Started
 To launch the project you need to
 - Use Docker
+- git clone https://github.com/lvnav/art_gallery.git
 - remove .example suffixes from ./env.example and ./frontend/.env.example
 - place current working directory at root (before backend and frontend)
 - run : docker-compose up

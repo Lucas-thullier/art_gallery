@@ -1,5 +1,5 @@
 <h1 align="center">
-🎨 Gallery 🎨
+ Gallery 🎨
 </h1> 
 
 <h2 align="center">
@@ -23,18 +23,9 @@ To launch the project you need to
 - wait until end of feeding (this may take a while)
 - go to http://localhost:3000/#/painting/all
 
-clear tasks queue:
-  celery -A celery purge (le second celery = appli normalement worker.worker.app mais bizaremment non. A verifier pourquoi)
-
+## Useful commands
 ```Backup Database```
-generate sql:
-  docker exec -t your-db-container pg_dumpall -c -U your-db-user > dump_$(date +%Y-%m-%d_%H_%M_%S).sql
+  docker exec -t db pg_dumpall -c -U postgres | gzip > ./dump_$(date +"%Y-%m-%d_%H_%M_%S").gz
 
-to reduce the size of the sql you can generate a compress:
-  docker exec -t your-db-container pg_dumpall -c -U your-db-user | gzip > ./dump_$(date +"%Y-%m-%d_%H_%M_%S").gz
-
-Restore Database:
-  cat your_dump.sql | docker exec -i your-db-container psql -U your-db-user -d your-db-name
-
-to restore a compressed sql:
+```Restore Database```
   gunzip < ./backend/seeds/initial_dump.gz | docker exec -i db psql -U postgres -d postgres

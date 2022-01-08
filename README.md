@@ -7,7 +7,7 @@
 </h1>
 
 <h2 align="center">
-Gallery is a place where you can explore throught wikidata-registered paintings (and that's much paintings)
+Gallery is a place where you can explore throught wikidata-registered paintings (and that's a lot of paintings)
 </h2>
 
 ## Technical stack

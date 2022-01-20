@@ -1,7 +1,0 @@
-from .SimplePaintingSerializer import SimplePaintingSerializer
-from .SimpleCreatorSerializer import SimpleCreatorSerializer
-from .SimpleDepictionSerializer import SimpleDepictionSerializer
-from .SimpleGenreSerializer import SimpleGenreSerializer
-from .SimpleLocationSerializer import SimpleLocationSerializer
-from .SimpleMaterialSerializer import SimpleMaterialSerializer
-from .SimpleMovementSerializer import SimpleMovementSerializer

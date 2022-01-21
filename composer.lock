@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c61ff82cbf0142a401a48a8161e1595a",
+    "content-hash": "1f2f90ee1df371bfe2230c9d8db0e2c1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -492,6 +492,59 @@
                 }
             ],
             "time": "2020-12-29T14:50:06+00:00"
+        },
+        {
+            "name": "freearhey/wikidata",
+            "version": "3.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/freearhey/wikidata.git",
+                "reference": "3760252572774febb723753481bc0a5680b639d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/freearhey/wikidata/zipball/3760252572774febb723753481bc0a5680b639d6",
+                "reference": "3760252572774febb723753481bc0a5680b639d6",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0",
+                "tightenco/collect": "^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Wikidata\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arhey",
+                    "role": "developer"
+                }
+            ],
+            "description": "A PHP client for working with Wikidata API.",
+            "homepage": "https://github.com/freearhey/wikidata",
+            "keywords": [
+                "client",
+                "php",
+                "wikidata"
+            ],
+            "support": {
+                "issues": "https://github.com/freearhey/wikidata/issues",
+                "source": "https://github.com/freearhey/wikidata/tree/v3.6.0"
+            },
+            "time": "2020-12-20T10:12:15+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -5117,6 +5170,60 @@
             "time": "2021-12-29T10:10:35+00:00"
         },
         {
+            "name": "tightenco/collect",
+            "version": "v8.80.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tighten/collect.git",
+                "reference": "16c200babd4bee20a039b542a8a75645b8900a62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tighten/collect/zipball/16c200babd4bee20a039b542a8a75645b8900a62",
+                "reference": "16c200babd4bee20a039b542a8a75645b8900a62",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0",
+                "symfony/var-dumper": "^3.4 || ^4.0 || ^5.0 || ^6.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "nesbot/carbon": "^2.23.0",
+                "phpunit/phpunit": "^8.3"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Collect/Support/helpers.php",
+                    "src/Collect/Support/alias.php"
+                ],
+                "psr-4": {
+                    "Tightenco\\Collect\\": "src/Collect"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "Collect - Illuminate Collections as a separate package.",
+            "keywords": [
+                "collection",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/tighten/collect/issues",
+                "source": "https://github.com/tighten/collect/tree/v8.80.0"
+            },
+            "time": "2022-01-18T18:14:11+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.4",
             "source": {
@@ -6770,16 +6877,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.11",
+            "version": "9.5.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "2406855036db1102126125537adb1406f7242fdd"
+                "reference": "93d4bf4c37aec6384bb9e5d390d9049a463a7256"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2406855036db1102126125537adb1406f7242fdd",
-                "reference": "2406855036db1102126125537adb1406f7242fdd",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/93d4bf4c37aec6384bb9e5d390d9049a463a7256",
+                "reference": "93d4bf4c37aec6384bb9e5d390d9049a463a7256",
                 "shasum": ""
             },
             "require": {
@@ -6857,7 +6964,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.11"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.12"
             },
             "funding": [
                 {
@@ -6869,7 +6976,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-25T07:07:57+00:00"
+            "time": "2022-01-21T05:54:47+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -7895,5 +8002,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }

@@ -18,8 +18,7 @@ class CreateArtistsTable extends Migration
 
             $table->string('name', 500);
             $table->string('wikidata_id', 50)->unique();
-            $table->string('wikidata_url', 500)->unique();
-            $table->string('picture_url', 1000);
+            $table->string('picture_url', 1000)->nullable();
 
             $table->timestamps();
         });

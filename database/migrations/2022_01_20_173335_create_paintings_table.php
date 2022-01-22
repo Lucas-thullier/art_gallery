@@ -16,18 +16,18 @@ class CreatePaintingsTable extends Migration
         Schema::create('paintings', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name', 500);
-            $table->string('native_name', 500);
-            $table->string('wikidata_url', 500)->unique();
+            $table->string('name', 500)->nullable();
+            $table->string('native_name', 500)->nullable();
             $table->string('wikidata_id', 50)->unique();
 
-            $table->string('title', 500);
-            $table->string('picture_url', 500);
-            $table->string('owned_by', 500);
-            $table->string('inception_at', 500);
-            $table->unsignedInteger('width');
-            $table->unsignedInteger('height');
-            $table->string('described_at', 500);
+            $table->string('title', 500)->nullable();
+            $table->string('description', 1000)->nullable();
+            $table->string('picture_url', 500)->nullable();
+            $table->string('owned_by', 500)->nullable();
+            $table->string('inception_at', 500)->nullable();
+            $table->unsignedInteger('width')->nullable();
+            $table->unsignedInteger('height')->nullable();
+            $table->string('described_at', 500)->nullable();
 
             $table->softDeletes($column = 'deleted_at', $precision = 0);
 

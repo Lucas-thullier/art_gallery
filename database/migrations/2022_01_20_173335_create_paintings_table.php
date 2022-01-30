@@ -18,6 +18,7 @@ class CreatePaintingsTable extends Migration
 
             $table->string('name', 500)->nullable();
             $table->string('native_name', 500)->nullable();
+            $table->string('aliases', 1000)->nullable();
             $table->string('wikidata_id', 50)->unique();
 
             $table->string('title', 500)->nullable();

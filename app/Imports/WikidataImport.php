@@ -36,7 +36,7 @@ class WikidataImport
     }
   }
 
-  private function extractPaintingsId(string $xmlPaintingsList): array
+  public function extractPaintingsId(string $xmlPaintingsList): array
   {
     $dom = new \DOMDocument();
     $dom->loadXML($xmlPaintingsList);

@@ -1,5 +1,7 @@
 <?php
 
+use App\Imports\ImportHandlerWikidata;
+use App\Models\Painting;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     $t = new App\Imports\WikidataImport();
+//     dd($t->fullImport());
+//     return view('welcome');
+// });
+
+
 Route::get('/', function () {
+    $t = new ImportHandlerWikidata('Q12418', Painting::class);
+    dd($t->prepareData());
     return view('welcome');
 });

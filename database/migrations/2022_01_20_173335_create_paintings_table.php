@@ -28,7 +28,7 @@ class CreatePaintingsTable extends Migration
             $table->string('inception_at', 500)->nullable();
             $table->unsignedInteger('width')->nullable();
             $table->unsignedInteger('height')->nullable();
-            $table->string('described_at', 500)->nullable();
+            $table->string('described_at', 1000)->nullable();
 
             $table->softDeletes($column = 'deleted_at', $precision = 0);
 

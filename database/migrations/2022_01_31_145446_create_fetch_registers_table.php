@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArtistsTable extends Migration
+class CreateFetchRegistersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateArtistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('artists', function (Blueprint $table) {
+        Schema::create('fetch_registers', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name', 500)->nullable();
-            $table->string('wikidata_id', 50)->unique();
-            $table->string('picture_url', 1000)->nullable();
+            $table->integer('registerable_id');
+            $table->string('registerable_type', 500);
+
+            $table->dateTime('wikidata_first_fetch', $precision = 0);
+            $table->dateTime('wikidata_last_update', $precision = 0);
 
             $table->timestamps();
         });
@@ -31,6 +33,6 @@ class CreateArtistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('artists');
+        Schema::dropIfExists('fetch_registers');
     }
 }

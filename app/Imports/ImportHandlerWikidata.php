@@ -2,9 +2,8 @@
 
 namespace App\Imports;
 
-use Wikidata\Wikidata;
 use App\Imports\AbstractImportHandler;
-use Illuminate\Support\Arr;
+use Wikidata\Wikidata;
 
 class ImportHandlerWikidata extends AbstractImportHandler
 {
@@ -25,36 +24,73 @@ class ImportHandlerWikidata extends AbstractImportHandler
 
   protected function parse($rawData): array
   {
-    // logger($rawData->toArray());
-    return $rawData->toArray();
+    return $this->objectToArray($rawData->toArray());
   }
 
   protected function remap(array $parsedData): array
   {
     $mapping = $this->modelToFill::mapping($this->mappingName);
-    // dd($dottedMapping, $dottedData);
 
-    $mappedData = [];
+    $mappedData = array_merge(
+      $this->handleOneToOneRemap($mapping, $parsedData),
+      $this->handleManyToOneRemap($mapping, $parsedData),
+      $this->handleRelationsRemap($mapping, $parsedData),
+    );
 
-    foreach ($mapping['oneToOne'] as $srcKey => $distKey) {
-      if (!empty($parsedData[$srcKey])) {
-        $mappedData[$distKey] = $parsedData[$srcKey];
-      }
-    }
-
-    $manyToOneDottedMapping = $mapping['manyToOne'];
-    $arrayedData = $this->objectToArray($parsedData);
-    dd(Arr::dot($arrayedData));
-    foreach ($manyToOneDottedMapping as $srcKey => $distKey) {
-      $key = preg_replace('#.0.#', '.*.', $srcKey);
-      $mappedData[$distKey] = data_get($arrayedData, $key);
-    }
-
-    dd($mappedData);
     return $mappedData;
   }
 
-  private function objectToArray($obj)
+  private function handleOneToOneRemap(array $mapping, array $data): array
+  {
+    $remappedData = [];
+    foreach ($mapping['oneToOne'] as $srcKey => $distKey) {
+      if (!empty($data[$srcKey])) {
+        $remappedData[$distKey] = $data[$srcKey];
+      }
+    }
+
+    return $remappedData;
+  }
+
+  private function handleManyToOneRemap(array $mapping, array $data): array
+  {
+    $remappedData = [];
+    foreach ($mapping['manyToOne'] as $srcKey => $distKey) {
+      $key = preg_replace('#.0.#', '.*.', $srcKey);
+      $mappedData[$distKey] = data_get($data, $key);
+    }
+
+    return $remappedData;
+  }
+
+  private function handleRelationsRemap(array $mapping, array $data): array
+  {
+    $remappedData = [];
+    foreach ($mapping['relations'] as $srcKey => $modelClass) {
+      $wikidata_id = data_get($data, $srcKey);
+      $relationModel = $modelClass::firstOrCreate(['wikidata_id' => $wikidata_id]);
+
+      if (empty($relationModel->registerEntry()->first()) || !$relationModel->registerEntry()->first()->hasAlreadyFetchWikidata()) {
+        $importHandler = new ImportHandlerWikidata(
+          $relationModel->wikidata_id,
+          get_class($relationModel)
+        );
+
+        if (empty($remappedData['relations'])) {
+          $remappedData['relations'] = [];
+        }
+
+        $remappedData['relations'][] = [
+          'data' => $importHandler->prepareData(),
+          'class' => get_class($relationModel)
+        ];
+      }
+    }
+
+    return $remappedData;
+  }
+
+  private function objectToArray($obj): array
   {
     return json_decode(json_encode($obj), true);
   }

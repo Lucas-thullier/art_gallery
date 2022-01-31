@@ -1,7 +1,10 @@
 <?php
 
 use App\Imports\ImportHandlerWikidata;
+use App\Imports\WikidataImport;
+use App\Models\Artist;
 use App\Models\Painting;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,15 +18,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+  $paintings = Painting::all();
+
+  foreach ($paintings as $painting) {
+    $importHandler = new ImportHandlerWikidata(
+      $painting->wikidata_id,
+      get_class($painting)
+    );
+
+    $preparedData = $importHandler->prepareData();
+
+    $painting->updateOrCreate(
+      [
+        'wikidata_id' => $painting->wikidata_id
+      ],
+      $preparedData
+    );
+
+    dd($preparedData);
+  }
+
+  return view('welcome');
+});
+
+
 // Route::get('/', function () {
-//     $t = new App\Imports\WikidataImport();
-//     dd($t->fullImport());
+//     $t = new ImportHandlerWikidata('Q12418', Painting::class);
+//     dd($t->prepareData());
 //     return view('welcome');
 // });
-
-
-Route::get('/', function () {
-    $t = new ImportHandlerWikidata('Q12418', Painting::class);
-    dd($t->prepareData());
-    return view('welcome');
-});

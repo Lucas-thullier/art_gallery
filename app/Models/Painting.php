@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Jobs\FillPaintingData;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,21 +11,15 @@ class Painting extends Model
 
   protected $guarded = ['id'];
   protected $casts = [
-    'aliases' => 'array'
+    'aliases' => 'array',
+    'picture_url' => 'array',
+    'title' => 'array',
+    'owned_by' => 'array',
+    'inception_at' => 'array',
+    'width' => 'array',
+    'height' => 'array',
+    'described_at' => 'array',
   ];
-
-  protected static function booted()
-  {
-    static::created(function ($painting) {
-      if (
-        !empty($painting->wikidata_id)
-        && empty($painting->name)
-        && empty($painting->picture_url)
-      ) {
-        FillPaintingData::dispatch($painting);
-      }
-    });
-  }
 
   public static function mapping(string $distName): ?array
   {
@@ -45,6 +38,14 @@ class Painting extends Model
           'properties.P2049.values.0.label' => 'width',
           'properties.P2048.values.0.label' => 'height',
           'properties.P973.values.0.label' => 'described_at'
+        ],
+        'relations' => [
+          'properties.P170.values.0.id' => Artist::class,
+          'properties.P180.values.0.id' => Depiction::class
+          // 'properties.P136.values.0.id' => Genre::class,
+          // 'properties.P276.values.0.id' => Location::class,
+          // 'properties.P186.values.0.id' => Material::class,
+          // 'properties.P135.values.0.id' => Movement::class,
         ]
       ]
     ];
@@ -80,5 +81,10 @@ class Painting extends Model
   public function movements()
   {
     return $this->belongsToMany(Movement::class);
+  }
+
+  public function registerEntry()
+  {
+    return $this->morphOne(FetchRegister::class, 'registerable');
   }
 }

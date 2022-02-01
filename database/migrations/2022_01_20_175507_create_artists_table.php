@@ -1,11 +1,14 @@
 <?php
 
+use App\Traits\Migrations\HasMinimalWikidataRecord;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class CreateArtistsTable extends Migration
 {
+    use HasMinimalWikidataRecord;
+
     /**
      * Run the migrations.
      *
@@ -16,8 +19,8 @@ class CreateArtistsTable extends Migration
         Schema::create('artists', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name', 500)->nullable();
-            $table->string('wikidata_id', 50)->unique();
+            $this->createMinimalWikidataColumn($table);
+
             $table->string('picture_url', 1000)->nullable();
 
             $table->timestamps();

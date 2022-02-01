@@ -2,12 +2,21 @@
 
 namespace App\Models;
 
+use App\Traits\FetchingRegisterable;
+use App\Traits\FindableByUniqueKey;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Painting extends Model
 {
   use HasFactory;
+  use FindableByUniqueKey;
+  use FetchingRegisterable;
+
+  protected static function boot()
+  {
+    parent::boot();
+  }
 
   protected $guarded = ['id'];
   protected $casts = [
@@ -21,7 +30,7 @@ class Painting extends Model
     'described_at' => 'array',
   ];
 
-  public static function mapping(string $distName): ?array
+  public static function mapping(string $sourceName): ?array
   {
     $mappings = [
       'wikidata' => [
@@ -29,6 +38,7 @@ class Painting extends Model
           'label' => 'name',
           'aliases' => 'aliases',
           'description' => 'description',
+          'id' => 'wikidata_id'
         ],
         'manyToOne' => [
           'properties.P18.values.0.label'  => 'picture_url',
@@ -41,16 +51,16 @@ class Painting extends Model
         ],
         'relations' => [
           'properties.P170.values.0.id' => Artist::class,
-          'properties.P180.values.0.id' => Depiction::class
-          // 'properties.P136.values.0.id' => Genre::class,
-          // 'properties.P276.values.0.id' => Location::class,
-          // 'properties.P186.values.0.id' => Material::class,
-          // 'properties.P135.values.0.id' => Movement::class,
+          'properties.P180.values.0.id' => Depiction::class,
+          'properties.P136.values.0.id' => Genre::class,
+          'properties.P276.values.0.id' => Location::class,
+          'properties.P186.values.0.id' => Material::class,
+          'properties.P135.values.0.id' => Movement::class,
         ]
       ]
     ];
 
-    return $mappings[$distName] ?? null;
+    return $mappings[$sourceName] ?? null;
   }
 
   public function artists()
@@ -81,10 +91,5 @@ class Painting extends Model
   public function movements()
   {
     return $this->belongsToMany(Movement::class);
-  }
-
-  public function registerEntry()
-  {
-    return $this->morphOne(FetchRegister::class, 'registerable');
   }
 }

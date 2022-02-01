@@ -1,13 +1,14 @@
 <?php
 
+/* Resoudre le soucis d'ambiguite. Ne fait pas du tout la meme chose que les autres extractors. */
+
 namespace App\Imports;
 
 use App\Models\Painting;
-use Wikidata\Wikidata;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Storage;
 
-class WikidataImport
+class IdWikidataExtractor
 {
   public function fullImport()
   {

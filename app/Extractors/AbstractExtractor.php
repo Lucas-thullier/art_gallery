@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Imports;
+namespace App\Extractors;
 
-abstract class AbstractImportHandler
+abstract class AbstractExtractor
 {
   protected string $sourceId;
   protected array $mappedContent;
@@ -33,5 +33,5 @@ abstract class AbstractImportHandler
   abstract protected function connection();
   abstract protected function fetch();
   abstract protected function parse($rawData): array;
-  abstract protected function remap(array $parsedData);
+  abstract protected function remap(array $parsedData): array;
 }

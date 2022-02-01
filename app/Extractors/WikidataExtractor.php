@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Imports;
+namespace App\Extractors;
 
-use App\Imports\AbstractImportHandler;
+use App\Extractors\AbstractExtractor;
 use Wikidata\Wikidata;
 
-class ImportHandlerWikidata extends AbstractImportHandler
+class WikidataExtractor extends AbstractExtractor
 {
   protected string $mappingName = 'wikidata';
 
@@ -25,6 +25,11 @@ class ImportHandlerWikidata extends AbstractImportHandler
   protected function parse($rawData): array
   {
     return $this->objectToArray($rawData->toArray());
+  }
+
+  private function objectToArray($obj): array
+  {
+    return json_decode(json_encode($obj), true);
   }
 
   protected function remap(array $parsedData): array
@@ -56,8 +61,14 @@ class ImportHandlerWikidata extends AbstractImportHandler
   {
     $remappedData = [];
     foreach ($mapping['manyToOne'] as $srcKey => $distKey) {
-      $key = preg_replace('#.0.#', '.*.', $srcKey);
-      $mappedData[$distKey] = data_get($data, $key);
+      $key = preg_replace('#\.0\.#', '.*.', $srcKey);
+
+      $remappedData[$distKey] = data_get($data, $key);
+
+      if (!is_array($remappedData[$distKey])) {
+        $remappedData[$distKey] = [$remappedData[$distKey]];
+      }
+      
     }
 
     return $remappedData;
@@ -67,31 +78,25 @@ class ImportHandlerWikidata extends AbstractImportHandler
   {
     $remappedData = [];
     foreach ($mapping['relations'] as $srcKey => $modelClass) {
-      $wikidata_id = data_get($data, $srcKey);
-      $relationModel = $modelClass::firstOrCreate(['wikidata_id' => $wikidata_id]);
+      $key = preg_replace('#\.0\.#', '.*.', $srcKey);
+      $wikidataIds = data_get($data, $key);
+      
+      if (!is_array($wikidataIds)) {
+        $wikidataIds = [$wikidataIds];
+      }
 
-      if (empty($relationModel->registerEntry()->first()) || !$relationModel->registerEntry()->first()->hasAlreadyFetchWikidata()) {
-        $importHandler = new ImportHandlerWikidata(
-          $relationModel->wikidata_id,
-          get_class($relationModel)
-        );
-
+      foreach ($wikidataIds as $wikidataId) {
         if (empty($remappedData['relations'])) {
           $remappedData['relations'] = [];
         }
-
+  
         $remappedData['relations'][] = [
-          'data' => $importHandler->prepareData(),
-          'class' => get_class($relationModel)
+          'wikidata_id' => $wikidataId,
+          'class' => $modelClass
         ];
       }
     }
 
     return $remappedData;
-  }
-
-  private function objectToArray($obj): array
-  {
-    return json_decode(json_encode($obj), true);
   }
 }

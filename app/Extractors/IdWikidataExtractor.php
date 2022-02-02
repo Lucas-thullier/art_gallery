@@ -2,7 +2,7 @@
 
 /* Resoudre le soucis d'ambiguite. Ne fait pas du tout la meme chose que les autres extractors. */
 
-namespace App\Imports;
+namespace App\Extractors;
 
 use App\Models\Painting;
 use GuzzleHttp\Client;
@@ -10,19 +10,15 @@ use Illuminate\Support\Facades\Storage;
 
 class IdWikidataExtractor
 {
-  public function fullImport()
+  public function extract()
   {
-    // $xmlPaintingsList = $this->getPaintingsListXml();
-    $xmlPaintingsList = Storage::disk('public')->get('sparql_test'); //pour test
+    $xmlPaintingsList = $this->getPaintingsListXml();
+    // $xmlPaintingsList = Storage::disk('public')->get('sparql_test'); //pour test
 
     $paintingsIds = $this->extractPaintingsId($xmlPaintingsList);
+    Storage::put('test.json', json_encode($paintingsIds));
 
-    foreach ($paintingsIds as $paintingId) {
-      Painting::firstOrCreate(
-        ['wikidata_id' => $paintingId],
-        ['wikidata_id' => $paintingId]
-      );
-    }
+    return $paintingsIds;
   }
 
   public function getPaintingsListXml(): ?string
@@ -45,12 +41,17 @@ class IdWikidataExtractor
     $paintingsUrlAsDomList = $dom->getElementsByTagName('uri');
 
     $paintingsIds = [];
+    $i = 1;
     foreach ($paintingsUrlAsDomList as $paintingUrlAsDomNode) {
+      if ($i == 10000) {
+        break;
+      }
       $paintingId = preg_replace('#.+entity\/#', '', $paintingUrlAsDomNode->nodeValue);
 
       if (trim($paintingId) != '') {
         $paintingsIds[] = $paintingId;
       }
+      $i++;
     }
 
     return $paintingsIds;

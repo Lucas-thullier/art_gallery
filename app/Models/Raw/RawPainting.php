@@ -2,7 +2,8 @@
 
 namespace App\Models\Raw;
 
-use App\Traits\FetchingRegisterable;
+use App\Models\Source;
+use App\Traits\AdditiveSetter;
 use App\Traits\FindableByUniqueKey;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +12,7 @@ class RawPainting extends Model
 {
   use HasFactory;
   use FindableByUniqueKey;
-  use FetchingRegisterable;
+  use AdditiveSetter;
 
   protected static function boot()
   {
@@ -30,6 +31,46 @@ class RawPainting extends Model
     'described_at' => 'array',
   ];
 
+  public function setAliasesAttribute($value)
+  {
+    $this->initAdditiveSetter('aliases', $value);
+  }
+
+  public function setPictureUrlAttribute($value)
+  {
+    $this->initAdditiveSetter('picture_url', $value);
+  }
+
+  public function setTitleAttribute($value)
+  {
+    $this->initAdditiveSetter('title', $value);
+  }
+
+  public function setOwnedByAttribute($value)
+  {
+    $this->initAdditiveSetter('owned_by', $value);
+  }
+
+  public function setInceptionAtAttribute($value)
+  {
+    $this->initAdditiveSetter('inception_at', $value);
+  }
+
+  public function setWidthAttribute($value)
+  {
+    $this->initAdditiveSetter('width', $value);
+  }
+
+  public function setHeightAttribute($value)
+  {
+    $this->initAdditiveSetter('height', $value);
+  }
+
+  public function setDescribedAtAttribute($value)
+  {
+    $this->initAdditiveSetter('described_at', $value);
+  }
+
   public static function mapping(string $sourceName): ?array
   {
     $mappings = [
@@ -38,7 +79,7 @@ class RawPainting extends Model
           'label' => 'name',
           'aliases' => 'aliases',
           'description' => 'description',
-          'id' => 'wikidata_id'
+          'id' => 'external_id'
         ],
         'manyToOne' => [
           'properties.P18.values.0.label'  => 'picture_url',
@@ -50,12 +91,12 @@ class RawPainting extends Model
           'properties.P973.values.0.label' => 'described_at'
         ],
         'relations' => [
-          'properties.P170.values.0.id' => Artist::class,
-          'properties.P180.values.0.id' => Depiction::class,
-          'properties.P136.values.0.id' => Genre::class,
-          'properties.P276.values.0.id' => Location::class,
-          'properties.P186.values.0.id' => Material::class,
-          'properties.P135.values.0.id' => Movement::class,
+          'properties.P170.values.0.id' => RawArtist::class,
+          'properties.P180.values.0.id' => RawDepiction::class,
+          'properties.P136.values.0.id' => RawGenre::class,
+          'properties.P276.values.0.id' => RawLocation::class,
+          'properties.P186.values.0.id' => RawMaterial::class,
+          'properties.P135.values.0.id' => RawMovement::class,
         ]
       ]
     ];
@@ -63,33 +104,38 @@ class RawPainting extends Model
     return $mappings[$sourceName] ?? null;
   }
 
-  public function artists()
+  public function rawArtists()
   {
-    return $this->belongsToMany(Artist::class);
+    return $this->belongsToMany(RawArtist::class);
   }
 
-  public function depictions()
+  public function rawDepictions()
   {
-    return $this->belongsToMany(Depiction::class);
+    return $this->belongsToMany(RawDepiction::class);
   }
 
-  public function genres()
+  public function rawGenres()
   {
-    return $this->belongsToMany(Genre::class);
+    return $this->belongsToMany(RawGenre::class);
   }
 
-  public function locations()
+  public function rawLocations()
   {
-    return $this->belongsToMany(Location::class);
+    return $this->belongsToMany(RawLocation::class);
   }
 
-  public function materials()
+  public function rawMaterials()
   {
-    return $this->belongsToMany(Material::class);
+    return $this->belongsToMany(RawMaterial::class);
   }
 
-  public function movements()
+  public function rawMovements()
   {
-    return $this->belongsToMany(Movement::class);
+    return $this->belongsToMany(RawMovement::class);
+  }
+
+  public function source()
+  {
+    return $this->belongsTo(Source::class);
   }
 }

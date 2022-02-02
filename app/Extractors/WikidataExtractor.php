@@ -91,7 +91,7 @@ class WikidataExtractor extends AbstractExtractor
         }
   
         $remappedData['relations'][] = [
-          'wikidata_id' => $wikidataId,
+          'external_id' => $wikidataId,
           'class' => $modelClass
         ];
       }

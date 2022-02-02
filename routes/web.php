@@ -1,11 +1,9 @@
 <?php
 
-use App\Imports\ImportHandlerWikidata;
-use App\Imports\WikidataImport;
-use App\Models\Artist;
-use App\Models\Painting;
+use App\Models\Raw\RawArtist;
+use App\Models\Raw\RawPainting;
+use App\Models\Source;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,36 +19,25 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/single', function (Request $request) {
-  function import($extractorName, $modelName, $columnName, $uniqueKey)
+  function import($sourceName, $modelName, $externalId)
   {
-    switch ($extractorName) { // doit pas etre ici
-      case 'App\Extractors\WikidataExtractor':
-        $fetchRegisterColumn = 'wikidata_first_fetch';
-        $sourceName = 'wikidata';
-        break;
+    $source = Source::findByUniqueKey('name', $sourceName);
 
-      default:
-        throw new Exception('Extractor non reconnu : ' . $extractorName);
-        break;
-    }
+    if (!is_null($source) && !is_null($source->extractor)) {
+      $extractorName = $source->extractor;
+      $model = $modelName::findByUniqueKey('external_id', $externalId) ?? new $modelName();
 
-    // try {
-    $model = $modelName::findByUniqueKey($columnName, $uniqueKey); // devrait devenir resolve existence. Quand y'aura plusieurs sources des doublons vont se créer
-    if (is_null($model)) {
-      $model = $modelName::create();
-    }
-
-    $registerEntry = $model->findFetchEntry();
-    if (!$registerEntry->hasAlreadyFetch($fetchRegisterColumn)) {
-      $extractor = new $extractorName($uniqueKey, get_class($model));
+      $extractor = new $extractorName($externalId, get_class($model));
       $preparedData = $extractor->prepareData();
+      $preparedData['source_id'] = $source->id;
 
-      $model->update($preparedData);
-      $registerEntry->updateFrom($sourceName, $preparedData);
+      $model->fill($preparedData);
+      $model->save();
+
       if (!empty($preparedData['relations'])) {
         foreach ($preparedData['relations'] as $relation) {
-          if (!empty($relation['wikidata_id'])) {
-            import($extractorName, $relation['class'], $columnName, $relation['wikidata_id']);
+          if (!empty($relation['external_id'])) {
+            import($sourceName, $relation['class'], $relation['external_id']);
           }
         }
       }
@@ -58,10 +45,9 @@ Route::get('/single', function (Request $request) {
   }
 
   import(
-    $request->extractorName,
-    $request->modelName,
-    $request->columnName,
-    $request->uniqueKey
+    $request->source,
+    $request->model,
+    $request->externalId
   );
 
 
@@ -71,8 +57,21 @@ Route::get('/single', function (Request $request) {
 });
 
 
-// Route::get('/', function () {
-//     $t = new ImportHandlerWikidata('Q12418', Painting::class);
-//     dd($t->prepareData());
-//     return view('welcome');
-// });
+Route::get('/', function () {
+  RawPainting::updateOrCreate(['id' => 13], [
+    'source_id' => '1',
+    'external_id' => '1',
+    'picture_url' => ['test', 'test'],
+    'aliases' => ['test', 'test'],
+    'title' => ['test', 'test'],
+    'owned_by' => ['test', 'test'],
+    'inception_at' => ['test', 'test'],
+    'width' => ['test', 'test'],
+    'height' => ['test', 'test'],
+    'described_at' => ['test', 'test'],
+  ]);
+
+  // $t = RawPainting::find(12);
+  // $t->fill(['picture_url' => ['blabla', 'blabla']]);
+  // $t->save();
+});

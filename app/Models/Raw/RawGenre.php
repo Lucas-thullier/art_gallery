@@ -2,7 +2,7 @@
 
 namespace App\Models\Raw;
 
-use App\Traits\FetchingRegisterable;
+use App\Models\Source;
 use App\Traits\FindableByUniqueKey;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,16 +11,15 @@ class RawGenre extends Model
 {
   use HasFactory;
   use FindableByUniqueKey;
-  use FetchingRegisterable;
 
   protected $guarded = ['id'];
   protected $casts = [
     'aliases' => 'array',
   ];
 
-  function paintings()
+  function rawPaintings()
   {
-    return $this->belongsToMany(Painting::class);
+    return $this->belongsToMany(RawPainting::class);
   }
 
   public static function mapping(string $sourceName): ?array
@@ -28,7 +27,7 @@ class RawGenre extends Model
     $mappings = [
       'wikidata' => [
         'oneToOne' => [
-          'id' => 'wikidata_id',
+          'id' => 'external_id',
           'label' => 'name',
           'aliases' => 'aliases',
           'description' => 'description',
@@ -41,8 +40,8 @@ class RawGenre extends Model
     return $mappings[$sourceName] ?? null;
   }
 
-  public function registerEntry()
+  public function source()
   {
-    return $this->morphOne(FetchRegister::class, 'registerable');
+    return $this->belongsTo(Source::class);
   }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Models\Raw;
 
-use App\Traits\FetchingRegisterable;
+use App\Models\Source;
 use App\Traits\FindableByUniqueKey;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,13 +11,17 @@ class RawArtist extends Model
 {
   use HasFactory;
   use FindableByUniqueKey;
-  use FetchingRegisterable;
 
   protected $guarded  = ['id'];
 
-  public function paintings()
+  public function rawPaintings()
   {
-    return $this->belongsToMany(Painting::class);
+    return $this->belongsToMany(RawPainting::class);
+  }
+
+  public function source()
+  {
+    return $this->belongsTo(Source::class);
   }
 
   public static function mapping(string $sourceName): ?array
@@ -25,7 +29,7 @@ class RawArtist extends Model
     $mappings = [
       'wikidata' => [
         'oneToOne' => [
-          'id' => 'wikidata_id',
+          'id' => 'external_id',
           'label' => 'name',
           'aliases' => 'aliases',
           'description' => 'description',

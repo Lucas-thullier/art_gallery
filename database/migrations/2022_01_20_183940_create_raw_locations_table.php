@@ -19,7 +19,7 @@ class CreateRawLocationsTable extends Migration
             $table->string('name', 500)->nullable();
 
             $table->integer('source_id');
-            $table->integer('external_id');
+            $table->string('external_id', 255);
 
             $table->timestamps();
         });

@@ -1,14 +1,11 @@
 <?php
 
-use App\Traits\Migrations\HasMinimalWikidataRecord;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMovementsTable extends Migration
+class CreateRawGenresTable extends Migration
 {
-    use HasMinimalWikidataRecord;
-
     /**
      * Run the migrations.
      *
@@ -16,10 +13,13 @@ class CreateMovementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('movements', function (Blueprint $table) {
+        Schema::create('raw_genres', function (Blueprint $table) {
             $table->id();
 
-            $this->createMinimalWikidataColumn($table);
+            $table->string('name', 500)->nullable();
+
+            $table->integer('source_id');
+            $table->integer('external_id');
 
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class CreateMovementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movements');
+        Schema::dropIfExists('raw_genres');
     }
 }

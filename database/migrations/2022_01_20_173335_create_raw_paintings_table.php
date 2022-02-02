@@ -1,14 +1,11 @@
 <?php
 
-use App\Traits\Migrations\HasMinimalWikidataRecord;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaintingsTable extends Migration
+class CreateRawPaintingsTable extends Migration
 {
-    use HasMinimalWikidataRecord;
-
     /**
      * Run the migrations.
      *
@@ -17,10 +14,13 @@ class CreatePaintingsTable extends Migration
 
     public function up()
     {
-        Schema::create('paintings', function (Blueprint $table) {
+        Schema::create('raw_paintings', function (Blueprint $table) {
             $table->id();
 
-            $this->createMinimalWikidataColumn($table);
+            $table->string('name', 500)->nullable();
+
+            $table->integer('source_id');
+            $table->integer('external_id');
 
             $table->string('native_name', 500)->nullable();
             $table->string('aliases', 1000)->nullable();
@@ -47,6 +47,6 @@ class CreatePaintingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paintings');
+        Schema::dropIfExists('raw_paintings');
     }
 }

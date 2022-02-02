@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArtistPaintingTable extends Migration
+class CreateRawDepictionPaintingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateArtistPaintingTable extends Migration
      */
     public function up()
     {
-        Schema::create('artist_painting', function (Blueprint $table) {
+        Schema::create('raw_depiction_painting', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('painting_id');
-            $table->foreignId('artist_id');
+            $table->foreignId('depiction_id');
 
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateArtistPaintingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('artist_painting');
+        Schema::dropIfExists('raw_depiction_painting');
     }
 }

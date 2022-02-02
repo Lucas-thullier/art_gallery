@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Raw;
 
 use App\Traits\FetchingRegisterable;
 use App\Traits\FindableByUniqueKey;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Material extends Model
+class RawDepiction extends Model
 {
   use HasFactory;
   use FindableByUniqueKey;

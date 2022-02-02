@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Raw;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class GenrePainting extends Pivot
+class RawMaterialPainting extends Pivot
 {
     //
 }

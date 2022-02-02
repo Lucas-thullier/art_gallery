@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMaterialPaintingTable extends Migration
+class CreateRawLocationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateMaterialPaintingTable extends Migration
      */
     public function up()
     {
-        Schema::create('material_painting', function (Blueprint $table) {
+        Schema::create('raw_locations', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('painting_id');
-            $table->foreignId('material_id');
+            $table->string('name', 500)->nullable();
+
+            $table->integer('source_id');
+            $table->integer('external_id');
 
             $table->timestamps();
         });
@@ -30,6 +32,6 @@ class CreateMaterialPaintingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('material_painting');
+        Schema::dropIfExists('raw_locations');
     }
 }

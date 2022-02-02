@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGenrePaintingTable extends Migration
+class CreateRawMovementPaintingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateGenrePaintingTable extends Migration
      */
     public function up()
     {
-        Schema::create('genre_painting', function (Blueprint $table) {
+        Schema::create('raw_movement_painting', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('painting_id');
-            $table->foreignId('genre_id');
+            $table->foreignId('movement_id');
 
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateGenrePaintingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('genre_painting');
+        Schema::dropIfExists('raw_movement_painting');
     }
 }

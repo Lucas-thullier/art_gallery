@@ -1,21 +1,24 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Raw;
 
 use App\Traits\FetchingRegisterable;
 use App\Traits\FindableByUniqueKey;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Artist extends Model
+class RawGenre extends Model
 {
   use HasFactory;
   use FindableByUniqueKey;
   use FetchingRegisterable;
 
-  protected $guarded  = ['id'];
+  protected $guarded = ['id'];
+  protected $casts = [
+    'aliases' => 'array',
+  ];
 
-  public function paintings()
+  function paintings()
   {
     return $this->belongsToMany(Painting::class);
   }
@@ -36,5 +39,10 @@ class Artist extends Model
     ];
 
     return $mappings[$sourceName] ?? null;
+  }
+
+  public function registerEntry()
+  {
+    return $this->morphOne(FetchRegister::class, 'registerable');
   }
 }

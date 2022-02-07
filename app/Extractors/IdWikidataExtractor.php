@@ -12,8 +12,8 @@ class IdWikidataExtractor
 {
   public function extract()
   {
-    $xmlPaintingsList = $this->getPaintingsListXml();
-    // $xmlPaintingsList = Storage::disk('public')->get('sparql_test'); //pour test
+    // $xmlPaintingsList = $this->getPaintingsListXml();
+    $xmlPaintingsList = Storage::disk('public')->get('sparql'); //pour test
 
     $paintingsIds = $this->extractPaintingsId($xmlPaintingsList);
     Storage::put('test.json', json_encode($paintingsIds));
@@ -43,7 +43,7 @@ class IdWikidataExtractor
     $paintingsIds = [];
     $i = 1;
     foreach ($paintingsUrlAsDomList as $paintingUrlAsDomNode) {
-      if ($i == 10000) {
+      if ($i == 1000) {
         break;
       }
       $paintingId = preg_replace('#.+entity\/#', '', $paintingUrlAsDomNode->nodeValue);

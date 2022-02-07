@@ -71,6 +71,14 @@ return [
             'after_commit' => false,
         ],
 
+        'wikidata' => [
+            'driver' => 'redis',
+            'connection' => 'default',
+            'queue' => 'wikidata',
+            'retry_after' => (60 * 5),
+            'block_for' => 5,
+            'after_commit' => false,
+        ],
     ],
 
     /*

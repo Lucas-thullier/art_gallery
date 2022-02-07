@@ -23,15 +23,15 @@ class CreateRawPaintingsTable extends Migration
             $table->string('external_id', 255);
 
             $table->string('native_name', 500)->nullable();
-            $table->string('aliases', 1000)->nullable();
+            $table->tinyText('aliases')->nullable();
 
-            $table->string('title', 500)->nullable();
+            $table->tinyText('title')->nullable();
             $table->string('description', 1000)->nullable();
-            $table->string('picture_url', 500)->nullable();
-            $table->string('owned_by', 500)->nullable();
-            $table->string('inception_at', 500)->nullable();
-            $table->string('width', 1000)->nullable();
-            $table->string('height', 1000)->nullable();
+            $table->text('picture_url')->nullable();
+            $table->tinyText('owned_by')->nullable();
+            $table->tinyText('inception_at')->nullable();
+            $table->tinyText('width')->nullable();
+            $table->tinyText('height')->nullable();
             $table->string('described_at', 1000)->nullable();
 
             $table->softDeletes($column = 'deleted_at', $precision = 0);

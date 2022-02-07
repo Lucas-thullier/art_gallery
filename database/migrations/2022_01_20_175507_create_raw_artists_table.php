@@ -21,7 +21,7 @@ class CreateRawArtistsTable extends Migration
             $table->integer('source_id');
             $table->string('external_id', 255);
 
-            $table->string('picture_url', 1000)->nullable();
+            $table->tinyText('picture_url')->nullable();
 
             $table->timestamps();
         });

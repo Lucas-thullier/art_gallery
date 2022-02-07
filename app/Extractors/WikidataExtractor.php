@@ -63,12 +63,12 @@ class WikidataExtractor extends AbstractExtractor
     foreach ($mapping['manyToOne'] as $srcKey => $distKey) {
       $key = preg_replace('#\.0\.#', '.*.', $srcKey);
 
-      $remappedData[$distKey] = data_get($data, $key);
-
-      if (!is_array($remappedData[$distKey])) {
-        $remappedData[$distKey] = [$remappedData[$distKey]];
+      if (!is_null(data_get($data, $key))) {
+        $remappedData[$distKey] = data_get($data, $key);
+        if (!is_array($remappedData[$distKey])) {
+          $remappedData[$distKey] = [$remappedData[$distKey]];
+        }
       }
-      
     }
 
     return $remappedData;
@@ -80,7 +80,7 @@ class WikidataExtractor extends AbstractExtractor
     foreach ($mapping['relations'] as $srcKey => $modelClass) {
       $key = preg_replace('#\.0\.#', '.*.', $srcKey);
       $wikidataIds = data_get($data, $key);
-      
+
       if (!is_array($wikidataIds)) {
         $wikidataIds = [$wikidataIds];
       }
@@ -89,7 +89,7 @@ class WikidataExtractor extends AbstractExtractor
         if (empty($remappedData['relations'])) {
           $remappedData['relations'] = [];
         }
-  
+
         $remappedData['relations'][] = [
           'external_id' => $wikidataId,
           'class' => $modelClass

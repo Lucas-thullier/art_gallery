@@ -12,6 +12,7 @@ class CreateSourceTable extends Migration
             $table->id();
 
             $table->string('extractor', 255)->nullable();
+            $table->string('queue', 255)->nullable();
             $table->string('name', 255)->unique();
 
             $table->timestamps();

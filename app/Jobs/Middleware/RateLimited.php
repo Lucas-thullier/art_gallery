@@ -6,13 +6,6 @@ use Illuminate\Support\Facades\Redis;
 
 class RateLimited
 {
-  /**
-   * Process the queued job.
-   *
-   * @param  mixed  $job
-   * @param  callable  $next
-   * @return mixed
-   */
   public function handle(mixed $job, callable $next)
   {
     Redis::throttle('key')
